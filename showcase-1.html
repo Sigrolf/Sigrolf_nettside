@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora over the fjord | Visual Journey</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .star-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      box-shadow: 0 0 6px 2px #fff;
+      will-change: transform;
+    }
+    .visual-journey {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6vw 0 6vw 0;
+    }
+    .vj-image {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 5vw 0 2vw 0;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 48px #000a;
+      transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+      opacity: 0;
+      transform: translateY(60px) scale(0.98);
+      will-change: opacity, transform;
+    }
+    .vj-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 3vw 0 1vw 0;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 0 20px #fff2;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .vj-desc {
+      font-size: 1.3rem;
+      color: #fff;
+      opacity: 0.85;
+      margin: 0 0 4vw 0;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .vj-visible {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    @media (max-width: 700px) {
+      .visual-journey { padding: 2vw 0; }
+      .vj-title { font-size: 1.5rem; }
+      .vj-desc { font-size: 1rem; }
+      .vj-image { border-radius: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+    <div class="star-bg"></div>
+    <nav class="navbar">
+      <div class="logo">SIGURD ROLFSNES</div>
+      <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="showcase.html">Showcase</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <main class="visual-journey">
+      <div class="vj-title">Aurora over the fjord</div>
+      <div class="vj-desc">Awarded at Trondheim Photo Fest 2024</div>
+      <img class="vj-image" src="images/astro/_00003.jpg" alt="Aurora over the fjord">
+      <div class="vj-title">Dancing Lights</div>
+      <div class="vj-desc">The aurora borealis paints the sky in green and violet above the tranquil Norwegian fjord, reflecting in the still water below.</div>
+      <img class="vj-image" src="images/astro/_00007.jpg" alt="Aurora reflection">
+      <div class="vj-title">Silent Night</div>
+      <div class="vj-desc">A peaceful night under the stars, with the Milky Way arching over the landscape and the aurora shimmering on the horizon.</div>
+      <img class="vj-image" src="images/astro/_00001.jpg" alt="Milky Way and aurora">
+    </main>
+    <script>
+      // Starry background with parallax
+      const starBg = document.querySelector('.star-bg');
+      const numStars = 120;
+      const stars = [];
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.opacity = 0.5 + Math.random() * 0.5;
+        star.dataset.depth = 0.2 + Math.random() * 0.8;
+        starBg.appendChild(star);
+        stars.push(star);
+      }
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        stars.forEach(star => {
+          const depth = parseFloat(star.dataset.depth);
+          star.style.transform = `translateY(${scrollY * depth}px)`;
+        });
+      });
+      // Animate in elements on scroll
+      function revealOnScroll() {
+        document.querySelectorAll('.vj-title, .vj-desc, .vj-image').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 60) {
+            el.classList.add('vj-visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', revealOnScroll);
+      window.addEventListener('load', revealOnScroll);
+    </script>
+  </body>
+  </html>

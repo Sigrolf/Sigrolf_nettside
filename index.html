@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sigurd Rolfsnes Photography</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="star-bg"></div>
+  <nav class="navbar">
+    <div class="logo">SIGURD ROLFSNES</div>
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <section id="home" class="hero-section">
+    <div class="hero-glass">
+      <div class="hero-content">
+        <h1>Exploring the Night Sky</h1>
+        <p>Capturing the beauty of the cosmos and landscapes from Trondheim, Norway</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Images Gallery -->
+  <section class="featured-gallery-section">
+    <h2>Featured Images</h2>
+    <div class="featured-gallery-grid distinct-featured">
+      <a href="portfolio.html?image=images/astro/_00001.jpg" class="featured-img-card">
+        <img src="images/astro/_00001.jpg" alt="Andromeda Galaxy" class="featured-img">
+        <div class="featured-img-title">Andromeda Galaxy</div>
+      </a>
+      <a href="portfolio.html?image=images/landscapes/_10.jpg" class="featured-img-card">
+        <img src="images/landscapes/_10.jpg" alt="Sunrise Valley" class="featured-img">
+        <div class="featured-img-title">Sunrise Valley</div>
+      </a>
+      <a href="portfolio.html?image=images/astro/_00007.jpg" class="featured-img-card">
+        <img src="images/astro/_00007.jpg" alt="Moonrise" class="featured-img">
+        <div class="featured-img-title">Moonrise</div>
+      </a>
+    </div>
+    <div class="see-more-link">
+      <a href="portfolio.html">See full portfolio &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Latest Posts Section -->
+  <section class="latest-posts-section">
+    <h2>Latest Posts</h2>
+    <div class="latest-posts-list" id="latestPostsList">
+      <!-- Latest blog posts will be loaded here by JS -->
+    </div>
+    <div class="see-more-link">
+      <a href="blog.html">See all posts &rarr;</a>
+    </div>
+  </section>
+
+  <!-- About Me Section (moved below featured images) -->
+  <section id="about" class="about-section home-about-section">
+    <div class="about-portrait-large-wrapper">
+      <img src="images/portrait.jpg" alt="Portrait of Sigurd Rolfsnes" class="about-portrait-large">
+    </div>
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>Hi, I'm <strong>Sigurd Rolfsnes</strong> from Trondheim, Norway. I love exploring the night sky and capturing its wonders through my lens. My work is inspired by the beauty of the cosmos and the landscapes of Norway.</p>
+      <p>Photography is my way of connecting with the universe, sharing the awe and serenity I find in the night sky and wild places.</p>
+    </div>
+  </section>
+  <section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <div class="contact-content">
+      <p>Email: <a href="mailto:sigurd@example.com">sigurd@example.com</a></p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><svg width="24" height="24" fill="#00FF7F" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.5.2.8.5 1.1 1.1.2.4.3 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.5-.5.8-1.1 1.1-.4.2-1.1.3-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.5-.2-.8-.5-1.1-1.1-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.5.5-.8 1.1-1.1.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7 .1 5.7.2 4.7.4 3.9.7c-.8.3-1.5.8-2.1 1.4C1.1 2.7.6 3.4.3 4.2.1 5 .1 6 .1 7.3 0 8.7 0 9.1 0 12s0 3.3.1 4.7c.1 1.3.3 2.3.6 3.1.3.8.8 1.5 1.4 2.1.6.6 1.3 1.1 2.1 1.4.8.3 1.8.5 3.1.6C8.7 24 9.1 24 12 24s3.3 0 4.7-.1c1.3-.1 2.3-.3 3.1-.6.8-.3 1.5-.8 2.1-1.4.6-.6 1.1-1.3 1.4-2.1.3-.8.5-1.8.6-3.1.1-1.4.1-1.8.1-4.7s0-3.3-.1-4.7c-.1-1.3-.3-2.3-.6-3.1-.3-.8-.8-1.5-1.4-2.1-.6-.6-1.3-1.1-2.1-1.4-.8-.3-1.8-.5-3.1-.6C15.3 0 14.9 0 12 0z"/><circle cx="12" cy="12" r="3.6"/><circle cx="18.4" cy="5.6" r="1.1"/></svg></a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Hamburger menu toggle for all pages
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 800) {
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    // --- Latest Posts Dynamic Loader ---
+    async function fetchLatestPosts() {
+      const postFiles = [
+        'blog/post-1.html',
+        'blog/post-2.html',
+        'blog/post-3.html',
+        'blog/post-4.html'
+      ];
+      const posts = await Promise.all(postFiles.map(async (file) => {
+        try {
+          const res = await fetch(file);
+          if (!res.ok) {
+            console.error('Failed to fetch', file, res.status);
+            return null;
+          }
+          const text = await res.text();
+          const metaMatch = text.match(/<script id="blog-meta"[^>]*>([\s\S]*?)<\/script>/);
+          if (!metaMatch) {
+            console.error('No metadata found in', file);
+            return null;
+          }
+          let meta;
+          try {
+            meta = JSON.parse(metaMatch[1]);
+          } catch (err) {
+            console.error('Metadata JSON parse error in', file, err);
+            return null;
+          }
+          meta.url = file;
+          return meta;
+        } catch (e) {
+          console.error('Fetch error for', file, e);
+          return null;
+        }
+      }));
+      const sorted = posts.filter(Boolean).sort((a, b) => new Date(b.date) - new Date(a.date));
+      return sorted.slice(0, 2);
+    }
+
+    function renderLatestPosts(posts) {
+      const container = document.getElementById('latestPostsList');
+      if (!container) return;
+      container.innerHTML = '';
+      if (!posts || posts.length === 0) {
+        container.innerHTML = '<div style="color:#aaa;padding:2rem;text-align:center;">No recent blog posts found.</div>';
+        return;
+      }
+      posts.forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'blog-archive-preview';
+        article.innerHTML = `
+          <a href="${post.url}">
+            <img src="${post.img || post.cover || 'images/astro/_00001.jpg'}" alt="${post.title} cover" class="blog-archive-thumb">
+            <div class="blog-archive-info">
+              <h2>${post.title}</h2>
+              <div class="blog-archive-meta">
+                <span class="blog-date">${post.date}</span>
+                <span class="blog-tags">${(post.tags||[]).map(tag => `<span class='blog-tag'>${tag}</span>`).join('')}</span>
+              </div>
+              <p class="blog-excerpt">${post.excerpt || ''}</p>
+            </div>
+          </a>
+        `;
+        container.appendChild(article);
+      });
+    }
+
+    // Load latest posts on DOMContentLoaded
+    window.addEventListener('DOMContentLoaded', async () => {
+      const posts = await fetchLatestPosts();
+      renderLatestPosts(posts);
+    });
+
+    // Starry background animation with parallax
+    const starBg = document.querySelector('.star-bg');
+    if (starBg) {
+      const numStars = 120;
+      const stars = [];
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.opacity = 0.5 + Math.random() * 0.5;
+        star.dataset.depth = 0.2 + Math.random() * 0.8;
+        starBg.appendChild(star);
+        stars.push(star);
+      }
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        stars.forEach(star => {
+          const depth = parseFloat(star.dataset.depth);
+          star.style.transform = `translateY(${scrollY * depth}px)`;
+        });
+      });
+    }
+  </script>
+  <style>
+    .featured-gallery-grid.distinct-featured {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      margin: 2.5rem auto 2.5rem auto;
+      max-width: 1200px;
+    }
+    .featured-img-card {
+      background: #111;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 48px #00FF7F22, 0 0 0 2px rgba(0,255,127,0.10);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.2rem 1.2rem 1.7rem 1.2rem;
+      transition: transform 0.32s cubic-bezier(.77,.2,.32,1.01), box-shadow 0.32s cubic-bezier(.77,.2,.32,1.01);
+      cursor: pointer;
+      width: 340px;
+      min-width: 220px;
+      max-width: 100%;
+    }
+    .featured-img-card:hover {
+      transform: scale(1.04) translateY(-6px);
+      box-shadow: 0 16px 64px #00FF7F55, 0 0 0 3px var(--accent);
+      z-index: 2;
+    }
+    .featured-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 32px #00FF7F22;
+      background: #111;
+      margin-bottom: 1.1rem;
+      transition: filter 0.32s, transform 0.32s;
+    }
+    .featured-img-title {
+      color: var(--accent);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0.2rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 12px #00FF7F22;
+    }
+    /* About Me Large Portrait Section */
+    .home-about-section {
+      background: #000;
+      padding: 4rem 3vw 2rem 3vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto 0 auto;
+    }
+    .about-portrait-large-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 2.5rem;
+    }
+    .about-portrait-large {
+      width: 340px;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      box-shadow: 0 8px 48px #00FF7F22;
+      background: #111;
+      display: block;
+    }
+    .home-about-section .about-content {
+      text-align: center;
+      color: #fff;
+      font-size: 1.25rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .home-about-section h2 {
+      color: var(--accent);
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    @media (max-width: 900px) {
+      .featured-gallery-grid.distinct-featured {
+        gap: 1.2rem;
+      }
+      .featured-img-card {
+        width: 90vw;
+        min-width: 180px;
+        padding: 0.7rem 0.7rem 1.2rem 0.7rem;
+      }
+      .about-portrait-large {
+        width: 220px;
+        height: 220px;
+      }
+    }
+    @media (max-width: 600px) {
+      .featured-gallery-grid.distinct-featured {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+      }
+      .featured-img-card {
+        width: 98vw;
+        min-width: 120px;
+        padding: 0.5rem 0.5rem 0.8rem 0.5rem;
+      }
+      .about-portrait-large {
+        width: 140px;
+        height: 140px;
+      }
+      .home-about-section {
+        padding: 2.2rem 1vw 1rem 1vw;
+      }
+    }
+  </style>
+</body>
+</html>

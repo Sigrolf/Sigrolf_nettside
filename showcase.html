@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showcase | Sigurd Rolfsnes Photography</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">SIGURD ROLFSNES</div>
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <section class="showcase-section">
+    <h1 class="showcase-title">Showcase</h1>
+    <div class="showcase-masonry-grid">
+      <a class="showcase-card" href="showcase-1.html">
+        <img src="images/astro/_00003.jpg" alt="Showcase 1">
+      </a>
+      <a class="showcase-card" href="showcase-2.html">
+        <img src="images/landscapes/_10.jpg" alt="Showcase 2">
+      </a>
+      <a class="showcase-card" href="showcase-3.html">
+        <img src="images/astro/_00007.jpg" alt="Showcase 3">
+      </a>
+      <a class="showcase-card" href="showcase-4.html">
+        <img src="images/landscapes/_21.jpg" alt="Showcase 4">
+      </a>
+      <a class="showcase-card" href="showcase-5.html">
+        <img src="images/astro/_00009.jpg" alt="Showcase 5">
+      </a>
+      <a class="showcase-card" href="showcase-6.html">
+        <img src="images/landscapes/_33.jpg" alt="Showcase 6">
+      </a>
+      <!-- Add more showcase cards as needed -->
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Hamburger menu toggle for all pages
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 800) {
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    // Showcase creative effects
+    document.querySelectorAll('.showcase-card').forEach(card => {
+      card.addEventListener('mousemove', function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mx', x);
+        card.style.setProperty('--my', y);
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.setProperty('--mx', 0);
+        card.style.setProperty('--my', 0);
+      });
+    });
+  </script>
+</body>
+</html>

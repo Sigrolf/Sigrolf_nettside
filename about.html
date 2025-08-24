@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Sigurd Rolfsnes Photography</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">SIGURD ROLFSNES</div>
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <section class="about-section">
+    <h1>About Me</h1>
+    <div class="about-bio">
+      <img src="images/portrait.jpg" alt="Portrait of Sigurd Rolfsnes" class="about-portrait">
+      <div class="about-text">
+        <p>Hi, I'm <strong>Sigurd Rolfsnes</strong> from Trondheim, Norway. I love exploring the night sky and capturing its wonders through my lens. My work is inspired by the beauty of the cosmos and the landscapes of Norway.</p>
+        <p>Artist Statement: Photography is my way of connecting with the universe, sharing the awe and serenity I find in the night sky and wild places.</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <h2>Milestones</h2>
+      <ul>
+        <li><span>2025</span> - Launched this portfolio website</li>
+        <li><span>2024</span> - Solo exhibition in Trondheim</li>
+        <li><span>2023</span> - Published in National Geographic Norway</li>
+        <li><span>2022</span> - First aurora photo featured on NASA APOD</li>
+      </ul>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Hamburger menu toggle for all pages
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('open');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 800) {
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+      // Close menu when clicking outside (for better UX)
+      document.addEventListener('click', function(e) {
+        if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
+          navLinks.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
