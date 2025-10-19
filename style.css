@@ -380,7 +380,8 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  /* put behind the hero so hero background is visible */
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
   background: transparent;
@@ -409,28 +410,35 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
 }
 
 .hero-section {
-  min-height: 150vh;
+  /* reduce enormous height so background is visible without large scroll */
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    url('images/astro/Background.png') center center/cover;
+  /* Use Cloudinary-hosted hero background */
+  background-image: url('https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #000;
   position: relative;
-  z-index: 0;
+  /* make hero above star-bg so its background image is visible */
+  z-index: 1;
   overflow: hidden;
 }
 .hero-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 1;
+  /* overlay should sit above the background but below content */
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.72) 0%,
-    rgba(0,0,0,0.48) 5%,
-    rgba(0,0,0,0.32) 30%,
-    rgba(0,0,0,0.18) 80%,
+  rgba(0,0,0,0.44) 0%,
+  rgba(0,0,0,0.32) 5%,
+  rgba(0,0,0,0.22) 30%,
+  rgba(0,0,0,0.12) 80%,
     rgba(0,0,0,0) 100%
   );
   opacity: 1;
@@ -493,8 +501,9 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   font-size: 7rem;
   color: var(--accent);
   letter-spacing: 0.1em;
-  margin-bottom: 5rem;
-  margin-top: -30rem;
+  margin-bottom: 3rem;
+  /* remove huge negative offset that pushes content off-screen */
+  margin-top: 0;
   font-weight: 900;
   text-shadow: 0 0 32px #00FF7F66;
   animation: heroTitleFade 1.5s 0.2s cubic-bezier(.4,2,.6,1) both;

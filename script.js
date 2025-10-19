@@ -1,43 +1,48 @@
-// Dynamically load images from the images/astro and images/landscapes folders
+// Dynamically load metadata from DOM-rendered Cloudinary assets
 const galleryGrid = document.getElementById('galleryGrid');
 
-// List of images (add more as needed)
-const images = [
-  // Astro
-  'images/astro/_00001.jpg',
-  'images/astro/_00002.jpg',
-  'images/astro/_00003.jpg',
-  'images/astro/_00004.jpg',
-  'images/astro/_00005.jpg',
-  'images/astro/_00006.jpg',
-  'images/astro/_00007.jpg',
-  'images/astro/_00008.jpg',
-  'images/astro/_00009.jpg',
-  'images/astro/_00010.jpg',
-  // Landscapes
-  'images/landscapes/_1.jpg',
-  'images/landscapes/_2.jpg',
-  'images/landscapes/_3.jpg',
-  'images/landscapes/_4.jpg',
-  'images/landscapes/_5.jpg',
-  'images/landscapes/_6.jpg',
-  'images/landscapes/_7.jpg',
-  'images/landscapes/_8.jpg',
-  'images/landscapes/_9.jpg',
-  'images/landscapes/_10.jpg',
-
-];
-
-if (galleryGrid) {
-  images.forEach(src => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'Photography by Sigurd Rolfsnes';
-    img.loading = 'lazy';
-    img.addEventListener('click', () => openLightbox(src));
-    galleryGrid.appendChild(img);
-  });
+function prettifyFilename(src) {
+  if (!src) return 'Untitled';
+  try {
+    const url = new URL(src, window.location.href);
+    src = url.pathname;
+  } catch (e) {
+    // ignore URL parsing issues; fallback to raw string
+  }
+  const file = src.split('/').pop() || '';
+  const withoutExt = file.replace(/\.[^.]+$/, '').replace(/^_+/, '');
+  const spaced = withoutExt.replace(/[-_]+/g, ' ').trim();
+  return spaced ? spaced.replace(/\b\w/g, c => c.toUpperCase()) : 'Untitled';
 }
+
+const imageMeta = {};
+const portfolioImageMeta = {};
+
+function registerImageMetaFromElement(img) {
+  if (!img) return;
+  const src = img.currentSrc || img.src;
+  if (!src) return;
+  const title = (img.dataset.title || img.getAttribute('alt') || '').trim() || prettifyFilename(src);
+  const description = (img.dataset.caption || '').trim();
+  const date = (img.dataset.date || '').trim();
+  const camera = (img.dataset.camera || 'Fujifilm XT-30').trim();
+  const settings = (img.dataset.settings || '').trim();
+  const meta = { title, description, date, camera, settings };
+  imageMeta[src] = meta;
+  portfolioImageMeta[src] = { title, description, filename: src, camera };
+  const publicId = img.dataset.publicId;
+  if (publicId) {
+    imageMeta[publicId] = meta;
+    portfolioImageMeta[publicId] = { title, description, filename: src, camera };
+  }
+}
+
+const images = Array.from(document.querySelectorAll('.gallery-grid img, .showcase-grid img, .featured-gallery-grid img'))
+  .map(img => {
+    registerImageMetaFromElement(img);
+    return img.currentSrc || img.src;
+  })
+  .filter(Boolean);
 
 // --- Modern Lightbox functionality ---
 const lightbox = document.createElement('div');
@@ -131,25 +136,37 @@ openLightbox = function(...args) {
 };
 
 let currentIndex = 0;
-let currentImages = images;
+let currentImages = images.slice();
 let currentImageData = {};
 
 // Example image metadata (expand as needed)
-const imageMeta = {
-  'images/astro/_00001.jpg': { title: 'Andromeda Galaxy', description: 'Deep-sky view of the M31 Andromeda galaxy', date: '2024-07-01', camera: 'Fujifilm XT-30', settings: 'f/2.8, 20s, ISO 3200' },
-  'images/astro/_00002.jpg': { title: 'Star Trails', description: 'Long exposure star trails.', date: '2024-06-15', camera: 'Fujifilm XT-30', settings: 'f/4, 300s, ISO 800' },
-  'images/landscapes/_1.jpg': { title: 'Sunrise Valley', description: 'Golden hour in the valley.', date: '2024-05-10', camera: 'Fujifilm XT-30', settings: 'f/11, 1/60s, ISO 100' },
-  // ...add more as needed
-};
-
 function getImageMeta(src) {
-  return imageMeta[src] || { title: 'Untitled', description: 'No description.', date: '', camera: 'Fujifilm XT-30', settings: '' };
+  if (imageMeta[src]) return imageMeta[src];
+  // Try matching by filename if full URL is not stored
+  const matchKey = Object.keys(imageMeta).find(key => src && (src === key || src.endsWith(key)));
+  if (matchKey) return imageMeta[matchKey];
+  const fallbackTitle = prettifyFilename(src);
+  return { title: fallbackTitle, description: 'No description.', date: '', camera: 'Fujifilm XT-30', settings: '' };
 }
 
-function openLightbox(src, imgs = images) {
-  currentImages = imgs;
-  currentIndex = imgs.indexOf(src);
+function normalizeImageList(src, list) {
+  if (Array.isArray(list) && list.length) return list;
+  if (images.length) return images;
+  if (src) return [src];
+  return [];
+}
+
+function openLightbox(src, imgs) {
+  currentImages = normalizeImageList(src, imgs);
+  if (!currentImages.length && src) {
+    currentImages = [src];
+  }
+  currentIndex = currentImages.findIndex(item => item === src);
+  if (currentIndex === -1 && src) {
+    currentIndex = currentImages.findIndex(item => src.endsWith(item));
+  }
   if (currentIndex === -1) currentIndex = 0;
+  if (!currentImages.length) return;
   showLightboxImage(currentIndex);
   lightbox.classList.add('active');
   content.focus();
@@ -321,43 +338,13 @@ if (galleryGrid) {
   });
 }
 
-// Patch portfolio category switching to pass correct image list
-function renderPortfolio(category) {
-  if (!portfolioGallery) return;
-  portfolioGallery.innerHTML = '';
-  const imgs = portfolioImages[category];
-  imgs.forEach((src, i) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'Photography by Sigurd Rolfsnes';
-    img.loading = 'lazy';
-    img.classList.add('portfolio-img');
-    img.style.setProperty('--i', i+1);
-    img.addEventListener('click', () => openLightbox(src, imgs)); // <-- Pass correct array here
-    portfolioGallery.appendChild(img);
-  });
-}
-
-// Patch enableGalleryLightbox to pass correct image list
-function enableGalleryLightbox(selector, imgs = images) {
-  const gallery = document.querySelector(selector);
-  if (!gallery) return;
-  const imgEls = Array.from(gallery.querySelectorAll('img'));
-  imgEls.forEach((img, i) => {
-    img.addEventListener('click', () => openLightbox(img.src, imgEls.map(im => im.src)));
-  });
-}
-window.addEventListener('DOMContentLoaded', () => {
-  enableGalleryLightbox('.gallery-grid', images);
-  enableGalleryLightbox('.showcase-grid');
-  enableGalleryLightbox('.blog-list');
-});
-
 // Smooth scroll for nav links
-const navLinks = document.querySelectorAll('.nav-links a');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 navLinks.forEach(link => {
   link.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const selector = this.getAttribute('href');
+    if (!selector || !selector.startsWith('#')) return;
+    const target = document.querySelector(selector);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
@@ -369,47 +356,89 @@ navLinks.forEach(link => {
 const portfolioGallery = document.getElementById('portfolioGallery');
 const categoryBtns = document.querySelectorAll('.category-btn');
 
-const portfolioImages = {
-  astro: [
-    'images/astro/_00001.jpg',
-    'images/astro/_00002.jpg',
-    'images/astro/_00003.jpg',
-    'images/astro/_00004.jpg',
-    'images/astro/_00005.jpg',
-    'images/astro/_00006.jpg',
-    'images/astro/_00007.jpg',
-    'images/astro/_00008.jpg',
-    'images/astro/_00009.jpg',
-    'images/astro/_00010.jpg',
-  ],
-  landscape: [
-    ...Array.from({length: 100}, (_, i) => `images/landscapes/_${i+1}.jpg`),
-  ],
-  wildlife: [
-    ...Array.from({length: 22}, (_, i) => `images/wildlife/_${i+1}.jpg`),
-  ],
-  portraits: [
-    // Add portrait images if available
-  ]
-};
+const portfolioImages = {};
+
+// If the page was generated from `_data/images.yml` the gallery HTML is already present
+// and we should use those images instead of the old hardcoded lists. Build
+// `portfolioImages` dynamically from existing `.gallery-category` nodes when present.
+(() => {
+  try {
+    const categories = Array.from(document.querySelectorAll('.gallery-category'));
+    if (categories.length) {
+      const built = {};
+      categories.forEach(cat => {
+        const key = cat.dataset.category || 'uncategorized';
+        const imgs = Array.from(cat.querySelectorAll('img')).map(img => {
+          const src = img.currentSrc || img.src;
+          if (!src) return null;
+          const titleNode = img.closest('.gallery-img-wrapper')?.querySelector('.gallery-img-title');
+          const rawTitle = (img.dataset.title || titleNode?.textContent || img.getAttribute('alt') || '').trim();
+          const caption = (img.dataset.caption || '').trim();
+          const title = rawTitle || prettifyFilename(src);
+          const publicId = img.dataset.publicId || '';
+          const date = (img.dataset.date || '').trim();
+          const camera = (img.dataset.camera || 'Fujifilm XT-30').trim();
+          imageMeta[src] = { title, description: caption, date, camera, settings: '' };
+          if (publicId) imageMeta[publicId] = imageMeta[src];
+          portfolioImageMeta[src] = { title, description: caption, filename: src, camera };
+          if (publicId) portfolioImageMeta[publicId] = portfolioImageMeta[src];
+          return { src, title, caption, publicId, date, camera };
+        }).filter(Boolean);
+        if (imgs.length) built[key] = imgs;
+      });
+      if (Object.keys(built).length) {
+        Object.assign(portfolioImages, built);
+      }
+    }
+  } catch (e) {
+    // non-fatal; fallback to hardcoded lists
+    console.warn('Could not build portfolioImages from DOM, falling back to defaults.', e);
+  }
+})();
 
 function renderPortfolio(category) {
   if (!portfolioGallery) return;
   portfolioGallery.innerHTML = '';
-  const imgs = portfolioImages[category];
-  imgs.forEach((src, i) => {
+  const imgs = portfolioImages[category] || [];
+  imgs.forEach((item, i) => {
+    const data = typeof item === 'string' ? { src: item } : item;
+    if (!data.src) return;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'portfolio-img-wrapper';
     const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'Photography by Sigurd Rolfsnes';
+    img.src = data.src;
+    img.alt = data.title || 'Photography by Sigurd Rolfsnes';
+    if (data.caption) img.dataset.caption = data.caption;
+    if (data.publicId) img.dataset.publicId = data.publicId;
+    if (data.date) img.dataset.date = data.date;
+    if (data.camera) img.dataset.camera = data.camera;
     img.loading = 'lazy';
     img.classList.add('portfolio-img');
     img.style.setProperty('--i', i+1);
-    img.addEventListener('click', () => openLightbox(src, imgs)); // <-- Pass correct array here
-    portfolioGallery.appendChild(img);
+    registerImageMetaFromElement(img);
+    wrapper.appendChild(img);
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'portfolio-img-title';
+    titleDiv.textContent = data.title || prettifyFilename(data.src);
+    wrapper.appendChild(titleDiv);
+    portfolioGallery.appendChild(wrapper);
   });
+  enableGalleryLightbox('#portfolioGallery');
+}
+if (typeof window !== 'undefined') {
+  window.renderPortfolio = renderPortfolio;
 }
 if (portfolioGallery && categoryBtns.length) {
-  renderPortfolio('astro');
+  const availableCategories = Object.keys(portfolioImages);
+  const defaultCategory = availableCategories.includes('astro')
+    ? 'astro'
+    : (categoryBtns[0]?.dataset.category || availableCategories[0]);
+  if (defaultCategory) {
+    renderPortfolio(defaultCategory);
+    categoryBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.category === defaultCategory);
+    });
+  }
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       categoryBtns.forEach(b => b.classList.remove('active'));
@@ -424,7 +453,15 @@ function enableGalleryLightbox(selector) {
   const gallery = document.querySelector(selector);
   if (!gallery) return;
   gallery.querySelectorAll('img').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src));
+    registerImageMetaFromElement(img);
+    if (img.dataset.lightboxBound === 'true') return;
+    img.addEventListener('click', () => {
+      const list = Array.from(gallery.querySelectorAll('img'))
+        .map(el => el.currentSrc || el.src)
+        .filter(Boolean);
+      openLightbox(img.currentSrc || img.src, list);
+    });
+    img.dataset.lightboxBound = 'true';
   });
 }
 window.addEventListener('DOMContentLoaded', () => {
@@ -469,114 +506,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-
-
-
-// Portfolio image titles stored in script
-
-// Portfolio image metadata dictionary
-const portfolioImageMeta = {
-  'images/astro/_00001.jpg': { title: 'Andromeda galaxy', description: 'Deep-sky view of the M31 Andromeda galaxy.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00002.jpg': { title: 'Star Trails', description: 'Long exposure star trails.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00003.jpg': { title: 'Aurora Night', description: 'Northern lights over the fjord.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00004.jpg': { title: 'Comet Over Lake', description: 'Comet NEOWISE above a tranquil lake.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00005.jpg': { title: 'Galactic Core', description: 'The core of the Milky Way in summer.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00006.jpg': { title: 'Desert Stars', description: 'Starry night in the desert.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00007.jpg': { title: 'Moonrise', description: 'Full moon rising over the mountains.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00008.jpg': { title: 'Nebula Glow', description: 'Emission nebula glowing in red.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00009.jpg': { title: 'Starlit Peaks', description: 'Mountain peaks under a starry sky.', camera: 'Fujifilm XT-30' },
-  'images/astro/_00010.jpg': { title: 'Night Horizon', description: 'Stars meeting the horizon at dusk.', camera: 'Fujifilm XT-30' },
-  // Landscapes auto-generated below
-};
-
-// Auto-generate landscape metadata
-for (let i = 1; i <= 100; i++) {
-  const filename = `images/landscapes/_${i}.jpg`;
-  portfolioImageMeta[filename] = {
-    title: `Landscape ${i}`,
-    description: `Landscape photo number ${i}.`,
-    filename: filename,
-    camera: 'Fujifilm XT-30'
-  };
-}
-// Auto-generate wildlife metadata
-for (let i = 1; i <= 22; i++) {
-  const filename = `images/wildlife/_${i}.jpg`;
-  portfolioImageMeta[filename] = {
-    title: `Wildlife ${i}`,
-    description: `Wildlife photo number ${i}.`,
-    filename: filename,
-    camera: 'Fujifilm XT-30'
-  };
-}
-
-function getPortfolioImgMeta(src) {
-  // src may be absolute, so match on the end
-  for (const key in portfolioImageMeta) {
-    if (src.endsWith(key)) return portfolioImageMeta[key];
-  }
-  // Fallback: prettify filename
-  let fileName = src.split('/').pop().replace(/\.[^.]+$/, '');
-  let title = fileName.replace(/^_+/, '').replace(/_/g, ' ');
-  return { title: title.replace(/\b\w/g, c => c.toUpperCase()), description: '', filename: src, camera: 'Fujifilm XT-30' };
-}
-
-// Enhance portfolio images: wrap in .portfolio-img-wrapper and use title from script
-function enhancePortfolioImages() {
-  const gallery = document.getElementById('portfolioGallery');
-  if (!gallery) return;
-  Array.from(gallery.querySelectorAll('img')).forEach(img => {
-    // Skip if already wrapped
-    if (img.parentElement && img.parentElement.classList.contains('portfolio-img-wrapper')) return;
-    // Get metadata from script
-    const meta = getPortfolioImgMeta(img.src || img.getAttribute('src'));
-    // Create wrapper
-    const wrapper = document.createElement('div');
-    wrapper.className = 'portfolio-img-wrapper';
-    img.classList.add('portfolio-img');
-    // Create title bar
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'portfolio-img-title';
-    titleDiv.textContent = meta.title;
-    // Optionally add description as tooltip
-    if (meta.description) img.title = meta.description;
-    // Insert
-    img.parentNode.insertBefore(wrapper, img);
-    wrapper.appendChild(img);
-    wrapper.appendChild(titleDiv);
-  });
-}
-
-// Enhance after rendering portfolio
-if (portfolioGallery && categoryBtns.length) {
-  // Render and enhance images, then set up click handlers for lightbox
-  function renderAndEnhance(category) {
-    renderPortfolio(category);
-    setTimeout(() => {
-      enhancePortfolioImages();
-      // Set up correct click handlers for lightbox
-      Array.from(portfolioGallery.querySelectorAll('img')).forEach(img => {
-        img.onclick = () => {
-          const imgs = Array.from(portfolioGallery.querySelectorAll('img')).map(im => im.src);
-          openLightbox(img.src, imgs);
-        };
-      });
-    }, 0);
-  }
-  // Ensure correct handlers on first load
-  window.addEventListener('DOMContentLoaded', () => {
-    renderAndEnhance('astro');
-    // Set active class on default category button
-    categoryBtns.forEach(b => b.classList.remove('active'));
-    const defaultBtn = Array.from(categoryBtns).find(btn => btn.dataset.category === 'astro');
-    if (defaultBtn) defaultBtn.classList.add('active');
-    // Set up category switching
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderAndEnhance(btn.dataset.category);
-      });
-    });
-  });
-}

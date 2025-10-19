@@ -1,0 +1,27 @@
+{
+  "name": "nettside2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sigrolf/Sigrolf_nettside.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sigrolf/Sigrolf_nettside/issues"
+  },
+  "homepage": "https://github.com/Sigrolf/Sigrolf_nettside#readme",
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "dotenv": "^17.2.1",
+    "glob": "^11.0.3",
+    "js-yaml": "^4.1.0"
+  }
+}

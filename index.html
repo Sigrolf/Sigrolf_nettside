@@ -1,3 +1,27 @@
+---
+{% assign portrait_candidate = site.data.images | where: "category", "Of_the_photographer" | first %}
+{% assign fallback_candidate = site.data.images | first %}
+{% assign featured_candidates = site.data.images | where: "featured", true %}
+{% if featured_candidates == empty %}
+  {% assign featured = site.data.images | slice: 0, 3 %}
+{% else %}
+  {% assign featured = featured_candidates | slice: 0, 3 %}
+{% endif %}
+{% assign portrait_url = '' %}
+{% assign portrait_alt = 'Portrait of Sigurd Rolfsnes' %}
+{% if portrait_candidate %}
+  {% assign portrait_url = portrait_candidate.url %}
+  {% assign portrait_alt = portrait_candidate.title | default: portrait_alt %}
+{% elsif fallback_candidate %}
+  {% assign portrait_url = fallback_candidate.url %}
+  {% assign portrait_alt = fallback_candidate.title | default: portrait_alt %}
+{% endif %}
+{% assign fallback_cover_url = portrait_url %}
+{% if featured and featured.size > 0 %}
+  {% assign fallback_cover_url = featured[0].url %}
+{% elsif fallback_candidate %}
+  {% assign fallback_cover_url = fallback_candidate.url %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,22 +56,16 @@
     </div>
   </section>
 
-  <!-- Featured Images Gallery -->
+  <!-- Featured Images Gallery (sourced from _data/images.yml) -->
   <section class="featured-gallery-section">
     <h2>Featured Images</h2>
     <div class="featured-gallery-grid distinct-featured">
-      <a href="portfolio.html?image=images/astro/_00001.jpg" class="featured-img-card">
-        <img src="images/astro/_00001.jpg" alt="Andromeda Galaxy" class="featured-img">
-        <div class="featured-img-title">Andromeda Galaxy</div>
-      </a>
-      <a href="portfolio.html?image=images/landscapes/_10.jpg" class="featured-img-card">
-        <img src="images/landscapes/_10.jpg" alt="Sunrise Valley" class="featured-img">
-        <div class="featured-img-title">Sunrise Valley</div>
-      </a>
-      <a href="portfolio.html?image=images/astro/_00007.jpg" class="featured-img-card">
-        <img src="images/astro/_00007.jpg" alt="Moonrise" class="featured-img">
-        <div class="featured-img-title">Moonrise</div>
-      </a>
+      {% for img in featured %}
+        <a href="portfolio.html?image={{ img.url | uri_escape }}" class="featured-img-card">
+          <img src="{{ img.url }}" alt="{{ img.title | escape }}" class="featured-img">
+          <div class="featured-img-title">{{ img.title }}</div>
+        </a>
+      {% endfor %}
     </div>
     <div class="see-more-link">
       <a href="portfolio.html">See full portfolio &rarr;</a>
@@ -68,7 +86,9 @@
   <!-- About Me Section (moved below featured images) -->
   <section id="about" class="about-section home-about-section">
     <div class="about-portrait-large-wrapper">
-      <img src="images/portrait.jpg" alt="Portrait of Sigurd Rolfsnes" class="about-portrait-large">
+      {% if portrait_url != '' %}
+        <img src="{{ portrait_url }}" alt="{{ portrait_alt | escape }}" class="about-portrait-large">
+      {% endif %}
     </div>
     <div class="about-content">
       <h2>About Me</h2>
@@ -109,8 +129,10 @@
       });
     }
 
-    // --- Latest Posts Dynamic Loader ---
-    async function fetchLatestPosts() {
+  // --- Latest Posts Dynamic Loader ---
+  const FALLBACK_POST_IMAGE = "{{ fallback_cover_url | escape }}";
+
+  async function fetchLatestPosts() {
       const postFiles = [
         'blog/post-1.html',
         'blog/post-2.html',
@@ -161,7 +183,7 @@
         article.className = 'blog-archive-preview';
         article.innerHTML = `
           <a href="${post.url}">
-            <img src="${post.img || post.cover || 'images/astro/_00001.jpg'}" alt="${post.title} cover" class="blog-archive-thumb">
+            <img src="${post.img || post.cover || FALLBACK_POST_IMAGE}" alt="${post.title} cover" class="blog-archive-thumb">
             <div class="blog-archive-info">
               <h2>${post.title}</h2>
               <div class="blog-archive-meta">

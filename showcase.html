@@ -1,3 +1,7 @@
+---
+layout: default
+title: Showcase
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,25 +29,15 @@
   <section class="showcase-section">
     <h1 class="showcase-title">Showcase</h1>
     <div class="showcase-masonry-grid">
-      <a class="showcase-card" href="showcase-1.html">
-        <img src="images/astro/_00003.jpg" alt="Showcase 1">
-      </a>
-      <a class="showcase-card" href="showcase-2.html">
-        <img src="images/landscapes/_10.jpg" alt="Showcase 2">
-      </a>
-      <a class="showcase-card" href="showcase-3.html">
-        <img src="images/astro/_00007.jpg" alt="Showcase 3">
-      </a>
-      <a class="showcase-card" href="showcase-4.html">
-        <img src="images/landscapes/_21.jpg" alt="Showcase 4">
-      </a>
-      <a class="showcase-card" href="showcase-5.html">
-        <img src="images/astro/_00009.jpg" alt="Showcase 5">
-      </a>
-      <a class="showcase-card" href="showcase-6.html">
-        <img src="images/landscapes/_33.jpg" alt="Showcase 6">
-      </a>
-      <!-- Add more showcase cards as needed -->
+      {% assign showcase_images = site.data.images | where: "featured", true | slice: 0,6 %}
+      {% if showcase_images == empty %}
+        {% assign showcase_images = site.data.images | slice: 0,6 %}
+      {% endif %}
+      {% for img in showcase_images %}
+        <a class="showcase-card" href="#">
+          <img src="{{ img.url }}" alt="{{ img.title | escape }}">
+        </a>
+      {% endfor %}
     </div>
   </section>
   <footer>

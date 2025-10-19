@@ -1,3 +1,17 @@
+---
+layout: default
+title: About
+{% assign portrait_candidate = site.data.images | where: "category", "Of_the_photographer" | first %}
+{% assign fallback_candidate = site.data.images | first %}
+{% assign about_portrait_url = '' %}
+{% assign about_portrait_alt = 'Portrait of Sigurd Rolfsnes' %}
+{% if portrait_candidate %}
+  {% assign about_portrait_url = portrait_candidate.url %}
+  {% assign about_portrait_alt = portrait_candidate.title | default: about_portrait_alt %}
+{% elsif fallback_candidate %}
+  {% assign about_portrait_url = fallback_candidate.url %}
+  {% assign about_portrait_alt = fallback_candidate.title | default: about_portrait_alt %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +39,9 @@
   <section class="about-section">
     <h1>About Me</h1>
     <div class="about-bio">
-      <img src="images/portrait.jpg" alt="Portrait of Sigurd Rolfsnes" class="about-portrait">
+      {% if about_portrait_url != '' %}
+        <img src="{{ about_portrait_url }}" alt="{{ about_portrait_alt | escape }}" class="about-portrait">
+      {% endif %}
       <div class="about-text">
         <p>Hi, I'm <strong>Sigurd Rolfsnes</strong> from Trondheim, Norway. I love exploring the night sky and capturing its wonders through my lens. My work is inspired by the beauty of the cosmos and the landscapes of Norway.</p>
         <p>Artist Statement: Photography is my way of connecting with the universe, sharing the awe and serenity I find in the night sky and wild places.</p>
