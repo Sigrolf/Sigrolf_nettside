@@ -127,9 +127,9 @@ function setupControlsFade() {
 setupControlsFade();
 
 // Show controls when lightbox opens
-const origOpenLightbox = openLightbox;
+let __origOpenLightbox = typeof openLightbox === 'function' ? openLightbox : null;
 openLightbox = function(...args) {
-  origOpenLightbox.apply(this, args);
+  if (__origOpenLightbox) __origOpenLightbox.apply(this, args);
   detailsPanelOpen = false;
   detailsBtn.classList.remove('active');
   showControls();
@@ -172,6 +172,8 @@ function openLightbox(src, imgs) {
   content.focus();
   document.body.style.overflow = 'hidden';
 }
+// expose globally for portfolio deep-linking
+if (typeof window !== 'undefined') window.openLightbox = openLightbox;
 
 function showLightboxImage(idx) {
   const src = currentImages[idx];

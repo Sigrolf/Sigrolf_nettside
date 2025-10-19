@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aurora over the fjord | Visual Journey</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
   <style>
     body {
       background: #000;
@@ -110,7 +110,7 @@
       <div class="vj-desc">A peaceful night under the stars, with the Milky Way arching over the landscape and the aurora shimmering on the horizon.</div>
   <img class="vj-image" src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg" alt="Milky Way and aurora">
     </main>
-    <script>
+    <script src="{{ '/script.js' | relative_url }}"></script>
       // Starry background with parallax
       const starBg = document.querySelector('.star-bg');
       const numStars = 120;

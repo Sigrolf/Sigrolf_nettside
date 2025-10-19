@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Portfolio
 ---
 <!DOCTYPE html>
@@ -8,7 +7,7 @@ title: Portfolio
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | Sigurd Rolfsnes Photography</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 </head>
 <body>
   <div class="star-bg"></div>
@@ -76,7 +75,7 @@ title: Portfolio
   <footer>
     <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
   </footer>
-  <script src="script.js"></script>
+  <script src="{{ '/script.js' | relative_url }}"></script>
 <script>
 // Mobile dropdown logic
 const dropdownToggle = document.getElementById('categoryDropdownToggle');
