@@ -32,15 +32,24 @@ title: Showcase
   <section class="showcase-section">
     <h1 class="showcase-title">Showcase</h1>
     <div class="showcase-masonry-grid">
-      {% assign showcase_images = site.data.images | where: "featured", true | slice: 0,6 %}
-      {% if showcase_images == empty %}
-        {% assign showcase_images = site.data.images | slice: 0,6 %}
-      {% endif %}
-      {% for img in showcase_images %}
-        <a class="showcase-card" href="#">
-          <img src="{{ img.url }}" alt="{{ img.title | escape }}">
-        </a>
-      {% endfor %}
+      <a class="showcase-card" href="#">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248111/images/astro/Of_the_photographer/DSCF6077.jpg" alt="DSCF6077">
+      </a>
+      <a class="showcase-card" href="#">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg" alt="_00001">
+      </a>
+      <a class="showcase-card" href="#">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248106/images/astro/astro/_00002.jpg" alt="_00002">
+      </a>
+      <a class="showcase-card" href="#">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248104/images/astro/astro/_00003.jpg" alt="_00003">
+      </a>
+      <a class="showcase-card" href="#">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248102/images/astro/astro/_00004.jpg" alt="_00004">
+      </a>
+      <a class="showcase-card" href="#">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248100/images/astro/astro/_00005.jpg" alt="_00005">
+      </a>
     </div>
   </section>
   <footer>
