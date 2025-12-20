@@ -405,7 +405,7 @@ function renderPortfolio(category) {
   // If static DOM already has per-category containers, just toggle visibility
   if (hasCategoryNodes) {
     categoryNodes.forEach(node => {
-      const isActive = (node.dataset.category === category);
+      const isActive = ((node.dataset.category || '').trim() === (category || '').trim());
       node.style.display = isActive ? '' : 'none';
       // Bind lightbox for currently visible category
       if (isActive) {
@@ -448,22 +448,25 @@ if (typeof window !== 'undefined') {
 }
 if (portfolioGallery && categoryBtns.length) {
   const availableCategories = hasCategoryNodes
-    ? categoryNodes.map(n => n.dataset.category).filter(Boolean)
+    ? categoryNodes.map(n => (n.dataset.category || '').trim()).filter(Boolean)
     : Object.keys(portfolioImages);
-  const defaultCategory = availableCategories.includes('astro')
-    ? 'astro'
-    : (categoryBtns[0]?.dataset.category || availableCategories[0]);
+  // Prefer an already-marked active button, else 'astro', else first available
+  const activeBtn = Array.from(categoryBtns).find(b => b.classList.contains('active'));
+  const defaultCategory = activeBtn?.dataset?.category?.trim() ||
+    (availableCategories.includes('astro') ? 'astro' : (categoryBtns[0]?.dataset?.category?.trim() || availableCategories[0]));
   if (defaultCategory) {
     renderPortfolio(defaultCategory);
     categoryBtns.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.category === defaultCategory);
+      const val = (btn.dataset.category || '').trim();
+      btn.classList.toggle('active', val === defaultCategory);
     });
   }
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      const val = (btn.dataset.category || '').trim();
       categoryBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderPortfolio(btn.dataset.category);
+      renderPortfolio(val);
     });
   });
 }
@@ -477,6 +480,7 @@ function enableGalleryLightbox(selector) {
     if (img.dataset.lightboxBound === 'true') return;
     img.addEventListener('click', () => {
       const list = Array.from(gallery.querySelectorAll('img'))
+        .filter(el => el.offsetParent !== null) // only visible images
         .map(el => el.currentSrc || el.src)
         .filter(Boolean);
       openLightbox(img.currentSrc || img.src, list);
