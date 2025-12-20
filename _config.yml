@@ -1,0 +1,5 @@
+title: Sigrolf_nettside
+url: https://sigrolf.github.io
+baseurl: /Sigrolf_nettside
+# Enable kramdown for any markdown includes, and ensure Jekyll runs
+markdown: kramdown
