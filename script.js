@@ -357,6 +357,8 @@ navLinks.forEach(link => {
 // --- Portfolio Category Filtering ---
 const portfolioGallery = document.getElementById('portfolioGallery');
 const categoryBtns = document.querySelectorAll('.category-btn');
+const categoryNodes = Array.from(document.querySelectorAll('.gallery-category'));
+const hasCategoryNodes = categoryNodes.length > 0;
 
 const portfolioImages = {};
 
@@ -400,13 +402,27 @@ const portfolioImages = {};
 
 function renderPortfolio(category) {
   if (!portfolioGallery) return;
+  // If static DOM already has per-category containers, just toggle visibility
+  if (hasCategoryNodes) {
+    categoryNodes.forEach(node => {
+      const isActive = (node.dataset.category === category);
+      node.style.display = isActive ? '' : 'none';
+      // Bind lightbox for currently visible category
+      if (isActive) {
+        node.querySelectorAll('img').forEach(img => registerImageMetaFromElement(img));
+      }
+    });
+    enableGalleryLightbox('#portfolioGallery');
+    return;
+  }
+  // Fallback: dynamically render from portfolioImages map
   portfolioGallery.innerHTML = '';
   const imgs = portfolioImages[category] || [];
   imgs.forEach((item, i) => {
     const data = typeof item === 'string' ? { src: item } : item;
     if (!data.src) return;
     const wrapper = document.createElement('div');
-    wrapper.className = 'portfolio-img-wrapper';
+    wrapper.className = 'gallery-img-wrapper';
     const img = document.createElement('img');
     img.src = data.src;
     img.alt = data.title || 'Photography by Sigurd Rolfsnes';
@@ -420,7 +436,7 @@ function renderPortfolio(category) {
     registerImageMetaFromElement(img);
     wrapper.appendChild(img);
     const titleDiv = document.createElement('div');
-    titleDiv.className = 'portfolio-img-title';
+    titleDiv.className = 'gallery-img-title';
     titleDiv.textContent = data.title || prettifyFilename(data.src);
     wrapper.appendChild(titleDiv);
     portfolioGallery.appendChild(wrapper);
@@ -431,7 +447,9 @@ if (typeof window !== 'undefined') {
   window.renderPortfolio = renderPortfolio;
 }
 if (portfolioGallery && categoryBtns.length) {
-  const availableCategories = Object.keys(portfolioImages);
+  const availableCategories = hasCategoryNodes
+    ? categoryNodes.map(n => n.dataset.category).filter(Boolean)
+    : Object.keys(portfolioImages);
   const defaultCategory = availableCategories.includes('astro')
     ? 'astro'
     : (categoryBtns[0]?.dataset.category || availableCategories[0]);
