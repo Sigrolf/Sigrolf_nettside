@@ -28,6 +28,7 @@ const FOLDERS = (process.env.CLOUDINARY_FOLDERS || '')
   .map(s => s.trim())
   .filter(Boolean);
 const SEARCH_EXPRESSION = process.env.CLOUDINARY_SEARCH_EXPRESSION || '';
+const FALLBACK_CATEGORY_ENV = (process.env.CLOUDINARY_FALLBACK_CATEGORY || '').trim();
 
 if (!CLOUD_NAME || !API_KEY || !API_SECRET) {
   console.error('\nMissing Cloudinary credentials. Please set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET in the environment or an .env file.');
@@ -37,24 +38,25 @@ if (!CLOUD_NAME || !API_KEY || !API_SECRET) {
 
 cloudinary.config({ cloud_name: CLOUD_NAME, api_key: API_KEY, api_secret: API_SECRET });
 
-function buildExpression() {
+function folderLeaf(f) {
+  const segs = (f || '').split('/').filter(Boolean);
+  return segs.length ? segs[segs.length - 1] : 'uncategorized';
+}
+
+function buildExpression(singleFolder) {
   if (SEARCH_EXPRESSION) return SEARCH_EXPRESSION;
-  const folders = FOLDERS.length ? FOLDERS : [FOLDER];
+  const folders = singleFolder ? [singleFolder] : (FOLDERS.length ? FOLDERS : [FOLDER]);
   // Build an OR expression for all provided folders, scoped to images
   const parts = folders.map(f => `folder:${f.replace(/^\//, '')}/*`);
   return `resource_type:image AND (${parts.join(' OR ')})`;
 }
 
 // Fallback category if Cloudinary does not return a folder (happens on some uploads)
-const DEFAULT_CATEGORY = (() => {
-  const src = (FOLDERS[0] || FOLDER || '').split('/').filter(Boolean);
-  return src.length ? src[src.length - 1] : 'uncategorized';
-})();
+const DEFAULT_CATEGORY = FALLBACK_CATEGORY_ENV || folderLeaf(FOLDERS[0] || FOLDER || '');
 
-async function fetchAllResources() {
+async function fetchAllResources(expression) {
   const items = [];
   let next_cursor = undefined;
-  const expression = buildExpression();
   do {
     const builder = cloudinary.search
       .expression(expression) // everything that matches the expression
@@ -68,7 +70,15 @@ async function fetchAllResources() {
   return items;
 }
 
-function resourceToItem(r) {
+// Fetch resources for a single folder with a per-folder fallback category
+async function fetchResourcesForFolder(folder) {
+  const expression = buildExpression(folder);
+  const fallbackCategory = folderLeaf(folder);
+  const resources = await fetchAllResources(expression);
+  return { resources, fallbackCategory };
+}
+
+function resourceToItem(r, fallbackCategory) {
   const url = r.secure_url || r.url || '';
   const public_id = r.public_id || '';
   // derive title from context or filename
@@ -94,7 +104,7 @@ function resourceToItem(r) {
       category = parts.length >= 2 ? parts[parts.length - 2] : '';
     }
   }
-  if (!category) category = DEFAULT_CATEGORY || 'uncategorized';
+  if (!category) category = fallbackCategory || DEFAULT_CATEGORY || 'uncategorized';
 
   const featured = (r.tags || []).includes('featured');
 
@@ -119,21 +129,31 @@ async function writeDataFile(items) {
 
 (async () => {
   try {
+    const resourcesWithFallback = [];
     if (SEARCH_EXPRESSION) {
       console.log('Fetching resources with custom expression:', SEARCH_EXPRESSION);
-    } else if (FOLDERS.length) {
+      const res = await fetchAllResources(buildExpression());
+      resourcesWithFallback.push(...res.map(r => ({ resource: r, fallback: DEFAULT_CATEGORY })));
+    } else if (FOLDERS.length > 1) {
       console.log('Fetching resources from folders:', FOLDERS.join(', '));
+      for (const f of FOLDERS) {
+        const { resources, fallbackCategory } = await fetchResourcesForFolder(f);
+        resourcesWithFallback.push(...resources.map(r => ({ resource: r, fallback: fallbackCategory })));
+      }
     } else {
       console.log('Fetching resources from folder:', FOLDER);
+      const res = await fetchAllResources(buildExpression());
+      resourcesWithFallback.push(...res.map(r => ({ resource: r, fallback: folderLeaf(FOLDER) })));
     }
-    const resources = await fetchAllResources();
-    console.log('Found', resources.length, 'resources');
+
+    console.log('Found', resourcesWithFallback.length, 'resources');
     // De-duplicate by public_id
     const seen = new Set();
     const items = [];
-    for (const r of resources) {
+    for (const entry of resourcesWithFallback) {
+      const r = entry.resource;
       if (r && r.public_id && !seen.has(r.public_id)) {
-        items.push(resourceToItem(r));
+        items.push(resourceToItem(r, entry.fallback));
         seen.add(r.public_id);
       }
     }
