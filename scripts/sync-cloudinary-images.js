@@ -22,6 +22,12 @@ const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_C
 const API_KEY = process.env.CLOUDINARY_API_KEY;
 const API_SECRET = process.env.CLOUDINARY_API_SECRET;
 const FOLDER = process.env.CLOUDINARY_FOLDER || 'images';
+// Optional: comma-separated folders or a full Cloudinary Search expression
+const FOLDERS = (process.env.CLOUDINARY_FOLDERS || '')
+  .split(',')
+  .map(s => s.trim())
+  .filter(Boolean);
+const SEARCH_EXPRESSION = process.env.CLOUDINARY_SEARCH_EXPRESSION || '';
 
 if (!CLOUD_NAME || !API_KEY || !API_SECRET) {
   console.error('\nMissing Cloudinary credentials. Please set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET in the environment or an .env file.');
@@ -31,12 +37,27 @@ if (!CLOUD_NAME || !API_KEY || !API_SECRET) {
 
 cloudinary.config({ cloud_name: CLOUD_NAME, api_key: API_KEY, api_secret: API_SECRET });
 
-async function fetchAllResources(folder) {
+function buildExpression() {
+  if (SEARCH_EXPRESSION) return SEARCH_EXPRESSION;
+  const folders = FOLDERS.length ? FOLDERS : [FOLDER];
+  // Build an OR expression for all provided folders, scoped to images
+  const parts = folders.map(f => `folder:${f.replace(/^\//, '')}/*`);
+  return `resource_type:image AND (${parts.join(' OR ')})`;
+}
+
+// Fallback category if Cloudinary does not return a folder (happens on some uploads)
+const DEFAULT_CATEGORY = (() => {
+  const src = (FOLDERS[0] || FOLDER || '').split('/').filter(Boolean);
+  return src.length ? src[src.length - 1] : 'uncategorized';
+})();
+
+async function fetchAllResources() {
   const items = [];
   let next_cursor = undefined;
+  const expression = buildExpression();
   do {
     const builder = cloudinary.search
-      .expression(`folder:${folder}/*`) // everything under the folder
+      .expression(expression) // everything that matches the expression
       .max_results(500)
       .sort_by('public_id', 'asc');
     if (next_cursor) builder.next_cursor(next_cursor);
@@ -60,20 +81,20 @@ function resourceToItem(r) {
   let caption = '';
   try { if (r.context && r.context.custom && r.context.custom.caption) caption = r.context.custom.caption; } catch (e) {}
 
-  // category: infer from the folder that directly contains the file
+  // category: use resource.folder last segment when possible, else penultimate of public_id
   // e.g. public_id = images/astro/landscapes/_111 -> category = 'landscapes'
   let category = '';
-  if (public_id && public_id.includes('/')) {
-    const parts = public_id.split('/');
-    if (parts.length >= 2) {
-      // pick the penultimate segment (folder containing the file)
-      category = parts[parts.length - 2];
-    } else {
-      category = parts[0];
-    }
-  } else {
-    category = FOLDER;
+  if (r.folder) {
+    const segs = r.folder.split('/').filter(Boolean);
+    category = segs.length ? segs[segs.length - 1] : '';
   }
+  if (!category) {
+    if (public_id && public_id.includes('/')) {
+      const parts = public_id.split('/');
+      category = parts.length >= 2 ? parts[parts.length - 2] : '';
+    }
+  }
+  if (!category) category = DEFAULT_CATEGORY || 'uncategorized';
 
   const featured = (r.tags || []).includes('featured');
 
@@ -98,10 +119,24 @@ async function writeDataFile(items) {
 
 (async () => {
   try {
-    console.log('Fetching resources from Cloudinary folder:', FOLDER);
-    const resources = await fetchAllResources(FOLDER);
+    if (SEARCH_EXPRESSION) {
+      console.log('Fetching resources with custom expression:', SEARCH_EXPRESSION);
+    } else if (FOLDERS.length) {
+      console.log('Fetching resources from folders:', FOLDERS.join(', '));
+    } else {
+      console.log('Fetching resources from folder:', FOLDER);
+    }
+    const resources = await fetchAllResources();
     console.log('Found', resources.length, 'resources');
-    const items = resources.map(resourceToItem);
+    // De-duplicate by public_id
+    const seen = new Set();
+    const items = [];
+    for (const r of resources) {
+      if (r && r.public_id && !seen.has(r.public_id)) {
+        items.push(resourceToItem(r));
+        seen.add(r.public_id);
+      }
+    }
     await writeDataFile(items);
     console.log('Done.');
   } catch (err) {

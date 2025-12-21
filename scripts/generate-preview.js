@@ -39,7 +39,7 @@ const categories = Array.from(new Set(items.map(i => i.category || 'uncategorize
 let galleryHtml = '';
 for (const category of categories) {
   const imgs = items.filter(i => (i.category||'').toString() === category.toString());
-  galleryHtml += `      <div class="gallery-category" data-category="${escapeHtml(category)}">\n`;
+  galleryHtml += `      <div class="gallery-category" data-category="${escapeHtml(category)}"${category === categories[0] ? '' : ' style="display:none;"'}>\n`;
   imgs.forEach(img => {
     galleryHtml += `        <div class="gallery-img-wrapper">\n          <img src="${escapeHtml(img.url)}" alt="${escapeHtml(img.title)}" data-caption="${escapeHtml(img.caption)}" data-public-id="${escapeHtml(img.public_id)}">\n          <div class="gallery-img-title">${escapeHtml(img.title)}</div>\n        </div>\n`;
   });
@@ -76,6 +76,8 @@ function renderFromTemplate(templatePath, outName) {
   }
   // Replace gallery block in portfolio.html (assign categories ... endfor)
   content = content.replace(/\{%\s*assign[\s\S]*?site\.data\.images[\s\S]*?%}\s*\{%\s*for[\s\S]*?endfor\s*%}/m, galleryHtml);
+  // Replace static gallery markup when Liquid loop is absent (from previous builds)
+  content = content.replace(/<div class="gallery-grid"[^>]*>[\s\S]*?<\/div>\s*<\/section>/m, `${portfolioCategoriesHtml}\n    <div class="gallery-grid" id="portfolioGallery">\n${galleryHtml}    <\/div>\n  <\/section>`);
   // Replace the hardcoded category buttons block so preview buttons match categories exactly
   content = content.replace(/<div class="portfolio-categories">[\s\S]*?<div class="gallery-grid"/m, portfolioCategoriesHtml + '\n    <div class="gallery-grid"');
   fs.writeFileSync(path.join(previewDir, outName), content, 'utf8');

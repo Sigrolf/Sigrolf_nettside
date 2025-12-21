@@ -219,6 +219,52 @@
   display: block;
   margin: 0 auto;
 }
+/* Liquid glass hover effect for portfolio items */
+.gallery-img-wrapper {
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0 4px 28px rgba(0,0,0,0.45);
+  transition: transform 0.28s cubic-bezier(.77,.2,.32,1.01), box-shadow 0.28s cubic-bezier(.77,.2,.32,1.01);
+}
+.gallery-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 0.8rem;
+  background: linear-gradient(120deg, rgba(0,255,127,0.22) 0%, rgba(0,207,255,0.18) 100%);
+  box-shadow: inset 0 0 0 2px rgba(0,255,127,0.38), 0 12px 36px #00FF7F33;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.28s cubic-bezier(.77,.2,.32,1.01);
+}
+.gallery-img-wrapper img {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.28s cubic-bezier(.77,.2,.32,1.01), filter 0.28s cubic-bezier(.77,.2,.32,1.01);
+}
+.gallery-img-wrapper:hover,
+.gallery-img-wrapper:focus-within {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 54px #00FF7F44, 0 0 0 2px rgba(0,255,127,0.35);
+}
+.gallery-img-wrapper:hover::after,
+.gallery-img-wrapper:focus-within::after {
+  opacity: 1;
+}
+.gallery-img-wrapper:hover img,
+.gallery-img-wrapper:focus-within img {
+  filter: brightness(1.12) saturate(1.15) blur(2px);
+  transform: scale(1.035);
+}
+.gallery-img-title {
+  text-align: center;
+  color: #b0ffda;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: 0.4rem;
+}
 /* --- Portfolio Gallery Cinematic Grid --- */
 #portfolioGallery.gallery-grid, .gallery-grid#portfolioGallery {
   display: grid !important;
@@ -229,6 +275,10 @@
   margin: 2.5rem auto 0 auto;
   padding: 0 1.5rem;
   box-sizing: border-box;
+}
+/* Make category containers transparent to the grid so inner images become grid items */
+.gallery-grid .gallery-category {
+  display: contents;
 }
 @media (max-width: 900px) {
   #portfolioGallery.gallery-grid, .gallery-grid#portfolioGallery {
@@ -1386,6 +1436,98 @@ footer {
   font-size: 1.15rem;
   opacity: 0.93;
 }
+/* About Hero Layout (image-first redesign) */
+.about-hero {
+  padding: 4rem 3vw 2rem 3vw;
+  min-height: 70vh;
+}
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.about-hero-img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 8px 48px #00FF7F22, 0 0 0 2px rgba(0,255,127,0.12);
+  background: #0b0b0b;
+}
+.about-hero-card {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1.6rem 1.4rem;
+  background: rgba(10, 18, 16, 0.35);
+  box-shadow: 0 8px 48px #00FF7F22, 0 0 0 2px rgba(0,255,127,0.10);
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+}
+.about-hero-card h1 {
+  color: var(--accent);
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.about-subheading {
+  color: #b0ffda;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+.about-tagline {
+  color: #b0ffda;
+  margin-bottom: 1rem;
+}
+.about-hero-card p {
+  color: #fff;
+  opacity: 0.92;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+.about-hero-img img, .about-hero-card {
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about-hero-img img, .about-hero-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.9s cubic-bezier(.4,2,.6,1) forwards;
+  }
+}
+.about-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+.btn-accent,
+.btn-outline {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.btn-accent {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 8px 32px #00FF7F33;
+}
+.btn-outline {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+.about-details {
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;
+  padding: 0 3vw;
+}
 .timeline {
   margin-top: 2rem;
   text-align: left;
@@ -1633,7 +1775,15 @@ footer {
     flex-direction: column;
     gap: 1.5rem;
   }
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+  }
   .gallery-grid, .blog-list, .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 1100px) {
+  .about-hero-inner {
     grid-template-columns: 1fr;
   }
 }
@@ -1650,6 +1800,9 @@ footer {
   }
   .about-bio {
     gap: 1rem;
+  }
+  .about-hero {
+    padding: 2rem 2vw 1rem 2vw;
   }
   .hero-content h1 {
     font-size: 2rem;

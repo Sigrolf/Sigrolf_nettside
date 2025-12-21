@@ -1,27 +1,11 @@
----
-title: About
----
----
-layout: default
-title: About
-{% assign portrait_candidate = site.data.images | where: "category", "Of_the_photographer" | first %}
-{% assign fallback_candidate = site.data.images | first %}
-{% assign about_portrait_url = '' %}
-{% assign about_portrait_alt = 'Portrait of Sigurd Rolfsnes' %}
-{% if portrait_candidate %}
-  {% assign about_portrait_url = portrait_candidate.url %}
-  {% assign about_portrait_alt = portrait_candidate.title | default: about_portrait_alt %}
-{% elsif fallback_candidate %}
-  {% assign about_portrait_url = fallback_candidate.url %}
-  {% assign about_portrait_alt = fallback_candidate.title | default: about_portrait_alt %}
-{% endif %}
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Sigurd Rolfsnes Photography</title>
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar">
@@ -39,31 +23,41 @@ title: About
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
-  <section class="about-section">
-    <h1>About Me</h1>
-    <div class="about-bio">
-      {% if about_portrait_url != '' %}
-        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248111/images/astro/Of_the_photographer/DSCF6077.jpg" alt="DSCF6077" class="about-portrait">
-      {% endif %}
-      <div class="about-text">
-        <p>Hi, I'm <strong>Sigurd Rolfsnes</strong> from Trondheim, Norway. I love exploring the night sky and capturing its wonders through my lens. My work is inspired by the beauty of the cosmos and the landscapes of Norway.</p>
-        <p>Artist Statement: Photography is my way of connecting with the universe, sharing the awe and serenity I find in the night sky and wild places.</p>
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-hero-img">
+        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766277786/DSCF9222-N_zcazqq.jpg" alt="DSCF9222-N" data-public-id="DSCF9222-N_zcazqq" />
+      </div>
+      <div class="about-hero-card">
+        <h1>Sigurd Rolfsnes</h1>
+        <p class="about-subheading">Gymnast and physics/mathematics student at NTNU</p>
+        <p>
+          I value discipline, body control, and long‑term effort. Years of gymnastics taught me patience and precision — the kind of quiet practice that builds lasting strength.
+        </p>
+        <p>
+          I study physics and mathematics at NTNU because I’m curious about how things work at a fundamental level. I enjoy combining physical challenges with analytical thinking and problem solving.
+        </p>
+        <p>
+          I’m motivated by learning and improvement. Whether it’s refining a movement, understanding a concept, or creating something simple and clean, I try to keep my approach focused, calm, and honest.
+        </p>
       </div>
     </div>
-    <div class="timeline">
-      <h2>Milestones</h2>
-      <ul>
-        <li><span>2025</span> - Launched this portfolio website</li>
-        <li><span>2024</span> - Solo exhibition in Trondheim</li>
-        <li><span>2023</span> - Published in National Geographic Norway</li>
-        <li><span>2022</span> - First aurora photo featured on NASA APOD</li>
-      </ul>
+    <div class="about-details">
+      <div class="timeline">
+        <h2>Milestones</h2>
+        <ul>
+          <li><span>2025</span> - Launched this portfolio website</li>
+          <li><span>2024</span> - Solo exhibition in Trondheim</li>
+          <li><span>2023</span> - Published in National Geographic Norway</li>
+          <li><span>2022</span> - First aurora photo featured on NASA APOD</li>
+        </ul>
+      </div>
     </div>
   </section>
   <footer>
     <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
   </footer>
-  <script src="{{ '/script.js' | relative_url }}"></script>
+  <script src="script.js"></script>
   <script>
     // Hamburger menu toggle for all pages
     const hamburger = document.querySelector('.hamburger');

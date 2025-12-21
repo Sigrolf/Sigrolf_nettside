@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | Sigurd Rolfsnes Photography</title>
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="star-bg"></div>
@@ -27,216 +27,460 @@
   <div class="hero-spacer"></div>
   <section class="portfolio-section">
     <h1>Portfolio</h1>
-        <div class="portfolio-categories">
+                        <div class="portfolio-categories">
       <div class="portfolio-categories-desktop">
-          <button class="category-btn active" data-category="Of_the_photographer">Of The Photographer</button>
-          <button class="category-btn" data-category="astro">Astro</button>
-          <button class="category-btn" data-category="landscapes-old">Landscapes Old</button>
-          <button class="category-btn" data-category="landscapes">Landscapes</button>
-          <button class="category-btn" data-category="wildlife">Wildlife</button>
+          <button class="category-btn active" data-category="landscapes">Landscapes</button>
       </div>
       <div class="portfolio-categories-mobile">
-        <button class="category-dropdown-toggle" id="categoryDropdownToggle">Of The Photographer ▼</button>
+        <button class="category-dropdown-toggle" id="categoryDropdownToggle">Landscapes ▼</button>
         <div class="category-dropdown-menu" id="categoryDropdownMenu">
-            <button class="category-btn" data-category="Of_the_photographer">Of The Photographer</button>
-            <button class="category-btn" data-category="astro">Astro</button>
-            <button class="category-btn" data-category="landscapes-old">Landscapes Old</button>
             <button class="category-btn" data-category="landscapes">Landscapes</button>
-            <button class="category-btn" data-category="wildlife">Wildlife</button>
         </div>
       </div>
     </div>
     <div class="gallery-grid" id="portfolioGallery">
-      <!-- Render gallery from _data/images.yml -->
-            <div class="gallery-category" data-category="Of_the_photographer">
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248111/images/astro/Of_the_photographer/DSCF6077.jpg" alt="DSCF6077" data-caption="" data-public-id="images/astro/Of_the_photographer/DSCF6077">
-          <div class="gallery-img-title">DSCF6077</div>
-        </div>
-      </div>
-      <div class="gallery-category" data-category="astro">
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg" alt="_00001" data-caption="" data-public-id="images/astro/astro/_00001">
-          <div class="gallery-img-title">_00001</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248106/images/astro/astro/_00002.jpg" alt="_00002" data-caption="" data-public-id="images/astro/astro/_00002">
-          <div class="gallery-img-title">_00002</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248104/images/astro/astro/_00003.jpg" alt="_00003" data-caption="" data-public-id="images/astro/astro/_00003">
-          <div class="gallery-img-title">_00003</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248102/images/astro/astro/_00004.jpg" alt="_00004" data-caption="" data-public-id="images/astro/astro/_00004">
-          <div class="gallery-img-title">_00004</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248100/images/astro/astro/_00005.jpg" alt="_00005" data-caption="" data-public-id="images/astro/astro/_00005">
-          <div class="gallery-img-title">_00005</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248099/images/astro/astro/_00006.jpg" alt="_00006" data-caption="" data-public-id="images/astro/astro/_00006">
-          <div class="gallery-img-title">_00006</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248097/images/astro/astro/_00007.jpg" alt="_00007" data-caption="" data-public-id="images/astro/astro/_00007">
-          <div class="gallery-img-title">_00007</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248096/images/astro/astro/_00008.jpg" alt="_00008" data-caption="" data-public-id="images/astro/astro/_00008">
-          <div class="gallery-img-title">_00008</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248095/images/astro/astro/_00009.jpg" alt="_00009" data-caption="" data-public-id="images/astro/astro/_00009">
-          <div class="gallery-img-title">_00009</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248094/images/astro/astro/_00010.jpg" alt="_00010" data-caption="" data-public-id="images/astro/astro/_00010">
-          <div class="gallery-img-title">_00010</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248093/images/astro/astro/_00011.jpg" alt="_00011" data-caption="" data-public-id="images/astro/astro/_00011">
-          <div class="gallery-img-title">_00011</div>
-        </div>
-      </div>
-      <div class="gallery-category" data-category="landscapes-old">
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247786/images/astro/landscapes-old/_10.jpg" alt="_10" data-caption="" data-public-id="images/astro/landscapes-old/_10">
-          <div class="gallery-img-title">_10</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247761/images/astro/landscapes-old/_2.jpg" alt="_2" data-caption="" data-public-id="images/astro/landscapes-old/_2">
-          <div class="gallery-img-title">_2</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247738/images/astro/landscapes-old/_29.jpg" alt="_29" data-caption="" data-public-id="images/astro/landscapes-old/_29">
-          <div class="gallery-img-title">_29</div>
-        </div>
-      </div>
       <div class="gallery-category" data-category="landscapes">
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248055/images/astro/landscapes/_111.jpg" alt="_111" data-caption="" data-public-id="images/astro/landscapes/_111">
-          <div class="gallery-img-title">_111</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342019/DJI_0110_w7qnrj.jpg" alt="DJI_0110_w7qnrj" data-caption="" data-public-id="DJI_0110_w7qnrj">
+          <div class="gallery-img-title">DJI_0110_w7qnrj</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248054/images/astro/landscapes/_112.jpg" alt="_112" data-caption="" data-public-id="images/astro/landscapes/_112">
-          <div class="gallery-img-title">_112</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342019/DJI_0180_boxoiz.jpg" alt="DJI_0180_boxoiz" data-caption="" data-public-id="DJI_0180_boxoiz">
+          <div class="gallery-img-title">DJI_0180_boxoiz</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248053/images/astro/landscapes/_113.jpg" alt="_113" data-caption="" data-public-id="images/astro/landscapes/_113">
-          <div class="gallery-img-title">_113</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342020/DSCF1866_oz7tba.jpg" alt="DSCF1866_oz7tba" data-caption="" data-public-id="DSCF1866_oz7tba">
+          <div class="gallery-img-title">DSCF1866_oz7tba</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248052/images/astro/landscapes/_114.jpg" alt="_114" data-caption="" data-public-id="images/astro/landscapes/_114">
-          <div class="gallery-img-title">_114</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342020/DSCF2037_wfrbvy.jpg" alt="DSCF2037_wfrbvy" data-caption="" data-public-id="DSCF2037_wfrbvy">
+          <div class="gallery-img-title">DSCF2037_wfrbvy</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248050/images/astro/landscapes/_115.jpg" alt="_115" data-caption="" data-public-id="images/astro/landscapes/_115">
-          <div class="gallery-img-title">_115</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342020/DSCF2053_ape5sc.jpg" alt="DSCF2053_ape5sc" data-caption="" data-public-id="DSCF2053_ape5sc">
+          <div class="gallery-img-title">DSCF2053_ape5sc</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248043/images/astro/landscapes/_14.jpg" alt="_14" data-caption="" data-public-id="images/astro/landscapes/_14">
-          <div class="gallery-img-title">_14</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342021/DSCF2066_iz8hom.jpg" alt="DSCF2066_iz8hom" data-caption="" data-public-id="DSCF2066_iz8hom">
+          <div class="gallery-img-title">DSCF2066_iz8hom</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248008/images/astro/landscapes/_29.jpg" alt="_29" data-caption="" data-public-id="images/astro/landscapes/_29">
-          <div class="gallery-img-title">_29</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342021/DSCF2118_do6jyt.jpg" alt="DSCF2118_do6jyt" data-caption="" data-public-id="DSCF2118_do6jyt">
+          <div class="gallery-img-title">DSCF2118_do6jyt</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247981/images/astro/landscapes/_40.jpg" alt="_40" data-caption="" data-public-id="images/astro/landscapes/_40">
-          <div class="gallery-img-title">_40</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342021/DSCF2134_haqhxj.jpg" alt="DSCF2134_haqhxj" data-caption="" data-public-id="DSCF2134_haqhxj">
+          <div class="gallery-img-title">DSCF2134_haqhxj</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247957/images/astro/landscapes/_5.jpg" alt="_5" data-caption="" data-public-id="images/astro/landscapes/_5">
-          <div class="gallery-img-title">_5</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342022/DSCF2211_slxqkv.jpg" alt="DSCF2211_slxqkv" data-caption="" data-public-id="DSCF2211_slxqkv">
+          <div class="gallery-img-title">DSCF2211_slxqkv</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247929/images/astro/landscapes/_60.jpg" alt="_60" data-caption="" data-public-id="images/astro/landscapes/_60">
-          <div class="gallery-img-title">_60</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342023/DSCF2249_zgmvvu.jpg" alt="DSCF2249_zgmvvu" data-caption="" data-public-id="DSCF2249_zgmvvu">
+          <div class="gallery-img-title">DSCF2249_zgmvvu</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247882/images/astro/landscapes/_77.jpg" alt="_77" data-caption="" data-public-id="images/astro/landscapes/_77">
-          <div class="gallery-img-title">_77</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342023/DSCF2288_nw6ia8.jpg" alt="DSCF2288_nw6ia8" data-caption="" data-public-id="DSCF2288_nw6ia8">
+          <div class="gallery-img-title">DSCF2288_nw6ia8</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247873/images/astro/landscapes/_8.jpg" alt="_8" data-caption="" data-public-id="images/astro/landscapes/_8">
-          <div class="gallery-img-title">_8</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342024/DSCF2307_mtrhvd.jpg" alt="DSCF2307_mtrhvd" data-caption="" data-public-id="DSCF2307_mtrhvd">
+          <div class="gallery-img-title">DSCF2307_mtrhvd</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247843/images/astro/landscapes/_93.jpg" alt="_93" data-caption="" data-public-id="images/astro/landscapes/_93">
-          <div class="gallery-img-title">_93</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342025/DSCF2319_q5cw4b.jpg" alt="DSCF2319_q5cw4b" data-caption="" data-public-id="DSCF2319_q5cw4b">
+          <div class="gallery-img-title">DSCF2319_q5cw4b</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247841/images/astro/landscapes/_94.jpg" alt="_94" data-caption="" data-public-id="images/astro/landscapes/_94">
-          <div class="gallery-img-title">_94</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342025/DSCF2343_kaw3al.jpg" alt="DSCF2343_kaw3al" data-caption="" data-public-id="DSCF2343_kaw3al">
+          <div class="gallery-img-title">DSCF2343_kaw3al</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247838/images/astro/landscapes/_96.jpg" alt="_96" data-caption="" data-public-id="images/astro/landscapes/_96">
-          <div class="gallery-img-title">_96</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342026/DSCF2357_afxg11.jpg" alt="DSCF2357_afxg11" data-caption="" data-public-id="DSCF2357_afxg11">
+          <div class="gallery-img-title">DSCF2357_afxg11</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247836/images/astro/landscapes/_97.jpg" alt="_97" data-caption="" data-public-id="images/astro/landscapes/_97">
-          <div class="gallery-img-title">_97</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342026/DSCF2378_mj4h1g.jpg" alt="DSCF2378_mj4h1g" data-caption="" data-public-id="DSCF2378_mj4h1g">
+          <div class="gallery-img-title">DSCF2378_mj4h1g</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247834/images/astro/landscapes/_98.jpg" alt="_98" data-caption="" data-public-id="images/astro/landscapes/_98">
-          <div class="gallery-img-title">_98</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342027/DSCF2745_si0m81.jpg" alt="DSCF2745_si0m81" data-caption="" data-public-id="DSCF2745_si0m81">
+          <div class="gallery-img-title">DSCF2745_si0m81</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342027/DSCF2775_afgtjd.jpg" alt="DSCF2775_afgtjd" data-caption="" data-public-id="DSCF2775_afgtjd">
+          <div class="gallery-img-title">DSCF2775_afgtjd</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342028/DSCF2781_ot9cwr.jpg" alt="DSCF2781_ot9cwr" data-caption="" data-public-id="DSCF2781_ot9cwr">
+          <div class="gallery-img-title">DSCF2781_ot9cwr</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342029/DSCF2839_tybnda.jpg" alt="DSCF2839_tybnda" data-caption="" data-public-id="DSCF2839_tybnda">
+          <div class="gallery-img-title">DSCF2839_tybnda</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342029/DSCF2842_oab7qu.jpg" alt="DSCF2842_oab7qu" data-caption="" data-public-id="DSCF2842_oab7qu">
+          <div class="gallery-img-title">DSCF2842_oab7qu</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342030/DSCF2861_ftpd8a.jpg" alt="DSCF2861_ftpd8a" data-caption="" data-public-id="DSCF2861_ftpd8a">
+          <div class="gallery-img-title">DSCF2861_ftpd8a</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342031/DSCF2890_mjvaub.jpg" alt="DSCF2890_mjvaub" data-caption="" data-public-id="DSCF2890_mjvaub">
+          <div class="gallery-img-title">DSCF2890_mjvaub</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342032/DSCF2891_btjdfc.jpg" alt="DSCF2891_btjdfc" data-caption="" data-public-id="DSCF2891_btjdfc">
+          <div class="gallery-img-title">DSCF2891_btjdfc</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342032/DSCF2934_ofv190.jpg" alt="DSCF2934_ofv190" data-caption="" data-public-id="DSCF2934_ofv190">
+          <div class="gallery-img-title">DSCF2934_ofv190</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342032/DSCF3014_hpuhkk.jpg" alt="DSCF3014_hpuhkk" data-caption="" data-public-id="DSCF3014_hpuhkk">
+          <div class="gallery-img-title">DSCF3014_hpuhkk</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342033/DSCF3029_lbbzzc.jpg" alt="DSCF3029_lbbzzc" data-caption="" data-public-id="DSCF3029_lbbzzc">
+          <div class="gallery-img-title">DSCF3029_lbbzzc</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342034/DSCF3106_trdqyf.jpg" alt="DSCF3106_trdqyf" data-caption="" data-public-id="DSCF3106_trdqyf">
+          <div class="gallery-img-title">DSCF3106_trdqyf</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342035/DSCF3178-Edit_os94dm.jpg" alt="DSCF3178-Edit_os94dm" data-caption="" data-public-id="DSCF3178-Edit_os94dm">
+          <div class="gallery-img-title">DSCF3178-Edit_os94dm</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342035/DSCF3189_ae99fz.jpg" alt="DSCF3189_ae99fz" data-caption="" data-public-id="DSCF3189_ae99fz">
+          <div class="gallery-img-title">DSCF3189_ae99fz</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342036/DSCF3210_cibz8b.jpg" alt="DSCF3210_cibz8b" data-caption="" data-public-id="DSCF3210_cibz8b">
+          <div class="gallery-img-title">DSCF3210_cibz8b</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342037/DSCF3214_ugyhm5.jpg" alt="DSCF3214_ugyhm5" data-caption="" data-public-id="DSCF3214_ugyhm5">
+          <div class="gallery-img-title">DSCF3214_ugyhm5</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342037/DSCF3217_adqdcu.jpg" alt="DSCF3217_adqdcu" data-caption="" data-public-id="DSCF3217_adqdcu">
+          <div class="gallery-img-title">DSCF3217_adqdcu</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342038/DSCF3265_nwuol7.jpg" alt="DSCF3265_nwuol7" data-caption="" data-public-id="DSCF3265_nwuol7">
+          <div class="gallery-img-title">DSCF3265_nwuol7</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342039/DSCF3314_bhkhfn.jpg" alt="DSCF3314_bhkhfn" data-caption="" data-public-id="DSCF3314_bhkhfn">
+          <div class="gallery-img-title">DSCF3314_bhkhfn</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342039/DSCF3320_zxbaia.jpg" alt="DSCF3320_zxbaia" data-caption="" data-public-id="DSCF3320_zxbaia">
+          <div class="gallery-img-title">DSCF3320_zxbaia</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342040/DSCF3339_pebudn.jpg" alt="DSCF3339_pebudn" data-caption="" data-public-id="DSCF3339_pebudn">
+          <div class="gallery-img-title">DSCF3339_pebudn</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342040/DSCF3450_j9lx8q.jpg" alt="DSCF3450_j9lx8q" data-caption="" data-public-id="DSCF3450_j9lx8q">
+          <div class="gallery-img-title">DSCF3450_j9lx8q</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342041/DSCF3451_bqnwop.jpg" alt="DSCF3451_bqnwop" data-caption="" data-public-id="DSCF3451_bqnwop">
+          <div class="gallery-img-title">DSCF3451_bqnwop</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342042/DSCF3480_ltfz1z.jpg" alt="DSCF3480_ltfz1z" data-caption="" data-public-id="DSCF3480_ltfz1z">
+          <div class="gallery-img-title">DSCF3480_ltfz1z</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342042/DSCF3483-Enhanced-NR_h62vir.jpg" alt="DSCF3483-Enhanced-NR_h62vir" data-caption="" data-public-id="DSCF3483-Enhanced-NR_h62vir">
+          <div class="gallery-img-title">DSCF3483-Enhanced-NR_h62vir</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342043/DSCF3525_p8b8lk.jpg" alt="DSCF3525_p8b8lk" data-caption="" data-public-id="DSCF3525_p8b8lk">
+          <div class="gallery-img-title">DSCF3525_p8b8lk</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342044/DSCF3565_xjij6e.jpg" alt="DSCF3565_xjij6e" data-caption="" data-public-id="DSCF3565_xjij6e">
+          <div class="gallery-img-title">DSCF3565_xjij6e</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342045/DSCF3585_hjbtsq.jpg" alt="DSCF3585_hjbtsq" data-caption="" data-public-id="DSCF3585_hjbtsq">
+          <div class="gallery-img-title">DSCF3585_hjbtsq</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342045/DSCF3657_itwtji.jpg" alt="DSCF3657_itwtji" data-caption="" data-public-id="DSCF3657_itwtji">
+          <div class="gallery-img-title">DSCF3657_itwtji</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342046/DSCF3671_qlqdxm.jpg" alt="DSCF3671_qlqdxm" data-caption="" data-public-id="DSCF3671_qlqdxm">
+          <div class="gallery-img-title">DSCF3671_qlqdxm</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342046/DSCF3711-Enhanced-NR_pmbzex.jpg" alt="DSCF3711-Enhanced-NR_pmbzex" data-caption="" data-public-id="DSCF3711-Enhanced-NR_pmbzex">
+          <div class="gallery-img-title">DSCF3711-Enhanced-NR_pmbzex</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342047/DSCF3720_lfmh9m.jpg" alt="DSCF3720_lfmh9m" data-caption="" data-public-id="DSCF3720_lfmh9m">
+          <div class="gallery-img-title">DSCF3720_lfmh9m</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342048/DSCF3779_iizfhx.jpg" alt="DSCF3779_iizfhx" data-caption="" data-public-id="DSCF3779_iizfhx">
+          <div class="gallery-img-title">DSCF3779_iizfhx</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342049/DSCF3794_ezvrgz.jpg" alt="DSCF3794_ezvrgz" data-caption="" data-public-id="DSCF3794_ezvrgz">
+          <div class="gallery-img-title">DSCF3794_ezvrgz</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342049/DSCF3795_ylvkzq.jpg" alt="DSCF3795_ylvkzq" data-caption="" data-public-id="DSCF3795_ylvkzq">
+          <div class="gallery-img-title">DSCF3795_ylvkzq</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342050/DSCF3815_lohorv.jpg" alt="DSCF3815_lohorv" data-caption="" data-public-id="DSCF3815_lohorv">
+          <div class="gallery-img-title">DSCF3815_lohorv</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342051/DSCF3966-Enhanced-NR_zsojwe.jpg" alt="DSCF3966-Enhanced-NR_zsojwe" data-caption="" data-public-id="DSCF3966-Enhanced-NR_zsojwe">
+          <div class="gallery-img-title">DSCF3966-Enhanced-NR_zsojwe</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342051/DSCF3969_suktd2.jpg" alt="DSCF3969_suktd2" data-caption="" data-public-id="DSCF3969_suktd2">
+          <div class="gallery-img-title">DSCF3969_suktd2</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342052/DSCF3979_tgeqg1.jpg" alt="DSCF3979_tgeqg1" data-caption="" data-public-id="DSCF3979_tgeqg1">
+          <div class="gallery-img-title">DSCF3979_tgeqg1</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342053/DSCF4023_ipxj7r.jpg" alt="DSCF4023_ipxj7r" data-caption="" data-public-id="DSCF4023_ipxj7r">
+          <div class="gallery-img-title">DSCF4023_ipxj7r</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342053/DSCF4027_wwlcuy.jpg" alt="DSCF4027_wwlcuy" data-caption="" data-public-id="DSCF4027_wwlcuy">
+          <div class="gallery-img-title">DSCF4027_wwlcuy</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342054/DSCF4051_z1canh.jpg" alt="DSCF4051_z1canh" data-caption="" data-public-id="DSCF4051_z1canh">
+          <div class="gallery-img-title">DSCF4051_z1canh</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342054/DSCF4078_fobndb.jpg" alt="DSCF4078_fobndb" data-caption="" data-public-id="DSCF4078_fobndb">
+          <div class="gallery-img-title">DSCF4078_fobndb</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342056/DSCF4206_py6hzh.jpg" alt="DSCF4206_py6hzh" data-caption="" data-public-id="DSCF4206_py6hzh">
+          <div class="gallery-img-title">DSCF4206_py6hzh</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342056/DSCF4211_j90fxx.jpg" alt="DSCF4211_j90fxx" data-caption="" data-public-id="DSCF4211_j90fxx">
+          <div class="gallery-img-title">DSCF4211_j90fxx</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342056/DSCF4238_ycotts.jpg" alt="DSCF4238_ycotts" data-caption="" data-public-id="DSCF4238_ycotts">
+          <div class="gallery-img-title">DSCF4238_ycotts</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342057/DSCF4243_o8euyu.jpg" alt="DSCF4243_o8euyu" data-caption="" data-public-id="DSCF4243_o8euyu">
+          <div class="gallery-img-title">DSCF4243_o8euyu</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342057/DSCF4275_abtmyd.jpg" alt="DSCF4275_abtmyd" data-caption="" data-public-id="DSCF4275_abtmyd">
+          <div class="gallery-img-title">DSCF4275_abtmyd</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342058/DSCF4297_svrt3v.jpg" alt="DSCF4297_svrt3v" data-caption="" data-public-id="DSCF4297_svrt3v">
+          <div class="gallery-img-title">DSCF4297_svrt3v</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342058/DSCF4320_zxdry0.jpg" alt="DSCF4320_zxdry0" data-caption="" data-public-id="DSCF4320_zxdry0">
+          <div class="gallery-img-title">DSCF4320_zxdry0</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342058/DSCF4333_c0iczx.jpg" alt="DSCF4333_c0iczx" data-caption="" data-public-id="DSCF4333_c0iczx">
+          <div class="gallery-img-title">DSCF4333_c0iczx</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342059/DSCF4348_wbvunq.jpg" alt="DSCF4348_wbvunq" data-caption="" data-public-id="DSCF4348_wbvunq">
+          <div class="gallery-img-title">DSCF4348_wbvunq</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342059/DSCF4382_imyh15.jpg" alt="DSCF4382_imyh15" data-caption="" data-public-id="DSCF4382_imyh15">
+          <div class="gallery-img-title">DSCF4382_imyh15</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342060/DSCF4391_t9gpid.jpg" alt="DSCF4391_t9gpid" data-caption="" data-public-id="DSCF4391_t9gpid">
+          <div class="gallery-img-title">DSCF4391_t9gpid</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342060/DSCF4412_newaro.jpg" alt="DSCF4412_newaro" data-caption="" data-public-id="DSCF4412_newaro">
+          <div class="gallery-img-title">DSCF4412_newaro</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342061/DSCF4492_qbuhxa.jpg" alt="DSCF4492_qbuhxa" data-caption="" data-public-id="DSCF4492_qbuhxa">
+          <div class="gallery-img-title">DSCF4492_qbuhxa</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342061/DSCF4522_zzbob9.jpg" alt="DSCF4522_zzbob9" data-caption="" data-public-id="DSCF4522_zzbob9">
+          <div class="gallery-img-title">DSCF4522_zzbob9</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342062/DSCF4524_uwuxru.jpg" alt="DSCF4524_uwuxru" data-caption="" data-public-id="DSCF4524_uwuxru">
+          <div class="gallery-img-title">DSCF4524_uwuxru</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342062/DSCF4525_vopr71.jpg" alt="DSCF4525_vopr71" data-caption="" data-public-id="DSCF4525_vopr71">
+          <div class="gallery-img-title">DSCF4525_vopr71</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342063/DSCF4528_qyv8gi.jpg" alt="DSCF4528_qyv8gi" data-caption="" data-public-id="DSCF4528_qyv8gi">
+          <div class="gallery-img-title">DSCF4528_qyv8gi</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342063/DSCF4538_ivfehm.jpg" alt="DSCF4538_ivfehm" data-caption="" data-public-id="DSCF4538_ivfehm">
+          <div class="gallery-img-title">DSCF4538_ivfehm</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342063/DSCF4570_s8uxqn.jpg" alt="DSCF4570_s8uxqn" data-caption="" data-public-id="DSCF4570_s8uxqn">
+          <div class="gallery-img-title">DSCF4570_s8uxqn</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342064/DSCF4704_j85s5n.jpg" alt="DSCF4704_j85s5n" data-caption="" data-public-id="DSCF4704_j85s5n">
+          <div class="gallery-img-title">DSCF4704_j85s5n</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342064/DSCF4767_on10dw.jpg" alt="DSCF4767_on10dw" data-caption="" data-public-id="DSCF4767_on10dw">
+          <div class="gallery-img-title">DSCF4767_on10dw</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342065/DSCF4768_egqnyc.jpg" alt="DSCF4768_egqnyc" data-caption="" data-public-id="DSCF4768_egqnyc">
+          <div class="gallery-img-title">DSCF4768_egqnyc</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342065/DSCF4773_zabng2.jpg" alt="DSCF4773_zabng2" data-caption="" data-public-id="DSCF4773_zabng2">
+          <div class="gallery-img-title">DSCF4773_zabng2</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342066/DSCF4778_udxtkw.jpg" alt="DSCF4778_udxtkw" data-caption="" data-public-id="DSCF4778_udxtkw">
+          <div class="gallery-img-title">DSCF4778_udxtkw</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342066/DSCF4785_fbfcp1.jpg" alt="DSCF4785_fbfcp1" data-caption="" data-public-id="DSCF4785_fbfcp1">
+          <div class="gallery-img-title">DSCF4785_fbfcp1</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342067/DSCF4797_pk6pgd.jpg" alt="DSCF4797_pk6pgd" data-caption="" data-public-id="DSCF4797_pk6pgd">
+          <div class="gallery-img-title">DSCF4797_pk6pgd</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342067/DSCF4799_smrwec.jpg" alt="DSCF4799_smrwec" data-caption="" data-public-id="DSCF4799_smrwec">
+          <div class="gallery-img-title">DSCF4799_smrwec</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342068/DSCF4802_qoard6.jpg" alt="DSCF4802_qoard6" data-caption="" data-public-id="DSCF4802_qoard6">
+          <div class="gallery-img-title">DSCF4802_qoard6</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342068/DSCF4807_hsgodd.jpg" alt="DSCF4807_hsgodd" data-caption="" data-public-id="DSCF4807_hsgodd">
+          <div class="gallery-img-title">DSCF4807_hsgodd</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342068/DSCF4813_grexid.jpg" alt="DSCF4813_grexid" data-caption="" data-public-id="DSCF4813_grexid">
+          <div class="gallery-img-title">DSCF4813_grexid</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342069/DSCF4816_o5swac.jpg" alt="DSCF4816_o5swac" data-caption="" data-public-id="DSCF4816_o5swac">
+          <div class="gallery-img-title">DSCF4816_o5swac</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342069/DSCF4818_n3g696.jpg" alt="DSCF4818_n3g696" data-caption="" data-public-id="DSCF4818_n3g696">
+          <div class="gallery-img-title">DSCF4818_n3g696</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342070/DSCF4825_ahpsfv.jpg" alt="DSCF4825_ahpsfv" data-caption="" data-public-id="DSCF4825_ahpsfv">
+          <div class="gallery-img-title">DSCF4825_ahpsfv</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342070/DSCF4827_qpwbi1.jpg" alt="DSCF4827_qpwbi1" data-caption="" data-public-id="DSCF4827_qpwbi1">
+          <div class="gallery-img-title">DSCF4827_qpwbi1</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342071/DSCF4828_tpdum6.jpg" alt="DSCF4828_tpdum6" data-caption="" data-public-id="DSCF4828_tpdum6">
+          <div class="gallery-img-title">DSCF4828_tpdum6</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342071/DSCF4836_yyvyb8.jpg" alt="DSCF4836_yyvyb8" data-caption="" data-public-id="DSCF4836_yyvyb8">
+          <div class="gallery-img-title">DSCF4836_yyvyb8</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342072/DSCF4844_dxakje.jpg" alt="DSCF4844_dxakje" data-caption="" data-public-id="DSCF4844_dxakje">
+          <div class="gallery-img-title">DSCF4844_dxakje</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342072/DSCF4858_pr3qf0.jpg" alt="DSCF4858_pr3qf0" data-caption="" data-public-id="DSCF4858_pr3qf0">
+          <div class="gallery-img-title">DSCF4858_pr3qf0</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342073/DSCF4869_naag2z.jpg" alt="DSCF4869_naag2z" data-caption="" data-public-id="DSCF4869_naag2z">
+          <div class="gallery-img-title">DSCF4869_naag2z</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342073/DSCF4880_vhioq5.jpg" alt="DSCF4880_vhioq5" data-caption="" data-public-id="DSCF4880_vhioq5">
+          <div class="gallery-img-title">DSCF4880_vhioq5</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342074/DSCF4960_fy5aqd.jpg" alt="DSCF4960_fy5aqd" data-caption="" data-public-id="DSCF4960_fy5aqd">
+          <div class="gallery-img-title">DSCF4960_fy5aqd</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342074/DSCF5005_gghzqt.jpg" alt="DSCF5005_gghzqt" data-caption="" data-public-id="DSCF5005_gghzqt">
+          <div class="gallery-img-title">DSCF5005_gghzqt</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342075/DSCF5033_czo0a3.jpg" alt="DSCF5033_czo0a3" data-caption="" data-public-id="DSCF5033_czo0a3">
+          <div class="gallery-img-title">DSCF5033_czo0a3</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342075/DSCF5039_em0dax.jpg" alt="DSCF5039_em0dax" data-caption="" data-public-id="DSCF5039_em0dax">
+          <div class="gallery-img-title">DSCF5039_em0dax</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342076/DSCF5042_nkfzun.jpg" alt="DSCF5042_nkfzun" data-caption="" data-public-id="DSCF5042_nkfzun">
+          <div class="gallery-img-title">DSCF5042_nkfzun</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342076/DSCF5082_tavtrb.jpg" alt="DSCF5082_tavtrb" data-caption="" data-public-id="DSCF5082_tavtrb">
+          <div class="gallery-img-title">DSCF5082_tavtrb</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342077/DSCF5086_mbyghr.jpg" alt="DSCF5086_mbyghr" data-caption="" data-public-id="DSCF5086_mbyghr">
+          <div class="gallery-img-title">DSCF5086_mbyghr</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342077/DSCF5769_hjlyut.jpg" alt="DSCF5769_hjlyut" data-caption="" data-public-id="DSCF5769_hjlyut">
+          <div class="gallery-img-title">DSCF5769_hjlyut</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342078/DSCF5994_b2vkes.jpg" alt="DSCF5994_b2vkes" data-caption="" data-public-id="DSCF5994_b2vkes">
+          <div class="gallery-img-title">DSCF5994_b2vkes</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342144/DSCF8003_acmmxd.jpg" alt="DSCF8003_acmmxd" data-caption="" data-public-id="DSCF8003_acmmxd">
+          <div class="gallery-img-title">DSCF8003_acmmxd</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342019/_DSF9305_peji3a.jpg" alt="_DSF9305_peji3a" data-caption="" data-public-id="_DSF9305_peji3a">
+          <div class="gallery-img-title">_DSF9305_peji3a</div>
         </div>
       </div>
-      <div class="gallery-category" data-category="wildlife">
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247638/images/astro/wildlife/_10.jpg" alt="_10" data-caption="" data-public-id="images/astro/wildlife/_10">
-          <div class="gallery-img-title">_10</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247636/images/astro/wildlife/_11.jpg" alt="_11" data-caption="" data-public-id="images/astro/wildlife/_11">
-          <div class="gallery-img-title">_11</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247633/images/astro/wildlife/_13.jpg" alt="_13" data-caption="" data-public-id="images/astro/wildlife/_13">
-          <div class="gallery-img-title">_13</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247631/images/astro/wildlife/_14.jpg" alt="_14" data-caption="" data-public-id="images/astro/wildlife/_14">
-          <div class="gallery-img-title">_14</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247622/images/astro/wildlife/_19.jpg" alt="_19" data-caption="" data-public-id="images/astro/wildlife/_19">
-          <div class="gallery-img-title">_19</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247620/images/astro/wildlife/_2.jpg" alt="_2" data-caption="" data-public-id="images/astro/wildlife/_2">
-          <div class="gallery-img-title">_2</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247619/images/astro/wildlife/_20.jpg" alt="_20" data-caption="" data-public-id="images/astro/wildlife/_20">
-          <div class="gallery-img-title">_20</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247617/images/astro/wildlife/_21.jpg" alt="_21" data-caption="" data-public-id="images/astro/wildlife/_21">
-          <div class="gallery-img-title">_21</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247611/images/astro/wildlife/_4.jpg" alt="_4" data-caption="" data-public-id="images/astro/wildlife/_4">
-          <div class="gallery-img-title">_4</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247595/images/astro/wildlife/_9.jpg" alt="_9" data-caption="" data-public-id="images/astro/wildlife/_9">
-          <div class="gallery-img-title">_9</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247593/images/astro/wildlife/denoise_DSF1314.jpg" alt="denoise_DSF1314" data-caption="" data-public-id="images/astro/wildlife/denoise_DSF1314">
-          <div class="gallery-img-title">denoise_DSF1314</div>
-        </div>
-        <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756247591/images/astro/wildlife/lundefugl%2520%281%29.jpg" alt="lundefugl%20(1)" data-caption="" data-public-id="images/astro/wildlife/lundefugl%20(1)">
-          <div class="gallery-img-title">lundefugl%20(1)</div>
-        </div>
-      </div>
-
-        </div>
-      {% endfor %}
     </div>
   </section>
   <div class="lightbox-overlay" id="lightboxOverlay" tabindex="-1" aria-modal="true" role="dialog">
@@ -252,7 +496,7 @@
   <footer>
     <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
   </footer>
-  <script src="{{ '/script.js' | relative_url }}"></script>
+  <script src="script.js"></script>
 <script>
 // Mobile dropdown logic
 const dropdownToggle = document.getElementById('categoryDropdownToggle');
