@@ -1473,6 +1473,13 @@ footer {
   letter-spacing: 0.06em;
   margin-bottom: 0.6rem;
 }
+.about-subheading {
+  color: #b0ffda;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
 .about-tagline {
   color: #b0ffda;
   margin-bottom: 1rem;
@@ -1482,6 +1489,16 @@ footer {
   opacity: 0.92;
   line-height: 1.6;
   margin-bottom: 0.9rem;
+}
+.about-hero-img img, .about-hero-card {
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about-hero-img img, .about-hero-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.9s cubic-bezier(.4,2,.6,1) forwards;
+  }
 }
 .about-actions {
   display: flex;
