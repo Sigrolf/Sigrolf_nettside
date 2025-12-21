@@ -1436,6 +1436,81 @@ footer {
   font-size: 1.15rem;
   opacity: 0.93;
 }
+/* About Hero Layout (image-first redesign) */
+.about-hero {
+  padding: 4rem 3vw 2rem 3vw;
+  min-height: 70vh;
+}
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.about-hero-img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 8px 48px #00FF7F22, 0 0 0 2px rgba(0,255,127,0.12);
+  background: #0b0b0b;
+}
+.about-hero-card {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1.6rem 1.4rem;
+  background: rgba(10, 18, 16, 0.35);
+  box-shadow: 0 8px 48px #00FF7F22, 0 0 0 2px rgba(0,255,127,0.10);
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+}
+.about-hero-card h1 {
+  color: var(--accent);
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.about-tagline {
+  color: #b0ffda;
+  margin-bottom: 1rem;
+}
+.about-hero-card p {
+  color: #fff;
+  opacity: 0.92;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+.about-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+.btn-accent,
+.btn-outline {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.btn-accent {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 8px 32px #00FF7F33;
+}
+.btn-outline {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+.about-details {
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;
+  padding: 0 3vw;
+}
 .timeline {
   margin-top: 2rem;
   text-align: left;
@@ -1683,6 +1758,9 @@ footer {
     flex-direction: column;
     gap: 1.5rem;
   }
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+  }
   .gallery-grid, .blog-list, .showcase-grid {
     grid-template-columns: 1fr;
   }
@@ -1700,6 +1778,9 @@ footer {
   }
   .about-bio {
     gap: 1rem;
+  }
+  .about-hero {
+    padding: 2rem 2vw 1rem 2vw;
   }
   .hero-content h1 {
     font-size: 2rem;
