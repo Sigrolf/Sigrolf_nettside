@@ -230,6 +230,10 @@
   padding: 0 1.5rem;
   box-sizing: border-box;
 }
+/* Make category containers transparent to the grid so inner images become grid items */
+.gallery-grid .gallery-category {
+  display: contents;
+}
 @media (max-width: 900px) {
   #portfolioGallery.gallery-grid, .gallery-grid#portfolioGallery {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
