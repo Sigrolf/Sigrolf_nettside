@@ -29,17 +29,17 @@
     <h1>Portfolio</h1>
         <div class="portfolio-categories">
       <div class="portfolio-categories-desktop">
-          <button class="category-btn active" data-category="Of_the_photographer">Of The Photographer</button>
-          <button class="category-btn" data-category="astro">Astro</button>
+          <button class="category-btn" data-category="Of_the_photographer">Of The Photographer</button>
+          <button class="category-btn active" data-category="astro">Astro</button>
           <button class="category-btn" data-category="landscapes-old">Landscapes Old</button>
           <button class="category-btn" data-category="landscapes">Landscapes</button>
           <button class="category-btn" data-category="wildlife">Wildlife</button>
       </div>
       <div class="portfolio-categories-mobile">
-        <button class="category-dropdown-toggle" id="categoryDropdownToggle">Of The Photographer ▼</button>
+        <button class="category-dropdown-toggle" id="categoryDropdownToggle">Astro ▼</button>
         <div class="category-dropdown-menu" id="categoryDropdownMenu">
             <button class="category-btn" data-category="Of_the_photographer">Of The Photographer</button>
-            <button class="category-btn" data-category="astro">Astro</button>
+            <button class="category-btn active" data-category="astro">Astro</button>
             <button class="category-btn" data-category="landscapes-old">Landscapes Old</button>
             <button class="category-btn" data-category="landscapes">Landscapes</button>
             <button class="category-btn" data-category="wildlife">Wildlife</button>
@@ -48,13 +48,13 @@
     </div>
     <div class="gallery-grid" id="portfolioGallery">
       <!-- Render gallery from _data/images.yml -->
-            <div class="gallery-category" data-category="Of_the_photographer">
+            <div class="gallery-category" data-category="Of_the_photographer" style="display:none;">
         <div class="gallery-img-wrapper">
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248111/images/astro/Of_the_photographer/DSCF6077.jpg" alt="DSCF6077" data-caption="" data-public-id="images/astro/Of_the_photographer/DSCF6077">
           <div class="gallery-img-title">DSCF6077</div>
         </div>
       </div>
-      <div class="gallery-category" data-category="astro" style="display:none;">
+      <div class="gallery-category" data-category="astro">
         <div class="gallery-img-wrapper">
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg" alt="_00001" data-caption="" data-public-id="images/astro/astro/_00001">
           <div class="gallery-img-title">_00001</div>
