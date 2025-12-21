@@ -1,0 +1,364 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Sigurd Rolfsnes Photography</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #050505;
+      color: #fff;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .blog-section {
+      max-width: 900px;
+      margin: 4rem auto 0 auto;
+      padding: 0 1.5rem 3rem 1.5rem;
+    }
+    .blog-section h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    .blog-archive-intro {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+    .blog-archive-subtitle {
+      color: #aaa;
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.01em;
+      opacity: 0.85;
+    }
+    .blog-archive-count {
+      color: #00FF7F;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .blog-archive-searchbar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    #blogSearchInput {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.7rem 1.2rem;
+      border-radius: 2rem;
+      border: none;
+      font-size: 1.1rem;
+      background: #181818;
+      color: #fff;
+      box-shadow: 0 2px 16px #00FF7F22;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+    #blogSearchInput:focus {
+      box-shadow: 0 2px 24px #00FF7F55;
+    }
+    .blog-archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+    .blog-archive-preview {
+      background: rgba(20, 20, 20, 0.98);
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 32px #00FF7F22;
+      overflow: hidden;
+      transition: box-shadow 0.22s, transform 0.22s;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      min-height: 180px;
+    }
+    .blog-archive-preview:hover {
+      box-shadow: 0 8px 48px #222a;
+      transform: translateY(-4px) scale(1.02);
+      background: rgba(30, 30, 30, 0.85);
+      backdrop-filter: blur(12px) saturate(1.2);
+      position: relative;
+    }
+    .blog-archive-preview:hover::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      border-radius: 1.2rem;
+      background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 60%, rgba(255,255,255,0.00) 100%);
+      mix-blend-mode: lighten;
+      opacity: 0.7;
+      animation: glass-shine-in 0.5s cubic-bezier(.77,0,.18,1);
+    @keyframes glass-shine-in {
+      0% {
+        opacity: 0;
+        transform: scale(0.98) translateY(12px);
+      }
+      60% {
+        opacity: 0.8;
+        transform: scale(1.01) translateY(-2px);
+      }
+      100% {
+        opacity: 0.7;
+        transform: scale(1) translateY(0);
+      }
+    }
+    }
+    .blog-archive-preview a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+    }
+    .blog-archive-thumb {
+      width: 220px;
+      min-width: 180px;
+      height: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      background: #111;
+      display: block;
+      border-bottom: none;
+      border-right: 1px solid #222;
+      border-radius: 1.2rem 0 0 1.2rem;
+    }
+    .blog-archive-info {
+      padding: 1.2rem 1.2rem 1rem 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .blog-archive-info h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 0 0 0.7rem 0;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .blog-archive-meta {
+      font-size: 0.98rem;
+      color: #aaa;
+      margin-bottom: 0.7rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .blog-date {
+      color: #00FF7F;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .blog-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .blog-tag {
+      border-radius: 1rem;
+      padding: 0.18em 0.8em;
+      font-size: 0.92em;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #00FF7F22 60%, #1e90ff22 100%);
+      color: #00FF7F;
+      margin-right: 0.2em;
+      margin-bottom: 0.2em;
+    }
+    .blog-tag:nth-child(2) {
+      background: linear-gradient(90deg, #1e90ff22 60%, #ff7f0022 100%);
+      color: #1e90ff;
+    }
+    .blog-tag:nth-child(3) {
+      background: linear-gradient(90deg, #ff7f0022 60%, #ff007f22 100%);
+      color: #ff7f00;
+    }
+    .blog-tag:nth-child(4) {
+      background: linear-gradient(90deg, #ff007f22 60%, #00ff7f22 100%);
+      color: #ff007f;
+    }
+    
+    .blog-excerpt {
+      color: #ddd;
+      font-size: 1.08rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0;
+      line-height: 1.6;
+      opacity: 0.92;
+    }
+    @media (max-width: 700px) {
+      .blog-section h1 {
+        font-size: 2.2rem;
+      }
+      .blog-archive-preview, .blog-archive-preview a {
+        flex-direction: column;
+        min-height: unset;
+      }
+      .blog-archive-thumb {
+        width: 100%;
+        min-width: unset;
+        height: 160px;
+        max-height: 160px;
+        border-radius: 1.2rem 1.2rem 0 0;
+        border-right: none;
+        border-bottom: 1px solid #222;
+      }
+      .blog-archive-info {
+        padding: 0.9rem 0.9rem 0.7rem 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">SIGURD ROLFSNES</div>
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <section class="blog-section">
+    <h1>Blog</h1>
+    <div class="blog-archive-intro">
+      <p class="blog-archive-subtitle">A visual journal of nebulae, night skies, and the landscapes I’ve explored.</p>
+      <p class="blog-archive-count" id="blogArchiveCount"></p>
+    </div>
+    <div class="blog-archive-searchbar">
+      <input type="text" id="blogSearchInput" placeholder="Search blog posts..." aria-label="Search blog posts">
+    </div>
+    <div class="blog-archive-list" id="blogArchiveList">
+      <!-- Blog posts will be rendered here by JS -->
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
+  </footer>
+  <script>
+    // Hamburger menu toggle for all pages
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 800) {
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    // List of blog post files (add new posts here)
+    // Automatically list all blog post files in the blog folder
+    async function getBlogPostFiles() {
+      // Try to fetch the directory listing via fetch API (works if server supports it)
+      try {
+        const res = await fetch('blog/');
+        const text = await res.text();
+        // Parse links to .html files
+        const matches = [...text.matchAll(/href="(post-[0-9]+\.html)"/g)];
+        return matches.map(m => 'blog/' + m[1]);
+      } catch (e) {
+        // Fallback: static list (if directory listing is not available)
+        return [
+          'blog/post-1.html',
+          'blog/post-2.html',
+          'blog/post-3.html',
+          'blog/post-4.html',
+          'blog/post-5.html',
+          'blog/post-6.html',
+          'blog/post-7.html'
+        ];
+      }
+    }
+
+    // Fetch metadata from each post
+    async function fetchBlogPosts() {
+      const files = await getBlogPostFiles();
+      const posts = [];
+      for (const file of files) {
+        try {
+          const res = await fetch(file);
+          const html = await res.text();
+          const metaMatch = html.match(/<script type="application\/json" id="blog-meta">([\s\S]*?)<\/script>/);
+          if (metaMatch) {
+            const meta = JSON.parse(metaMatch[1]);
+            meta.url = file;
+            posts.push(meta);
+          }
+        } catch (err) {
+          // Ignore errors for missing files
+        }
+      }
+      return posts;
+    }
+
+    function renderBlogArchive(posts) {
+      const list = document.getElementById('blogArchiveList');
+      list.innerHTML = posts.map(post => `
+        <article class="blog-archive-preview">
+          <a href="${post.url}">
+            <img src="${post.img}" alt="${post.title} cover" class="blog-archive-thumb">
+            <div class="blog-archive-info">
+              <h2>${post.title}</h2>
+              <div class="blog-archive-meta">
+                <span class="blog-date">${post.date}</span>
+                <span class="blog-tags">${post.tags.map(tag => `<span class='blog-tag'>${tag}</span>`).join('')}</span>
+              </div>
+              <p class="blog-excerpt">${post.excerpt}</p>
+            </div>
+          </a>
+        </article>
+      `).join('');
+    }
+
+    async function renderBlogArchiveFromFiles() {
+      const posts = await fetchBlogPosts();
+      renderBlogArchive(posts);
+      document.getElementById('blogArchiveCount').textContent =
+        `Currently ${posts.length} post${posts.length === 1 ? '' : 's'} in the archive`;
+    }
+
+    renderBlogArchiveFromFiles();
+
+    document.getElementById('blogSearchInput').addEventListener('input', async function(e) {
+      const q = e.target.value.toLowerCase();
+      const posts = await fetchBlogPosts();
+      renderBlogArchive(posts.filter(post =>
+        post.title.toLowerCase().includes(q) ||
+        post.excerpt.toLowerCase().includes(q) ||
+        post.date.toLowerCase().includes(q) ||
+        post.tags.some(tag => tag.toLowerCase().includes(q))
+      ));
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
