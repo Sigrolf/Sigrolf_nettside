@@ -4,7 +4,10 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync:cloudinary": "node scripts/sync-cloudinary-images.js",
+    "build:preview": "node scripts/generate-preview.js",
+    "build:site": "npm run sync:cloudinary && npm run build:preview && cp -f preview/portfolio.html deploy/portfolio.html && cp -f preview/index.html deploy/index.html && cp -f preview/portfolio.html portfolio.html && cp -f preview/index.html index.html"
   },
   "repository": {
     "type": "git",
