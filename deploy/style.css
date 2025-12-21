@@ -219,6 +219,46 @@
   display: block;
   margin: 0 auto;
 }
+/* Liquid glass hover effect for portfolio items */
+.gallery-img-wrapper {
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0 4px 28px rgba(0,0,0,0.45);
+  transition: transform 0.28s cubic-bezier(.77,.2,.32,1.01), box-shadow 0.28s cubic-bezier(.77,.2,.32,1.01);
+}
+.gallery-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 0.8rem;
+  background: linear-gradient(120deg, rgba(0,255,127,0.12) 0%, rgba(0,207,255,0.12) 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(0,255,127,0.25);
+  opacity: 0;
+  transition: opacity 0.28s cubic-bezier(.77,.2,.32,1.01);
+}
+.gallery-img-wrapper:hover,
+.gallery-img-wrapper:focus-within {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 54px #00FF7F44, 0 0 0 2px rgba(0,255,127,0.35);
+}
+.gallery-img-wrapper:hover::after,
+.gallery-img-wrapper:focus-within::after {
+  opacity: 1;
+}
+.gallery-img-wrapper:hover img,
+.gallery-img-wrapper:focus-within img {
+  filter: brightness(1.08) saturate(1.12) blur(1.4px);
+  transform: scale(1.03);
+}
+.gallery-img-title {
+  text-align: center;
+  color: #b0ffda;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: 0.4rem;
+}
 /* --- Portfolio Gallery Cinematic Grid --- */
 #portfolioGallery.gallery-grid, .gallery-grid#portfolioGallery {
   display: grid !important;
