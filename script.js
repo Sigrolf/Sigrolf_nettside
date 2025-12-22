@@ -360,6 +360,40 @@ const categoryBtns = document.querySelectorAll('.category-btn');
 const categoryNodes = Array.from(document.querySelectorAll('.gallery-category'));
 const hasCategoryNodes = categoryNodes.length > 0;
 
+// Lazily hydrate category images so hidden categories don't eagerly download everything
+function hydrateCategoryImages(node) {
+  if (!node) return;
+  node.querySelectorAll('img').forEach(img => {
+    const pendingSrc = img.dataset.src;
+    const pendingSrcset = img.dataset.srcset;
+    if (pendingSrc && img.dataset.hydrated !== 'true') {
+      img.src = pendingSrc;
+      if (pendingSrcset) img.srcset = pendingSrcset;
+      img.dataset.hydrated = 'true';
+    }
+    img.loading = 'lazy';
+  });
+}
+
+function stashInactiveCategoryImages(activeCategory) {
+  categoryNodes.forEach(node => {
+    const isActive = ((node.dataset.category || '').trim() === (activeCategory || '').trim());
+    node.querySelectorAll('img').forEach(img => {
+      img.loading = 'lazy';
+      if (isActive) return;
+      if (!img.dataset.src && img.getAttribute('src')) {
+        img.dataset.src = img.getAttribute('src');
+        img.removeAttribute('src');
+      }
+      if (!img.dataset.srcset && img.getAttribute('srcset')) {
+        img.dataset.srcset = img.getAttribute('srcset');
+        img.removeAttribute('srcset');
+      }
+      img.dataset.hydrated = 'false';
+    });
+  });
+}
+
 const portfolioImages = {};
 
 // If the page was generated from `_data/images.yml` the gallery HTML is already present
@@ -404,11 +438,13 @@ function renderPortfolio(category) {
   if (!portfolioGallery) return;
   // If static DOM already has per-category containers, just toggle visibility
   if (hasCategoryNodes) {
+    stashInactiveCategoryImages(category);
     categoryNodes.forEach(node => {
       const isActive = ((node.dataset.category || '').trim() === (category || '').trim());
       node.style.display = isActive ? '' : 'none';
       // Bind lightbox for currently visible category
       if (isActive) {
+        hydrateCategoryImages(node);
         node.querySelectorAll('img').forEach(img => registerImageMetaFromElement(img));
       }
     });
