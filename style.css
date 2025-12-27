@@ -106,6 +106,8 @@
   padding: 4rem 3vw 2rem 3vw;
   background: #000;
   min-height: 100vh;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 .showcase-title {
   color: var(--accent);
@@ -200,6 +202,134 @@
   .showcase-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+  }
+}
+
+.showcase-hero-glass {
+  background: radial-gradient(circle at 20% 20%, rgba(0,255,127,0.12), rgba(0,0,0,0.9)) border-box;
+  border: 1.5px solid rgba(0,255,127,0.28);
+  border-radius: 1.8rem;
+  padding: 2.6rem 2.4rem;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.85), 0 0 36px rgba(0,255,127,0.18);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  text-align: center;
+  margin: 0 auto 2.8rem auto;
+}
+.showcase-kicker {
+  color: #c9fff0;
+  letter-spacing: 0.16em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.showcase-lede {
+  color: #f5fff9;
+  opacity: 0.85;
+  font-size: 1.25rem;
+  max-width: 760px;
+  margin: 0.8rem auto 0 auto;
+}
+
+.showcase-journey {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin: 0 auto;
+}
+.story-step {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  background: radial-gradient(circle at 10% 10%, rgba(0,255,127,0.08), rgba(0,0,0,0.92)) border-box;
+  border: 1.2px solid rgba(0,255,127,0.22);
+  border-radius: 1.6rem;
+  padding: 1.8rem;
+  box-shadow: 0 14px 48px rgba(0,0,0,0.8), 0 0 24px rgba(0,255,127,0.12);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+}
+.story-step.flip {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+.story-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.2rem;
+  box-shadow: 0 12px 38px rgba(0,0,0,0.8), 0 0 0 2px rgba(0,255,127,0.12);
+}
+.story-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,255,127,0.14), transparent 45%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.story-media:hover::after,
+.story-media:focus-within::after {
+  opacity: 0.8;
+}
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1.2rem;
+}
+.story-copy {
+  color: #f2fff8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.story-tag {
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9bfbd8;
+}
+.story-copy h2 {
+  color: var(--accent);
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.story-copy p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 1000px) {
+  .story-step,
+  .story-step.flip {
+    grid-template-columns: 1fr;
+  }
+  .story-media {
+    order: -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .showcase-hero-glass {
+    padding: 1.8rem 1.4rem;
+  }
+  .showcase-journey {
+    gap: 1.6rem;
+  }
+  .story-step {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+  .story-copy h2 {
+    font-size: 1.5rem;
+  }
+  .showcase-lede {
+    font-size: 1.05rem;
   }
 }
 /* Portfolio Gallery Images: fit inside grid cell, not full width */
@@ -1402,57 +1532,6 @@ footer {
   color: #fff;
 }
 
-/* Showcase Section */
-.showcase-section {
-  padding: 4rem 3vw 2rem 3vw;
-  background: #000;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.showcase-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3vw;
-  align-items: center;
-}
-.showcase-item {
-  padding: 2vw 0;
-}
-.showcase-grid img {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 0; /* Sharp edges */
-  box-shadow: 0 8px 48px #000a;
-  object-fit: cover;
-}
-.showcase-caption {
-  font-size: 1.2rem;
-  margin: 1rem auto 2rem auto;
-  text-align: center;
-  color: #fff;
-  max-width: 900px;
-}
-.awards {
-  margin-top: 2rem;
-  text-align: center;
-}
-.awards h2 {
-  color: var(--accent);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-.awards ul {
-  list-style: none;
-  padding: 0;
-}
-.awards li {
-  color: #fff;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
 
 /* About Timeline & Bio */
 .about-bio {
