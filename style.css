@@ -466,7 +466,7 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   align-items: center;
   justify-content: center;
   /* Use Cloudinary-hosted hero background */
-  background-image: url('https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg');
+  background-image: url('https://res.cloudinary.com/duugpqtue/image/upload/v1766351140/Background_tt0ooh.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -505,10 +505,10 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   z-index: 2;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.72) 0%,
-    rgba(0,0,0,0.38) 38%,
-    rgba(0,0,0,0.12) 68%,
-    rgba(0,0,0,0.0) 100%
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.75) 80%,
+    rgba(0,0,0,1) 100%
   );
   filter: blur(18px) brightness(1.08) saturate(1.1);
   opacity: 0.96;
