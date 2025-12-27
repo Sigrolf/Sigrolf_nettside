@@ -466,7 +466,7 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   align-items: center;
   justify-content: center;
   /* Use Cloudinary-hosted hero background */
-  background-image: url('https://res.cloudinary.com/duugpqtue/image/upload/v1756248107/images/astro/astro/_00001.jpg');
+  background-image: url('https://res.cloudinary.com/duugpqtue/image/upload/v1766351140/Background_tt0ooh.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
