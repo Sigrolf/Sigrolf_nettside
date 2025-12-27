@@ -657,6 +657,7 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
+  transition: transform 0.32s cubic-bezier(.77,.2,.32,1.01), box-shadow 0.32s cubic-bezier(.77,.2,.32,1.01);
 }
 .portfolio-img {
   width: 100%;
@@ -683,6 +684,12 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px #00FF7F55, 0 4px 32px 0 rgba(0,0,0,0.45), 0 0 24px 4px #00FF7F88;
   z-index: 1000;
+}
+
+.portfolio-img-wrapper:hover,
+.portfolio-img-wrapper:focus-within {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 16px 64px #00FF7F55, 0 0 0 3px var(--accent);
 }
 
 /* Glassmorphism title bar at the bottom */
