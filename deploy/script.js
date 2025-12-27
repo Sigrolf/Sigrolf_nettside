@@ -20,7 +20,9 @@ const portfolioImageMeta = {};
 
 function registerImageMetaFromElement(img) {
   if (!img) return;
-  const src = img.currentSrc || img.src;
+  const fullSrc = img.dataset.full || img.currentSrc || img.src;
+  const thumbSrc = img.currentSrc || img.src;
+  const src = fullSrc || thumbSrc;
   if (!src) return;
   const title = (img.dataset.title || img.getAttribute('alt') || '').trim() || prettifyFilename(src);
   const description = (img.dataset.caption || '').trim();
@@ -28,8 +30,12 @@ function registerImageMetaFromElement(img) {
   const camera = (img.dataset.camera || 'Fujifilm XT-30').trim();
   const settings = (img.dataset.settings || '').trim();
   const meta = { title, description, date, camera, settings };
-  imageMeta[src] = meta;
-  portfolioImageMeta[src] = { title, description, filename: src, camera };
+  imageMeta[thumbSrc || src] = meta;
+  portfolioImageMeta[thumbSrc || src] = { title, description, filename: fullSrc || thumbSrc || src, camera };
+  if (fullSrc && fullSrc !== thumbSrc) {
+    imageMeta[fullSrc] = meta;
+    portfolioImageMeta[fullSrc] = { title, description, filename: fullSrc, camera };
+  }
   const publicId = img.dataset.publicId;
   if (publicId) {
     imageMeta[publicId] = meta;
@@ -360,6 +366,76 @@ const categoryBtns = document.querySelectorAll('.category-btn');
 const categoryNodes = Array.from(document.querySelectorAll('.gallery-category'));
 const hasCategoryNodes = categoryNodes.length > 0;
 
+// Use smaller Cloudinary thumbnails in the grid, keep full-res for lightbox
+function makeCloudinaryThumbUrl(originalUrl) {
+  if (!originalUrl) return originalUrl;
+  try {
+    const url = new URL(originalUrl);
+    const uploadToken = '/upload/';
+    const idx = url.pathname.indexOf(uploadToken);
+    if (idx === -1) return originalUrl;
+    const before = url.pathname.slice(0, idx + uploadToken.length);
+    const after = url.pathname.slice(idx + uploadToken.length);
+    // Avoid double-inserting transforms if already present
+    if (/f_auto|w_\d|q_auto/.test(after)) return originalUrl;
+    const transformedPath = `${before}f_auto,q_auto,w_640/${after}`;
+    return `${url.origin}${transformedPath}`;
+  } catch (e) {
+    return originalUrl;
+  }
+}
+
+// At load time, convert portfolio category images to thumbs and stash full URL
+(function preparePortfolioThumbs() {
+  if (!hasCategoryNodes) return;
+  categoryNodes.forEach(node => {
+    node.querySelectorAll('img').forEach(img => {
+      const existingFull = img.dataset.full || img.getAttribute('data-full');
+      const raw = existingFull || img.getAttribute('src');
+      if (!raw) return;
+      const full = raw;
+      const thumb = makeCloudinaryThumbUrl(full);
+      img.dataset.full = full;
+      img.setAttribute('src', thumb);
+      img.loading = 'lazy';
+    });
+  });
+})();
+
+// Lazily hydrate category images so hidden categories don't eagerly download everything
+function hydrateCategoryImages(node) {
+  if (!node) return;
+  node.querySelectorAll('img').forEach(img => {
+    const pendingSrc = img.dataset.src;
+    const pendingSrcset = img.dataset.srcset;
+    if (pendingSrc && img.dataset.hydrated !== 'true') {
+      img.src = pendingSrc;
+      if (pendingSrcset) img.srcset = pendingSrcset;
+      img.dataset.hydrated = 'true';
+    }
+    img.loading = 'lazy';
+  });
+}
+
+function stashInactiveCategoryImages(activeCategory) {
+  categoryNodes.forEach(node => {
+    const isActive = ((node.dataset.category || '').trim() === (activeCategory || '').trim());
+    node.querySelectorAll('img').forEach(img => {
+      img.loading = 'lazy';
+      if (isActive) return;
+      if (!img.dataset.src && img.getAttribute('src')) {
+        img.dataset.src = img.getAttribute('src');
+        img.removeAttribute('src');
+      }
+      if (!img.dataset.srcset && img.getAttribute('srcset')) {
+        img.dataset.srcset = img.getAttribute('srcset');
+        img.removeAttribute('srcset');
+      }
+      img.dataset.hydrated = 'false';
+    });
+  });
+}
+
 const portfolioImages = {};
 
 // If the page was generated from `_data/images.yml` the gallery HTML is already present
@@ -404,11 +480,13 @@ function renderPortfolio(category) {
   if (!portfolioGallery) return;
   // If static DOM already has per-category containers, just toggle visibility
   if (hasCategoryNodes) {
+    stashInactiveCategoryImages(category);
     categoryNodes.forEach(node => {
       const isActive = ((node.dataset.category || '').trim() === (category || '').trim());
       node.style.display = isActive ? '' : 'none';
       // Bind lightbox for currently visible category
       if (isActive) {
+        hydrateCategoryImages(node);
         node.querySelectorAll('img').forEach(img => registerImageMetaFromElement(img));
       }
     });
@@ -481,9 +559,10 @@ function enableGalleryLightbox(selector) {
     img.addEventListener('click', () => {
       const list = Array.from(gallery.querySelectorAll('img'))
         .filter(el => el.offsetParent !== null) // only visible images
-        .map(el => el.currentSrc || el.src)
+        .map(el => el.dataset.full || el.currentSrc || el.src)
         .filter(Boolean);
-      openLightbox(img.currentSrc || img.src, list);
+      const initial = img.dataset.full || img.currentSrc || img.src;
+      openLightbox(initial, list);
     });
     img.dataset.lightboxBound = 'true';
   });
