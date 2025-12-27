@@ -774,21 +774,21 @@
   title: Andromeda Galaxy
   caption: 'Taken from my cabin in Namdalseid, Norway using SWSA GTI mount and fuifilm X-T30 camera'
   category: astro
-  featured: false
+  featured: true
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348917/_00002_fv08zm.jpg
   public_id: _00002_fv08zm
   title: Milkyway
   caption: 'Photo of milky way from jonsvatnet lake near Trondheim, Norway'
   category: astro
-  featured: false
+  featured: true
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00003_wko69l.jpg
   public_id: _00003_wko69l
   title: Pleiades Star Cluster
   caption: 'The pleiades star cluster is an open star cluster containing middle-aged hot B-type stars in the north-west of the constellation Taurus.'
   category: astro
-  featured: false
+  featured: true
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00004_ml4xi0.jpg
   public_id: _00004_ml4xi0
