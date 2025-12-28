@@ -609,3 +609,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+  // Language toggle
+  (function setupLanguageToggle() {
+    const toggle = document.getElementById('langToggle');
+    if (!toggle) return;
+
+    const preferred = localStorage.getItem('site-lang') || 'nb';
+    applyLanguage(preferred);
+
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.lang === 'nb' ? 'en' : 'nb';
+      applyLanguage(next);
+      localStorage.setItem('site-lang', next);
+    });
+  })();
+
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    const targets = document.querySelectorAll('[data-i18n-nb], [data-i18n-en]');
+    targets.forEach(el => {
+      const nb = el.getAttribute('data-i18n-nb');
+      const en = el.getAttribute('data-i18n-en');
+      const next = lang === 'en' ? (en || nb) : (nb || en);
+      if (next) {
+        el.textContent = next;
+      }
+    });
+    const toggle = document.getElementById('langToggle');
+    if (toggle) {
+      const label = lang === 'en' ? (toggle.getAttribute('data-i18n-en') || 'Norwegian / English') : (toggle.getAttribute('data-i18n-nb') || 'Norsk / Engelsk');
+      toggle.textContent = label;
+    }
+  }

@@ -589,6 +589,46 @@ body > *:not(.star-bg):not(.navbar):not(.lightbox):not(.lightbox-overlay) {
   z-index: 9999;
 }
 
+.nav-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lang-toggle {
+  background: rgba(0,255,127,0.12);
+  color: #f8fff9;
+  border: 1px solid rgba(0,255,127,0.4);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,255,127,0.18);
+  transition: transform 0.25s cubic-bezier(.77,.2,.32,1.01), box-shadow 0.25s cubic-bezier(.77,.2,.32,1.01), background 0.25s;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,255,127,0.28), 0 0 0 2px rgba(0,255,127,0.35);
+  background: rgba(0,255,127,0.2);
+  outline: none;
+}
+
+@media (max-width: 800px) {
+  .nav-actions {
+    position: absolute;
+    right: 1rem;
+    top: 0.9rem;
+  }
+  .lang-toggle {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
 .hero-section {
   /* reduce enormous height so background is visible without large scroll */
   min-height: 75vh;
