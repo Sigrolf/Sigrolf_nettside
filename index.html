@@ -16,18 +16,19 @@
       <span></span>
     </button>
     <ul class="nav-links" id="main-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="showcase.html">Showcase</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html" data-i18n-en="Home" data-i18n-nb="Hjem">Home</a></li>
+      <li><a href="portfolio.html" data-i18n-en="Portfolio" data-i18n-nb="Portefølje">Portfolio</a></li>
+      <li><a href="showcase.html" data-i18n-en="Showcase" data-i18n-nb="Fremvisning">Showcase</a></li>
+      <li><a href="blog.html" data-i18n-en="Blog" data-i18n-nb="Blogg">Blog</a></li>
+      <li><a href="about.html" data-i18n-en="About" data-i18n-nb="Om">About</a></li>
+      <li class="nav-lang-item"><button id="langToggle" class="lang-toggle" aria-pressed="false" data-lang="en">EN</button></li>
     </ul>
   </nav>
   <section id="home" class="hero-section">
     <div class="hero-glass">
       <div class="hero-content">
-        <h1>Exploring the Night Sky</h1>
-        <p>Capturing the beauty of the cosmos and landscapes from Trondheim, Norway</p>
+        <h1 class="hero-title" data-i18n-en="Exploring the Night Sky" data-i18n-nb="Utforsker nattehimmelen">Exploring the Night Sky</h1>
+        <p data-i18n-en="Capturing the beauty of the cosmos and landscapes from Trondheim, Norway" data-i18n-nb="Fanger skjønnheten i kosmos og landskap fra Trondheim, Norge">Capturing the beauty of the cosmos and landscapes from Trondheim, Norway</p>
       </div>
     </div>
   </section>
@@ -35,7 +36,7 @@
   <!-- Featured Images Gallery (sourced from _data/images.yml) -->
       <section class="featured-gallery-section">
         <div class="featured-featured-glass">
-          <h2>Featured images</h2>
+          <h2 data-i18n-en="Featured images" data-i18n-nb="Utvalgte bilder">Featured images</h2>
           <div class="featured-gallery-grid distinct-featured">
               <a href="portfolio.html?image=https%3A%2F%2Fres.cloudinary.com%2Fduugpqtue%2Fimage%2Fupload%2Fv1766348916%2F_00001_h6oaxe.jpg" class="featured-img-card">
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg" alt="Andromeda Galaxy" class="featured-img">
@@ -51,19 +52,19 @@
         </a>
     </div>
     <div class="see-more-link">
-      <a href="portfolio.html">See full portfolio &rarr;</a>
+      <a href="portfolio.html" data-i18n-en="See full portfolio →" data-i18n-nb="Se hele porteføljen →">See full portfolio →</a>
           </div>
         </div>
       </section>
 
   <!-- Latest Posts Section -->
   <section class="latest-posts-section">
-    <h2>Latest Posts</h2>
+    <h2 data-i18n-en="Latest Posts" data-i18n-nb="Siste innlegg">Latest Posts</h2>
     <div class="latest-posts-list" id="latestPostsList">
       <!-- Latest blog posts will be loaded here by JS -->
     </div>
     <div class="see-more-link">
-      <a href="blog.html">See all posts &rarr;</a>
+      <a href="blog.html" data-i18n-en="See all posts →" data-i18n-nb="Se alle innlegg →">See all posts →</a>
     </div>
   </section>
 

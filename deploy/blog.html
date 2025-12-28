@@ -226,34 +226,35 @@
 <body>
   <nav class="navbar">
     <div class="logo">SIGURD ROLFSNES</div>
-    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false" data-i18n-aria-label-en="Open navigation" data-i18n-aria-label-nb="Åpne meny">
       <span></span>
       <span></span>
       <span></span>
     </button>
     <ul class="nav-links" id="main-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="showcase.html">Showcase</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html" data-i18n-en="Home" data-i18n-nb="Hjem">Home</a></li>
+      <li><a href="portfolio.html" data-i18n-en="Portfolio" data-i18n-nb="Portefølje">Portfolio</a></li>
+      <li><a href="showcase.html" data-i18n-en="Showcase" data-i18n-nb="Fremvisning">Showcase</a></li>
+      <li><a href="blog.html" data-i18n-en="Blog" data-i18n-nb="Blogg">Blog</a></li>
+      <li><a href="about.html" data-i18n-en="About" data-i18n-nb="Om">About</a></li>
+      <li class="nav-lang-item"><button id="langToggle" class="lang-toggle" aria-pressed="false" data-lang="en">EN</button></li>
     </ul>
   </nav>
   <section class="blog-section">
-    <h1>Blog</h1>
+    <h1 data-i18n-en="Blog" data-i18n-nb="Blogg">Blog</h1>
     <div class="blog-archive-intro">
-      <p class="blog-archive-subtitle">A visual journal of nebulae, night skies, and the landscapes I’ve explored.</p>
+      <p class="blog-archive-subtitle" data-i18n-en="A visual journal of nebulae, night skies, and the landscapes I’ve explored." data-i18n-nb="En visuell dagbok over tåker, nattehimmel og landskapene jeg har utforsket.">A visual journal of nebulae, night skies, and the landscapes I’ve explored.</p>
       <p class="blog-archive-count" id="blogArchiveCount"></p>
     </div>
     <div class="blog-archive-searchbar">
-      <input type="text" id="blogSearchInput" placeholder="Search blog posts..." aria-label="Search blog posts">
+      <input type="text" id="blogSearchInput" placeholder="Search blog posts..." aria-label="Search blog posts" data-i18n-placeholder-en="Search blog posts..." data-i18n-placeholder-nb="Søk i blogginnlegg..." data-i18n-aria-label-en="Search blog posts" data-i18n-aria-label-nb="Søk i blogginnlegg">
     </div>
     <div class="blog-archive-list" id="blogArchiveList">
       <!-- Blog posts will be rendered here by JS -->
     </div>
   </section>
   <footer>
-    <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
+    <p>© 2025 Sigurd Rolfsnes. <span data-i18n-en="All rights reserved." data-i18n-nb="Alle rettigheter forbeholdt.">All rights reserved.</span></p>
   </footer>
   <script>
     // Hamburger menu toggle for all pages
@@ -342,8 +343,13 @@
     async function renderBlogArchiveFromFiles() {
       const posts = await fetchBlogPosts();
       renderBlogArchive(posts);
-      document.getElementById('blogArchiveCount').textContent =
-        `Currently ${posts.length} post${posts.length === 1 ? '' : 's'} in the archive`;
+      const savedLang = localStorage.getItem('site-lang') || 'en';
+      const countEl = document.getElementById('blogArchiveCount');
+      if (savedLang === 'nb') {
+        countEl.textContent = `For øyeblikket ${posts.length} innlegg i arkivet`;
+      } else {
+        countEl.textContent = `Currently ${posts.length} post${posts.length === 1 ? '' : 's'} in the archive`;
+      }
     }
 
     renderBlogArchiveFromFiles();

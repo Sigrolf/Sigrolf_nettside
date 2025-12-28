@@ -50,22 +50,77 @@ const images = Array.from(document.querySelectorAll('.gallery-grid img, .showcas
   })
   .filter(Boolean);
 
+// Persist language via URL param and set html lang early
+(function initLang() {
+  try {
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang === 'nb' || urlLang === 'en') {
+      localStorage.setItem('site-lang', urlLang);
+    }
+    const current = localStorage.getItem('site-lang') || 'en';
+    document.documentElement.setAttribute('lang', current);
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('site-lang') || 'en';
+      document.querySelectorAll('.nav-links a[href]').forEach(a => {
+        const href = a.getAttribute('href');
+        if (!href) return;
+        if (/^https?:\/\//i.test(href)) return; // skip external links
+        try {
+          const u = new URL(href, window.location.origin);
+          const params = new URLSearchParams(u.search);
+          params.set('lang', lang);
+          const newSearch = params.toString();
+          const newHref = u.pathname + (newSearch ? '?' + newSearch : '') + u.hash;
+          a.setAttribute('href', newHref);
+        } catch (e) {}
+      });
+    });
+  } catch (e) {}
+})();
+
 // --- Modern Lightbox functionality ---
+const savedLangForUI = localStorage.getItem('site-lang') || 'en';
+const UI_STRINGS = savedLangForUI === 'nb' ? {
+  close: 'Lukk',
+  prev: 'Forrige bilde',
+  next: 'Neste bilde',
+  largeView: 'Stor visning',
+  detailsTitle: 'Vis bildedetaljer',
+  labelDescription: 'Beskrivelse:',
+  labelDate: 'Dato:',
+  labelCamera: 'Kamera:',
+  labelSettings: 'Innstillinger:',
+  noDescription: 'Ingen beskrivelse.',
+  notAvailable: 'Ikke tilgjengelig'
+} : {
+  close: 'Close',
+  prev: 'Previous image',
+  next: 'Next image',
+  largeView: 'Large view',
+  detailsTitle: 'Show image details',
+  labelDescription: 'Description:',
+  labelDate: 'Date:',
+  labelCamera: 'Camera:',
+  labelSettings: 'Settings:',
+  noDescription: 'No description.',
+  notAvailable: 'N/A'
+};
+
 const lightbox = document.createElement('div');
 lightbox.className = 'lightbox';
 lightbox.innerHTML = `
   <div class="lightbox-overlay" tabindex="-1"></div>
   <div class="lightbox-content" role="dialog" aria-modal="true">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-close" aria-label="${UI_STRINGS.close}">&times;</button>
     <div class="lightbox-img-container" style="display: flex; align-items: center; justify-content: center; position: relative;">
-      <button class="lightbox-arrow lightbox-arrow-left" aria-label="Previous image" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);">&#8592;</button>
+      <button class="lightbox-arrow lightbox-arrow-left" aria-label="${UI_STRINGS.prev}" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);">&#8592;</button>
       <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-        <img src="" alt="Large view" class="lightbox-img" draggable="false">
+        <img src="" alt="${UI_STRINGS.largeView}" class="lightbox-img" draggable="false">
       </div>
-      <button class="lightbox-arrow lightbox-arrow-right" aria-label="Next image" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">&#8594;</button>
+      <button class="lightbox-arrow lightbox-arrow-right" aria-label="${UI_STRINGS.next}" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">&#8594;</button>
     </div>
     <div class="lightbox-title"></div>
-    <button class="lightbox-details-btn" aria-expanded="false" title="Show image details" tabindex="0">
+    <button class="lightbox-details-btn" aria-expanded="false" title="${UI_STRINGS.detailsTitle}" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
     </button>
     <div class="lightbox-details-panel" aria-hidden="true"></div>
@@ -184,15 +239,15 @@ if (typeof window !== 'undefined') window.openLightbox = openLightbox;
 function showLightboxImage(idx) {
   const src = currentImages[idx];
   imgEl.src = src;
-  imgEl.alt = getImageMeta(src).title || 'Large view';
+  imgEl.alt = getImageMeta(src).title || UI_STRINGS.largeView;
   titleEl.textContent = getImageMeta(src).title;
   currentImageData = getImageMeta(src);
   // Responsive, animated details panel markup
   detailsPanel.innerHTML = `
-    <div class="lightbox-details-panel-row"><strong>Description:</strong> <span>${currentImageData.description || 'N/A'}</span></div>
-    <div class="lightbox-details-panel-row"><strong>Date:</strong> <span>${currentImageData.date || 'N/A'}</span></div>
-    <div class="lightbox-details-panel-row"><strong>Camera:</strong> <span>${currentImageData.camera || 'N/A'}</span></div>
-    <div class="lightbox-details-panel-row"><strong>Settings:</strong> <span>${currentImageData.settings || 'N/A'}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelDescription}</strong> <span>${currentImageData.description || UI_STRINGS.noDescription}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelDate}</strong> <span>${currentImageData.date || UI_STRINGS.notAvailable}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelCamera}</strong> <span>${currentImageData.camera || UI_STRINGS.notAvailable}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelSettings}</strong> <span>${currentImageData.settings || UI_STRINGS.notAvailable}</span></div>
   `;
   detailsBtn.setAttribute('aria-expanded', 'false');
   detailsPanel.setAttribute('aria-hidden', 'true');
@@ -609,3 +664,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// --- Language toggle (NO/EN) ---
+document.addEventListener('DOMContentLoaded', function() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+  const saved = localStorage.getItem('site-lang') || 'en';
+  document.documentElement.setAttribute('lang', saved);
+  langToggle.dataset.lang = saved;
+  langToggle.setAttribute('aria-pressed', saved === 'nb');
+  langToggle.textContent = saved === 'nb' ? 'NO' : 'EN';
+  langToggle.addEventListener('click', function() {
+    const next = langToggle.dataset.lang === 'nb' ? 'en' : 'nb';
+    localStorage.setItem('site-lang', next);
+    langToggle.dataset.lang = next;
+    langToggle.setAttribute('aria-pressed', next === 'nb');
+    langToggle.textContent = next === 'nb' ? 'NO' : 'EN';
+    window.location.reload();
+  });
+
+  // Apply translations on load
+  applyLanguage(saved);
+});
+
+// Apply translations using data-i18n-* attributes
+function applyLanguage(lang) {
+  const isNb = lang === 'nb';
+  const textAttr = isNb ? 'i18nNb' : 'i18nEn';
+  const placeholderAttr = isNb ? 'i18nPlaceholderNb' : 'i18nPlaceholderEn';
+  const ariaLabelAttr = isNb ? 'i18nAriaLabelNb' : 'i18nAriaLabelEn';
+
+  document.querySelectorAll('[data-i18n-nb], [data-i18n-en]').forEach(el => {
+    const val = el.dataset[textAttr];
+    if (typeof val !== 'undefined') {
+      el.textContent = val;
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder-nb], [data-i18n-placeholder-en]').forEach(el => {
+    const val = el.dataset[placeholderAttr];
+    if (typeof val !== 'undefined') {
+      el.setAttribute('placeholder', val);
+    }
+  });
+  document.querySelectorAll('[data-i18n-aria-label-nb], [data-i18n-aria-label-en]').forEach(el => {
+    const val = el.dataset[ariaLabelAttr];
+    if (typeof val !== 'undefined') {
+      el.setAttribute('aria-label', val);
+    }
+  });
+}

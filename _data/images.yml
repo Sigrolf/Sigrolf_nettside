@@ -771,77 +771,157 @@
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg
   public_id: _00001_h6oaxe
-  title: Andromeda Galaxy
-  caption: 'Taken from my cabin in Namdalseid, Norway using SWSA GTI mount and fuifilm X-T30 camera'
+  title: _00001_h6oaxe
+  caption: ''
   category: astro
-  featured: true
+  featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348917/_00002_fv08zm.jpg
   public_id: _00002_fv08zm
-  title: Milkyway
-  caption: 'Photo of milky way from jonsvatnet lake near Trondheim, Norway'
+  title: _00002_fv08zm
+  caption: ''
   category: astro
-  featured: true
+  featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00003_wko69l.jpg
   public_id: _00003_wko69l
-  title: Pleiades Star Cluster
-  caption: 'The pleiades star cluster is an open star cluster containing middle-aged hot B-type stars in the north-west of the constellation Taurus.'
+  title: _00003_wko69l
+  caption: ''
   category: astro
-  featured: true
+  featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00004_ml4xi0.jpg
   public_id: _00004_ml4xi0
-  title: Bode and Cigar Galaxy
-  caption: 'Zoomed out version'
+  title: _00004_ml4xi0
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00005_ktgggr.jpg
   public_id: _00005_ktgggr
-  title: Bode and Cigar Galaxy
-  caption: 'Zoomed in version'
+  title: _00005_ktgggr
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00006_ifzb77.jpg
   public_id: _00006_ifzb77
-  title: Orions belt
-  caption: 'Orions belt surrounded by multiple nebulae including the horsehead, flame and the orion nebula.'
+  title: _00006_ifzb77
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00007_llt9si.jpg
   public_id: _00007_llt9si
-  title: Heart and Soul Nebulae
-  caption: 'Taken with my very shitty camera untracked'
+  title: _00007_llt9si
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00008_h2wyy9.jpg
   public_id: _00008_h2wyy9
-  title: The Moooon
-  caption: 'The moon taken with a 200mm lens, fuji x-T30'
+  title: _00008_h2wyy9
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00009_py99kt.jpg
   public_id: _00009_py99kt
-  title: Trifid nebula
-  caption: 'Taken from imer in the dolomites, Italy using SWSA GTI mount and fuifilm X-T30 camera'
+  title: _00009_py99kt
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348921/_00010_oftn72.jpg
   public_id: _00010_oftn72
-  title: Triangulum Galaxy
-  caption: 'The Triangulum Galaxy (M33) is a spiral galaxy approximately 3 million light years from Earth in the constellation Triangulum. It is the third-largest member of our Local Group of galaxies, which also includes the Milky Way and the Andromeda Galaxy.'
+  title: _00010_oftn72
+  caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348929/_00011_ipnotn.jpg
   public_id: _00011_ipnotn
-  title: Eagle nebula
-  caption: 'The Eagle Nebula (also known as Messier 16, M16, or NGC 6611) is a young open cluster of stars in the constellation Serpens. It is part of a diffuse emission nebula that contains several active star-forming regions.'
+  title: _00011_ipnotn
+  caption: ''
   category: astro
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348965/_10_a5lyzo.jpg
+  public_id: _10_a5lyzo
+  title: _10_a5lyzo
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348967/_11_oexskf.jpg
+  public_id: _11_oexskf
+  title: _11_oexskf
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348962/_13_yq7qzt.jpg
+  public_id: _13_yq7qzt
+  title: _13_yq7qzt
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348959/_14_ix2bwq.jpg
+  public_id: _14_ix2bwq
+  title: _14_ix2bwq
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348956/_15_nfg0o8.jpg
+  public_id: _15_nfg0o8
+  title: _15_nfg0o8
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348953/_19_k7qc0g.jpg
+  public_id: _19_k7qc0g
+  title: _19_k7qc0g
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348950/_20_afchq2.jpg
+  public_id: _20_afchq2
+  title: _20_afchq2
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348950/_21_f0bfkd.jpg
+  public_id: _21_f0bfkd
+  title: _21_f0bfkd
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348957/_2_zz1i6e.jpg
+  public_id: _2_zz1i6e
+  title: _2_zz1i6e
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348962/_4_cb5tdn.jpg
+  public_id: _4_cb5tdn
+  title: _4_cb5tdn
+  caption: ''
+  category: wildlife
+  featured: false
+- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348952/_9_nqd3g6.jpg
+  public_id: _9_nqd3g6
+  title: _9_nqd3g6
+  caption: ''
+  category: wildlife
+  featured: false
+- url: >-
+    https://res.cloudinary.com/duugpqtue/image/upload/v1766348958/denoise_DSF1314_kswrra.jpg
+  public_id: denoise_DSF1314_kswrra
+  title: denoise_DSF1314_kswrra
+  caption: ''
+  category: wildlife
+  featured: false
+- url: >-
+    https://res.cloudinary.com/duugpqtue/image/upload/v1766348954/lundefugl_20_1_otpfjb.jpg
+  public_id: lundefugl_20_1_otpfjb
+  title: lundefugl_20_1_otpfjb
+  caption: ''
+  category: wildlife
   featured: false

@@ -20,7 +20,9 @@ const portfolioImageMeta = {};
 
 function registerImageMetaFromElement(img) {
   if (!img) return;
-  const src = img.currentSrc || img.src;
+  const fullSrc = img.dataset.full || img.currentSrc || img.src;
+  const thumbSrc = img.currentSrc || img.src;
+  const src = fullSrc || thumbSrc;
   if (!src) return;
   const title = (img.dataset.title || img.getAttribute('alt') || '').trim() || prettifyFilename(src);
   const description = (img.dataset.caption || '').trim();
@@ -28,8 +30,12 @@ function registerImageMetaFromElement(img) {
   const camera = (img.dataset.camera || 'Fujifilm XT-30').trim();
   const settings = (img.dataset.settings || '').trim();
   const meta = { title, description, date, camera, settings };
-  imageMeta[src] = meta;
-  portfolioImageMeta[src] = { title, description, filename: src, camera };
+  imageMeta[thumbSrc || src] = meta;
+  portfolioImageMeta[thumbSrc || src] = { title, description, filename: fullSrc || thumbSrc || src, camera };
+  if (fullSrc && fullSrc !== thumbSrc) {
+    imageMeta[fullSrc] = meta;
+    portfolioImageMeta[fullSrc] = { title, description, filename: fullSrc, camera };
+  }
   const publicId = img.dataset.publicId;
   if (publicId) {
     imageMeta[publicId] = meta;
@@ -44,22 +50,77 @@ const images = Array.from(document.querySelectorAll('.gallery-grid img, .showcas
   })
   .filter(Boolean);
 
+// Persist language via URL param and set html lang early
+(function initLang() {
+  try {
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang === 'nb' || urlLang === 'en') {
+      localStorage.setItem('site-lang', urlLang);
+    }
+    const current = localStorage.getItem('site-lang') || 'en';
+    document.documentElement.setAttribute('lang', current);
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('site-lang') || 'en';
+      document.querySelectorAll('.nav-links a[href]').forEach(a => {
+        const href = a.getAttribute('href');
+        if (!href) return;
+        if (/^https?:\/\//i.test(href)) return; // skip external links
+        try {
+          const u = new URL(href, window.location.origin);
+          const params = new URLSearchParams(u.search);
+          params.set('lang', lang);
+          const newSearch = params.toString();
+          const newHref = u.pathname + (newSearch ? '?' + newSearch : '') + u.hash;
+          a.setAttribute('href', newHref);
+        } catch (e) {}
+      });
+    });
+  } catch (e) {}
+})();
+
 // --- Modern Lightbox functionality ---
+const savedLangForUI = localStorage.getItem('site-lang') || 'en';
+const UI_STRINGS = savedLangForUI === 'nb' ? {
+  close: 'Lukk',
+  prev: 'Forrige bilde',
+  next: 'Neste bilde',
+  largeView: 'Stor visning',
+  detailsTitle: 'Vis bildedetaljer',
+  labelDescription: 'Beskrivelse:',
+  labelDate: 'Dato:',
+  labelCamera: 'Kamera:',
+  labelSettings: 'Innstillinger:',
+  noDescription: 'Ingen beskrivelse.',
+  notAvailable: 'Ikke tilgjengelig'
+} : {
+  close: 'Close',
+  prev: 'Previous image',
+  next: 'Next image',
+  largeView: 'Large view',
+  detailsTitle: 'Show image details',
+  labelDescription: 'Description:',
+  labelDate: 'Date:',
+  labelCamera: 'Camera:',
+  labelSettings: 'Settings:',
+  noDescription: 'No description.',
+  notAvailable: 'N/A'
+};
+
 const lightbox = document.createElement('div');
 lightbox.className = 'lightbox';
 lightbox.innerHTML = `
   <div class="lightbox-overlay" tabindex="-1"></div>
   <div class="lightbox-content" role="dialog" aria-modal="true">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-close" aria-label="${UI_STRINGS.close}">&times;</button>
     <div class="lightbox-img-container" style="display: flex; align-items: center; justify-content: center; position: relative;">
-      <button class="lightbox-arrow lightbox-arrow-left" aria-label="Previous image" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);">&#8592;</button>
+      <button class="lightbox-arrow lightbox-arrow-left" aria-label="${UI_STRINGS.prev}" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);">&#8592;</button>
       <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-        <img src="" alt="Large view" class="lightbox-img" draggable="false">
+        <img src="" alt="${UI_STRINGS.largeView}" class="lightbox-img" draggable="false">
       </div>
-      <button class="lightbox-arrow lightbox-arrow-right" aria-label="Next image" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">&#8594;</button>
+      <button class="lightbox-arrow lightbox-arrow-right" aria-label="${UI_STRINGS.next}" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">&#8594;</button>
     </div>
     <div class="lightbox-title"></div>
-    <button class="lightbox-details-btn" aria-expanded="false" title="Show image details" tabindex="0">
+    <button class="lightbox-details-btn" aria-expanded="false" title="${UI_STRINGS.detailsTitle}" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
     </button>
     <div class="lightbox-details-panel" aria-hidden="true"></div>
@@ -178,15 +239,15 @@ if (typeof window !== 'undefined') window.openLightbox = openLightbox;
 function showLightboxImage(idx) {
   const src = currentImages[idx];
   imgEl.src = src;
-  imgEl.alt = getImageMeta(src).title || 'Large view';
+  imgEl.alt = getImageMeta(src).title || UI_STRINGS.largeView;
   titleEl.textContent = getImageMeta(src).title;
   currentImageData = getImageMeta(src);
   // Responsive, animated details panel markup
   detailsPanel.innerHTML = `
-    <div class="lightbox-details-panel-row"><strong>Description:</strong> <span>${currentImageData.description || 'N/A'}</span></div>
-    <div class="lightbox-details-panel-row"><strong>Date:</strong> <span>${currentImageData.date || 'N/A'}</span></div>
-    <div class="lightbox-details-panel-row"><strong>Camera:</strong> <span>${currentImageData.camera || 'N/A'}</span></div>
-    <div class="lightbox-details-panel-row"><strong>Settings:</strong> <span>${currentImageData.settings || 'N/A'}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelDescription}</strong> <span>${currentImageData.description || UI_STRINGS.noDescription}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelDate}</strong> <span>${currentImageData.date || UI_STRINGS.notAvailable}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelCamera}</strong> <span>${currentImageData.camera || UI_STRINGS.notAvailable}</span></div>
+    <div class="lightbox-details-panel-row"><strong>${UI_STRINGS.labelSettings}</strong> <span>${currentImageData.settings || UI_STRINGS.notAvailable}</span></div>
   `;
   detailsBtn.setAttribute('aria-expanded', 'false');
   detailsPanel.setAttribute('aria-hidden', 'true');
@@ -360,6 +421,76 @@ const categoryBtns = document.querySelectorAll('.category-btn');
 const categoryNodes = Array.from(document.querySelectorAll('.gallery-category'));
 const hasCategoryNodes = categoryNodes.length > 0;
 
+// Use smaller Cloudinary thumbnails in the grid, keep full-res for lightbox
+function makeCloudinaryThumbUrl(originalUrl) {
+  if (!originalUrl) return originalUrl;
+  try {
+    const url = new URL(originalUrl);
+    const uploadToken = '/upload/';
+    const idx = url.pathname.indexOf(uploadToken);
+    if (idx === -1) return originalUrl;
+    const before = url.pathname.slice(0, idx + uploadToken.length);
+    const after = url.pathname.slice(idx + uploadToken.length);
+    // Avoid double-inserting transforms if already present
+    if (/f_auto|w_\d|q_auto/.test(after)) return originalUrl;
+    const transformedPath = `${before}f_auto,q_auto,w_640/${after}`;
+    return `${url.origin}${transformedPath}`;
+  } catch (e) {
+    return originalUrl;
+  }
+}
+
+// At load time, convert portfolio category images to thumbs and stash full URL
+(function preparePortfolioThumbs() {
+  if (!hasCategoryNodes) return;
+  categoryNodes.forEach(node => {
+    node.querySelectorAll('img').forEach(img => {
+      const existingFull = img.dataset.full || img.getAttribute('data-full');
+      const raw = existingFull || img.getAttribute('src');
+      if (!raw) return;
+      const full = raw;
+      const thumb = makeCloudinaryThumbUrl(full);
+      img.dataset.full = full;
+      img.setAttribute('src', thumb);
+      img.loading = 'lazy';
+    });
+  });
+})();
+
+// Lazily hydrate category images so hidden categories don't eagerly download everything
+function hydrateCategoryImages(node) {
+  if (!node) return;
+  node.querySelectorAll('img').forEach(img => {
+    const pendingSrc = img.dataset.src;
+    const pendingSrcset = img.dataset.srcset;
+    if (pendingSrc && img.dataset.hydrated !== 'true') {
+      img.src = pendingSrc;
+      if (pendingSrcset) img.srcset = pendingSrcset;
+      img.dataset.hydrated = 'true';
+    }
+    img.loading = 'lazy';
+  });
+}
+
+function stashInactiveCategoryImages(activeCategory) {
+  categoryNodes.forEach(node => {
+    const isActive = ((node.dataset.category || '').trim() === (activeCategory || '').trim());
+    node.querySelectorAll('img').forEach(img => {
+      img.loading = 'lazy';
+      if (isActive) return;
+      if (!img.dataset.src && img.getAttribute('src')) {
+        img.dataset.src = img.getAttribute('src');
+        img.removeAttribute('src');
+      }
+      if (!img.dataset.srcset && img.getAttribute('srcset')) {
+        img.dataset.srcset = img.getAttribute('srcset');
+        img.removeAttribute('srcset');
+      }
+      img.dataset.hydrated = 'false';
+    });
+  });
+}
+
 const portfolioImages = {};
 
 // If the page was generated from `_data/images.yml` the gallery HTML is already present
@@ -404,11 +535,13 @@ function renderPortfolio(category) {
   if (!portfolioGallery) return;
   // If static DOM already has per-category containers, just toggle visibility
   if (hasCategoryNodes) {
+    stashInactiveCategoryImages(category);
     categoryNodes.forEach(node => {
       const isActive = ((node.dataset.category || '').trim() === (category || '').trim());
       node.style.display = isActive ? '' : 'none';
       // Bind lightbox for currently visible category
       if (isActive) {
+        hydrateCategoryImages(node);
         node.querySelectorAll('img').forEach(img => registerImageMetaFromElement(img));
       }
     });
@@ -481,9 +614,10 @@ function enableGalleryLightbox(selector) {
     img.addEventListener('click', () => {
       const list = Array.from(gallery.querySelectorAll('img'))
         .filter(el => el.offsetParent !== null) // only visible images
-        .map(el => el.currentSrc || el.src)
+        .map(el => el.dataset.full || el.currentSrc || el.src)
         .filter(Boolean);
-      openLightbox(img.currentSrc || img.src, list);
+      const initial = img.dataset.full || img.currentSrc || img.src;
+      openLightbox(initial, list);
     });
     img.dataset.lightboxBound = 'true';
   });
@@ -530,3 +664,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// --- Language toggle (NO/EN) ---
+document.addEventListener('DOMContentLoaded', function() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+  const saved = localStorage.getItem('site-lang') || 'en';
+  document.documentElement.setAttribute('lang', saved);
+  langToggle.dataset.lang = saved;
+  langToggle.setAttribute('aria-pressed', saved === 'nb');
+  langToggle.textContent = saved === 'nb' ? 'NO' : 'EN';
+  langToggle.addEventListener('click', function() {
+    const next = langToggle.dataset.lang === 'nb' ? 'en' : 'nb';
+    localStorage.setItem('site-lang', next);
+    langToggle.dataset.lang = next;
+    langToggle.setAttribute('aria-pressed', next === 'nb');
+    langToggle.textContent = next === 'nb' ? 'NO' : 'EN';
+    window.location.reload();
+  });
+
+  // Apply translations on load
+  applyLanguage(saved);
+});
+
+// Apply translations using data-i18n-* attributes
+function applyLanguage(lang) {
+  const isNb = lang === 'nb';
+  const textAttr = isNb ? 'i18nNb' : 'i18nEn';
+  const placeholderAttr = isNb ? 'i18nPlaceholderNb' : 'i18nPlaceholderEn';
+  const ariaLabelAttr = isNb ? 'i18nAriaLabelNb' : 'i18nAriaLabelEn';
+
+  document.querySelectorAll('[data-i18n-nb], [data-i18n-en]').forEach(el => {
+    const val = el.dataset[textAttr];
+    if (typeof val !== 'undefined') {
+      el.textContent = val;
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder-nb], [data-i18n-placeholder-en]').forEach(el => {
+    const val = el.dataset[placeholderAttr];
+    if (typeof val !== 'undefined') {
+      el.setAttribute('placeholder', val);
+    }
+  });
+  document.querySelectorAll('[data-i18n-aria-label-nb], [data-i18n-aria-label-en]').forEach(el => {
+    const val = el.dataset[ariaLabelAttr];
+    if (typeof val !== 'undefined') {
+      el.setAttribute('aria-label', val);
+    }
+  });
+}

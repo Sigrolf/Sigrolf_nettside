@@ -35,11 +35,16 @@ const portraitHtml = portraitItem ? `        <img src="${escapeHtml(portraitItem
 const fallbackCoverForPosts = (featuredItems[0] && featuredItems[0].url) || (items[0] && items[0].url) || '';
 
 // Render portfolio gallery grouped by category
-const categories = Array.from(new Set(items.map(i => i.category || 'uncategorized')));
+let categories = Array.from(new Set(items.map(i => i.category || 'uncategorized')));
+// Prefer 'astro' as the default category if present
+if (categories.includes('astro')) {
+  categories = ['astro', ...categories.filter(c => c !== 'astro')];
+}
 let galleryHtml = '';
 for (const category of categories) {
   const imgs = items.filter(i => (i.category||'').toString() === category.toString());
-  galleryHtml += `      <div class="gallery-category" data-category="${escapeHtml(category)}"${category === categories[0] ? '' : ' style="display:none;"'}>\n`;
+  const show = category === categories[0];
+  galleryHtml += `      <div class="gallery-category" data-category="${escapeHtml(category)}"${show ? '' : ' style="display:none;"'}>\n`;
   imgs.forEach(img => {
     galleryHtml += `        <div class="gallery-img-wrapper">\n          <img src="${escapeHtml(img.url)}" alt="${escapeHtml(img.title)}" data-caption="${escapeHtml(img.caption)}" data-public-id="${escapeHtml(img.public_id)}">\n          <div class="gallery-img-title">${escapeHtml(img.title)}</div>\n        </div>\n`;
   });
@@ -50,9 +55,26 @@ for (const category of categories) {
 function niceName(cat) {
   return (cat || '').toString().replace(/[_-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
-const desktopButtons = categories.map((c, idx) => `          <button class="category-btn${idx===0? ' active' : ''}" data-category="${escapeHtml(c)}">${escapeHtml(niceName(c))}</button>`).join('\n');
-const mobileItems = categories.map(c => `            <button class="category-btn" data-category="${escapeHtml(c)}">${escapeHtml(niceName(c))}</button>`).join('\n');
-const portfolioCategoriesHtml = `    <div class="portfolio-categories">\n      <div class="portfolio-categories-desktop">\n${desktopButtons}\n      </div>\n      <div class="portfolio-categories-mobile">\n        <button class="category-dropdown-toggle" id="categoryDropdownToggle">${escapeHtml(niceName(categories[0] || 'All'))} ▼</button>\n        <div class="category-dropdown-menu" id="categoryDropdownMenu">\n${mobileItems}\n        </div>\n      </div>\n    </div>`;
+function i18nAttrs(cat, isToggle=false) {
+  const nm = niceName(cat);
+  const suffix = isToggle ? ' ▼' : '';
+  if (cat === 'landscapes') {
+    return ` data-i18n-en="Landscapes${suffix}" data-i18n-nb="Landskap${suffix}"`;
+  }
+  if (cat === 'astro') {
+    return ` data-i18n-en="Astro${suffix}" data-i18n-nb="Astro${suffix}"`;
+  }
+  if (cat === 'wildlife') {
+    return ` data-i18n-en="Wildlife${suffix}" data-i18n-nb="Dyreliv${suffix}"`;
+  }
+  return '';
+}
+const desktopButtons = categories.map((c, idx) => `          <button class="category-btn${idx===0? ' active' : ''}" data-category="${escapeHtml(c)}"${i18nAttrs(c)}>${escapeHtml(niceName(c))}</button>`).join('\n');
+const mobileItems = categories.map(c => `            <button class="category-btn" data-category="${escapeHtml(c)}"${i18nAttrs(c)}>${escapeHtml(niceName(c))}</button>`).join('\n');
+const toggleCat = categories[0] || 'All';
+const toggleLabel = niceName(toggleCat) + ' ▼';
+const toggleI18n = i18nAttrs(toggleCat, true);
+const portfolioCategoriesHtml = `    <div class="portfolio-categories">\n      <div class="portfolio-categories-desktop">\n${desktopButtons}\n      </div>\n      <div class="portfolio-categories-mobile">\n        <button class="category-dropdown-toggle" id="categoryDropdownToggle"${toggleI18n}>${escapeHtml(toggleLabel)}</button>\n        <div class="category-dropdown-menu" id="categoryDropdownMenu">\n${mobileItems}\n        </div>\n      </div>\n    </div>`;
 
 // Read original templates and replace Liquid blocks
 function renderFromTemplate(templatePath, outName) {

@@ -1,6 +1,6 @@
  
 <!DOCTYPE html>
-<html lang="nb">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,27 +10,25 @@
 <body>
   <nav class="navbar">
     <div class="logo">SIGURD ROLFSNES</div>
-    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false" data-i18n-aria-label-en="Open navigation" data-i18n-aria-label-nb="Åpne meny">
       <span></span>
       <span></span>
       <span></span>
     </button>
     <ul class="nav-links" id="main-nav">
-      <li><a href="index.html" data-i18n-nb="Hjem" data-i18n-en="Home">Hjem</a></li>
-      <li><a href="portfolio.html" data-i18n-nb="Portefølje" data-i18n-en="Portfolio">Portefølje</a></li>
-      <li><a href="showcase.html" data-i18n-nb="Showcase" data-i18n-en="Showcase">Showcase</a></li>
-      <li><a href="blog.html" data-i18n-nb="Blogg" data-i18n-en="Blog">Blogg</a></li>
-      <li><a href="about.html" data-i18n-nb="Om meg" data-i18n-en="About">Om meg</a></li>
+      <li><a href="index.html" data-i18n-en="Home" data-i18n-nb="Hjem">Home</a></li>
+      <li><a href="portfolio.html" data-i18n-en="Portfolio" data-i18n-nb="Portefølje">Portfolio</a></li>
+      <li><a href="showcase.html" data-i18n-en="Showcase" data-i18n-nb="Fremvisning">Showcase</a></li>
+      <li><a href="blog.html" data-i18n-en="Blog" data-i18n-nb="Blogg">Blog</a></li>
+      <li><a href="about.html" data-i18n-en="About" data-i18n-nb="Om">About</a></li>
+      <li class="nav-lang-item"><button id="langToggle" class="lang-toggle" aria-pressed="false" data-lang="en">EN</button></li>
     </ul>
-    <div class="nav-actions">
-      <button class="lang-toggle" id="langToggle" type="button" aria-label="Bytt språk" data-i18n-nb="Norsk / Engelsk" data-i18n-en="Norwegian / English">Norsk / Engelsk</button>
-    </div>
   </nav>
   <section class="showcase-section">
     <div class="showcase-hero-glass">
-      <p class="showcase-kicker" data-i18n-nb="En astrofortelling" data-i18n-en="An astro story">En astrofortelling</p>
-      <h1 class="showcase-title" data-i18n-nb="Nattens ferd" data-i18n-en="Nightfall Odyssey">Nattens ferd</h1>
-      <p class="showcase-lede" data-i18n-nb="En rolig vandring fra det siste lyset i horisonten til det stille skinnet fra dypet." data-i18n-en="A slow walk from the first glow on the horizon to the quiet shimmer of deep space.">En rolig vandring fra det siste lyset i horisonten til det stille skinnet fra dypet.</p>
+      <p class="showcase-kicker" data-i18n-en="An astro story" data-i18n-nb="En astrohistorie">An astro story</p>
+      <h1 class="showcase-title" data-i18n-en="Nightfall Odyssey" data-i18n-nb="Nattens odyssé">Nightfall Odyssey</h1>
+      <p class="showcase-lede" data-i18n-en="A slow walk from the first glow on the horizon to the quiet shimmer of deep space." data-i18n-nb="En langsom vandring fra det første glimtet i horisonten til det stille skinnet fra dypet av verdensrommet.">A slow walk from the first glow on the horizon to the quiet shimmer of deep space.</p>
     </div>
 
     <div class="showcase-journey">
@@ -39,9 +37,9 @@
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg" alt="Andromeda Galaxy" class="story-img">
         </div>
         <div class="story-copy">
-          <p class="story-tag" data-i18n-nb="Kapittel 1 · Første lys" data-i18n-en="Chapter 1 · First Light">Kapittel 1 · Første lys</p>
-          <h2 data-i18n-nb="Blåtimen" data-i18n-en="Blue hour launch">Blåtimen</h2>
-          <p data-i18n-nb="Vi gjør klar riggen under en bleknende kobolt-himmel, lar det siste dagslyset styre komposisjonen mens luften kjøles og de første stjernene tennes." data-i18n-en="We set up under a fading cobalt sky, letting the last daylight guide composition while the air cools and the first stars blink on.">Vi gjør klar riggen under en bleknende kobolt-himmel, lar det siste dagslyset styre komposisjonen mens luften kjøles og de første stjernene tennes.</p>
+            <p class="story-tag" data-i18n-en="Chapter 1 · First Light" data-i18n-nb="Kapittel 1 · Første lys">Chapter 1 · First Light</p>
+            <h2 data-i18n-en="Blue hour launch" data-i18n-nb="Blåtime-avgang">Blue hour launch</h2>
+            <p data-i18n-en="We set up under a fading cobalt sky, letting the last daylight guide composition while the air cools and the first stars blink on." data-i18n-nb="Vi gjør oss klare under en falmende koboltblå himmel, lar det siste dagslyset styre komposisjonen mens luften blir kjøligere og de første stjernene tennes.">We set up under a fading cobalt sky, letting the last daylight guide composition while the air cools and the first stars blink on.</p>
         </div>
       </div>
 
@@ -50,9 +48,9 @@
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348917/_00002_fv08zm.jpg" alt="Milkyway" class="story-img">
         </div>
         <div class="story-copy">
-          <p class="story-tag" data-i18n-nb="Kapittel 2 · Ferd" data-i18n-en="Chapter 2 · Traverse">Kapittel 2 · Ferd</p>
-          <h2 data-i18n-nb="Inn i støvbanene" data-i18n-en="Into the dust lanes">Inn i støvbanene</h2>
-          <p data-i18n-nb="Melkeveien buer over oss; hver eksponering avdekker mer struktur—mørke tåker skjærer elver gjennom den galaktiske kjernen." data-i18n-en="The Milky Way arches overhead; each exposure reveals more structure—dark nebulae carving rivers through the galactic core.">Melkeveien buer over oss; hver eksponering avdekker mer struktur—mørke tåker skjærer elver gjennom den galaktiske kjernen.</p>
+            <p class="story-tag" data-i18n-en="Chapter 2 · Traverse" data-i18n-nb="Kapittel 2 · Vandring">Chapter 2 · Traverse</p>
+            <h2 data-i18n-en="Into the dust lanes" data-i18n-nb="Inn i støvbanene">Into the dust lanes</h2>
+            <p data-i18n-en="The Milky Way arches overhead; each exposure reveals more structure—dark nebulae carving rivers through the galactic core." data-i18n-nb="Melkeveien spenner over oss; hver eksponering avslører mer struktur—mørke tåker skjærer elver gjennom den galaktiske kjernen.">The Milky Way arches overhead; each exposure reveals more structure—dark nebulae carving rivers through the galactic core.</p>
         </div>
       </div>
 
@@ -61,9 +59,9 @@
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00003_wko69l.jpg" alt="Pleiades Star Cluster" class="story-img">
         </div>
         <div class="story-copy">
-          <p class="story-tag" data-i18n-nb="Kapittel 3 · Møte" data-i18n-en="Chapter 3 · Encounter">Kapittel 3 · Møte</p>
-          <h2 data-i18n-nb="Stjernelys tett på" data-i18n-en="Starlight close-up">Stjernelys tett på</h2>
-          <p data-i18n-nb="Pleiadene trer frem som en tett klynge; refleksjonståker gløder isblått mot tomrommet, en stille motvekt til den galaktiske bredden." data-i18n-en="The Pleiades emerge as a tight cluster; reflection nebulae glow icy blue against the void, a quiet counterpoint to the galactic sprawl.">Pleiadene trer frem som en tett klynge; refleksjonståker gløder isblått mot tomrommet, en stille motvekt til den galaktiske bredden.</p>
+            <p class="story-tag" data-i18n-en="Chapter 3 · Encounter" data-i18n-nb="Kapittel 3 · Møte">Chapter 3 · Encounter</p>
+            <h2 data-i18n-en="Starlight close-up" data-i18n-nb="Stjernelys tett på">Starlight close-up</h2>
+            <p data-i18n-en="The Pleiades emerge as a tight cluster; reflection nebulae glow icy blue against the void, a quiet counterpoint to the galactic sprawl." data-i18n-nb="Plejadene trer frem som en tett klynge; refleksjonståker gløder isblått mot tomrommet, en rolig motvekt til den galaktiske utbredelsen.">The Pleiades emerge as a tight cluster; reflection nebulae glow icy blue against the void, a quiet counterpoint to the galactic sprawl.</p>
         </div>
       </div>
 
@@ -72,15 +70,15 @@
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg" alt="Andromeda Galaxy" class="story-img">
         </div>
         <div class="story-copy">
-          <p class="story-tag" data-i18n-nb="Kapittel 4 · Retur" data-i18n-en="Chapter 4 · Return">Kapittel 4 · Retur</p>
-          <h2 data-i18n-nb="Andromeda i horisonten" data-i18n-en="Andromeda on the horizon">Andromeda i horisonten</h2>
-          <p data-i18n-nb="En siste langeksponering fanger Andromeda som stiger; en svak stripe for øyet men vidstrakt på sensoren—en påminnelse om hvor nær natten kan føles." data-i18n-en="A final long exposure catches Andromeda rising, a faint smudge to the eye but sprawling in the sensor—our reminder of how close the night can feel.">En siste langeksponering fanger Andromeda som stiger; en svak stripe for øyet men vidstrakt på sensoren—en påminnelse om hvor nær natten kan føles.</p>
+            <p class="story-tag" data-i18n-en="Chapter 4 · Return" data-i18n-nb="Kapittel 4 · Retur">Chapter 4 · Return</p>
+            <h2 data-i18n-en="Andromeda on the horizon" data-i18n-nb="Andromeda i horisonten">Andromeda on the horizon</h2>
+            <p data-i18n-en="A final long exposure catches Andromeda rising, a faint smudge to the eye but sprawling in the sensor—our reminder of how close the night can feel." data-i18n-nb="En siste lang eksponering fanger Andromeda på vei opp; et svakt slør for øyet men vidstrakt på sensoren—en påminnelse om hvor nær natten kan føles.">A final long exposure catches Andromeda rising, a faint smudge to the eye but sprawling in the sensor—our reminder of how close the night can feel.</p>
         </div>
       </div>
     </div>
   </section>
   <footer>
-    <p>&copy; 2025 Sigurd Rolfsnes. All rights reserved.</p>
+    <p>© 2025 Sigurd Rolfsnes. <span data-i18n-en="All rights reserved." data-i18n-nb="Alle rettigheter forbeholdt.">All rights reserved.</span></p>
   </footer>
   <script src="script.js"></script>
   <script>

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync:cloudinary": "node scripts/sync-cloudinary-images.js",
+    "sync:wildlife": "CLOUDINARY_FOLDERS=images/landscapes,images/astro,images/wildlife node scripts/sync-cloudinary-images.js",
     "build:preview": "node scripts/generate-preview.js",
+    "build:portfolio": "npm run build:preview && cp -f preview/portfolio.html deploy/portfolio.html",
     "build:site": "npm run build:preview && cp -f preview/portfolio.html deploy/portfolio.html && cp -f preview/index.html deploy/index.html && cp -f preview/about.html deploy/about.html && cp -f preview/showcase.html deploy/showcase.html && cp -f preview/portfolio.html portfolio.html && cp -f preview/index.html index.html && cp -f preview/about.html about.html && cp -f preview/showcase.html showcase.html"
   },
   "repository": {

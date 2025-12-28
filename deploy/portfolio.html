@@ -11,37 +11,86 @@
   <!-- ...existing navbar... -->
   <nav class="navbar">
     <div class="logo">SIGURD ROLFSNES</div>
-    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+    <button class="hamburger" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false" data-i18n-aria-label-en="Open navigation" data-i18n-aria-label-nb="Åpne meny">
       <span></span>
       <span></span>
       <span></span>
     </button>
     <ul class="nav-links" id="main-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="showcase.html">Showcase</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html" data-i18n-en="Home" data-i18n-nb="Hjem">Home</a></li>
+      <li><a href="portfolio.html" data-i18n-en="Portfolio" data-i18n-nb="Portefølje">Portfolio</a></li>
+      <li><a href="showcase.html" data-i18n-en="Showcase" data-i18n-nb="Fremvisning">Showcase</a></li>
+      <li><a href="blog.html" data-i18n-en="Blog" data-i18n-nb="Blogg">Blog</a></li>
+      <li><a href="about.html" data-i18n-en="About" data-i18n-nb="Om">About</a></li>
+      <li class="nav-lang-item"><button id="langToggle" class="lang-toggle" aria-pressed="false" data-lang="en">EN</button></li>
     </ul>
   </nav>
   <div class="hero-spacer"></div>
   <section class="portfolio-section">
-    <h1>Portfolio</h1>
-                                <div class="portfolio-categories">
+    <h1 data-i18n-en="Portfolio" data-i18n-nb="Portefølje">Portfolio</h1>
+                                            <div class="portfolio-categories">
       <div class="portfolio-categories-desktop">
-          <button class="category-btn active" data-category="landscapes">Landscapes</button>
-          <button class="category-btn" data-category="astro">Astro</button>
+          <button class="category-btn active" data-category="astro" data-i18n-en="Astro" data-i18n-nb="Astro">Astro</button>
+          <button class="category-btn" data-category="landscapes" data-i18n-en="Landscapes" data-i18n-nb="Landskap">Landscapes</button>
+          <button class="category-btn" data-category="wildlife" data-i18n-en="Wildlife" data-i18n-nb="Dyreliv">Wildlife</button>
       </div>
       <div class="portfolio-categories-mobile">
-        <button class="category-dropdown-toggle" id="categoryDropdownToggle">Landscapes ▼</button>
+        <button class="category-dropdown-toggle" id="categoryDropdownToggle" data-i18n-en="Astro ▼" data-i18n-nb="Astro ▼">Astro ▼</button>
         <div class="category-dropdown-menu" id="categoryDropdownMenu">
-            <button class="category-btn" data-category="landscapes">Landscapes</button>
-            <button class="category-btn" data-category="astro">Astro</button>
+            <button class="category-btn" data-category="astro" data-i18n-en="Astro" data-i18n-nb="Astro">Astro</button>
+            <button class="category-btn" data-category="landscapes" data-i18n-en="Landscapes" data-i18n-nb="Landskap">Landscapes</button>
+            <button class="category-btn" data-category="wildlife" data-i18n-en="Wildlife" data-i18n-nb="Dyreliv">Wildlife</button>
         </div>
       </div>
     </div>
     <div class="gallery-grid" id="portfolioGallery">
-      <div class="gallery-category" data-category="landscapes">
+      <div class="gallery-category" data-category="astro">
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg" alt="_00001_h6oaxe" data-caption="" data-public-id="_00001_h6oaxe">
+          <div class="gallery-img-title">_00001_h6oaxe</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348917/_00002_fv08zm.jpg" alt="_00002_fv08zm" data-caption="" data-public-id="_00002_fv08zm">
+          <div class="gallery-img-title">_00002_fv08zm</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00003_wko69l.jpg" alt="_00003_wko69l" data-caption="" data-public-id="_00003_wko69l">
+          <div class="gallery-img-title">_00003_wko69l</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00004_ml4xi0.jpg" alt="_00004_ml4xi0" data-caption="" data-public-id="_00004_ml4xi0">
+          <div class="gallery-img-title">_00004_ml4xi0</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00005_ktgggr.jpg" alt="_00005_ktgggr" data-caption="" data-public-id="_00005_ktgggr">
+          <div class="gallery-img-title">_00005_ktgggr</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00006_ifzb77.jpg" alt="_00006_ifzb77" data-caption="" data-public-id="_00006_ifzb77">
+          <div class="gallery-img-title">_00006_ifzb77</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00007_llt9si.jpg" alt="_00007_llt9si" data-caption="" data-public-id="_00007_llt9si">
+          <div class="gallery-img-title">_00007_llt9si</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00008_h2wyy9.jpg" alt="_00008_h2wyy9" data-caption="" data-public-id="_00008_h2wyy9">
+          <div class="gallery-img-title">_00008_h2wyy9</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00009_py99kt.jpg" alt="_00009_py99kt" data-caption="" data-public-id="_00009_py99kt">
+          <div class="gallery-img-title">_00009_py99kt</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348921/_00010_oftn72.jpg" alt="_00010_oftn72" data-caption="" data-public-id="_00010_oftn72">
+          <div class="gallery-img-title">_00010_oftn72</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348929/_00011_ipnotn.jpg" alt="_00011_ipnotn" data-caption="" data-public-id="_00011_ipnotn">
+          <div class="gallery-img-title">_00011_ipnotn</div>
+        </div>
+      </div>
+      <div class="gallery-category" data-category="landscapes" style="display:none;">
         <div class="gallery-img-wrapper">
           <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766342019/DJI_0110_w7qnrj.jpg" alt="DJI_0110_w7qnrj" data-caption="" data-public-id="DJI_0110_w7qnrj">
           <div class="gallery-img-title">DJI_0110_w7qnrj</div>
@@ -483,50 +532,58 @@
           <div class="gallery-img-title">_DSF9305_peji3a</div>
         </div>
       </div>
-      <div class="gallery-category" data-category="astro" style="display:none;">
+      <div class="gallery-category" data-category="wildlife" style="display:none;">
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg" alt="Andromeda Galaxy" data-caption="Taken from my cabin in Namdalseid, Norway using SWSA GTI mount and fuifilm X-T30 camera" data-public-id="_00001_h6oaxe">
-          <div class="gallery-img-title">Andromeda Galaxy</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348965/_10_a5lyzo.jpg" alt="_10_a5lyzo" data-caption="" data-public-id="_10_a5lyzo">
+          <div class="gallery-img-title">_10_a5lyzo</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348917/_00002_fv08zm.jpg" alt="Milkyway" data-caption="Photo of milky way from jonsvatnet lake near Trondheim, Norway" data-public-id="_00002_fv08zm">
-          <div class="gallery-img-title">Milkyway</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348967/_11_oexskf.jpg" alt="_11_oexskf" data-caption="" data-public-id="_11_oexskf">
+          <div class="gallery-img-title">_11_oexskf</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00003_wko69l.jpg" alt="Pleiades Star Cluster" data-caption="The pleiades star cluster is an open star cluster containing middle-aged hot B-type stars in the north-west of the constellation Taurus." data-public-id="_00003_wko69l">
-          <div class="gallery-img-title">Pleiades Star Cluster</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348962/_13_yq7qzt.jpg" alt="_13_yq7qzt" data-caption="" data-public-id="_13_yq7qzt">
+          <div class="gallery-img-title">_13_yq7qzt</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00004_ml4xi0.jpg" alt="Bode and Cigar Galaxy" data-caption="Zoomed out version" data-public-id="_00004_ml4xi0">
-          <div class="gallery-img-title">Bode and Cigar Galaxy</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348959/_14_ix2bwq.jpg" alt="_14_ix2bwq" data-caption="" data-public-id="_14_ix2bwq">
+          <div class="gallery-img-title">_14_ix2bwq</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00005_ktgggr.jpg" alt="Bode and Cigar Galaxy" data-caption="Zoomed in version" data-public-id="_00005_ktgggr">
-          <div class="gallery-img-title">Bode and Cigar Galaxy</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348956/_15_nfg0o8.jpg" alt="_15_nfg0o8" data-caption="" data-public-id="_15_nfg0o8">
+          <div class="gallery-img-title">_15_nfg0o8</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00006_ifzb77.jpg" alt="Orions belt" data-caption="Orions belt surrounded by multiple nebulae including the horsehead, flame and the orion nebula." data-public-id="_00006_ifzb77">
-          <div class="gallery-img-title">Orions belt</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348953/_19_k7qc0g.jpg" alt="_19_k7qc0g" data-caption="" data-public-id="_19_k7qc0g">
+          <div class="gallery-img-title">_19_k7qc0g</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00007_llt9si.jpg" alt="Heart and Soul Nebulae" data-caption="Taken with my very shitty camera untracked" data-public-id="_00007_llt9si">
-          <div class="gallery-img-title">Heart and Soul Nebulae</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348950/_20_afchq2.jpg" alt="_20_afchq2" data-caption="" data-public-id="_20_afchq2">
+          <div class="gallery-img-title">_20_afchq2</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00008_h2wyy9.jpg" alt="The Moooon" data-caption="The moon taken with a 200mm lens, fuji x-T30" data-public-id="_00008_h2wyy9">
-          <div class="gallery-img-title">The Moooon</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348950/_21_f0bfkd.jpg" alt="_21_f0bfkd" data-caption="" data-public-id="_21_f0bfkd">
+          <div class="gallery-img-title">_21_f0bfkd</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00009_py99kt.jpg" alt="Trifid nebula" data-caption="Taken from imer in the dolomites, Italy using SWSA GTI mount and fuifilm X-T30 camera" data-public-id="_00009_py99kt">
-          <div class="gallery-img-title">Trifid nebula</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348957/_2_zz1i6e.jpg" alt="_2_zz1i6e" data-caption="" data-public-id="_2_zz1i6e">
+          <div class="gallery-img-title">_2_zz1i6e</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348921/_00010_oftn72.jpg" alt="Triangulum Galaxy" data-caption="The Triangulum Galaxy (M33) is a spiral galaxy approximately 3 million light years from Earth in the constellation Triangulum. It is the third-largest member of our Local Group of galaxies, which also includes the Milky Way and the Andromeda Galaxy." data-public-id="_00010_oftn72">
-          <div class="gallery-img-title">Triangulum Galaxy</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348962/_4_cb5tdn.jpg" alt="_4_cb5tdn" data-caption="" data-public-id="_4_cb5tdn">
+          <div class="gallery-img-title">_4_cb5tdn</div>
         </div>
         <div class="gallery-img-wrapper">
-          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348929/_00011_ipnotn.jpg" alt="Eagle nebula" data-caption="The Eagle Nebula (also known as Messier 16, M16, or NGC 6611) is a young open cluster of stars in the constellation Serpens. It is part of a diffuse emission nebula that contains several active star-forming regions." data-public-id="_00011_ipnotn">
-          <div class="gallery-img-title">Eagle nebula</div>
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348952/_9_nqd3g6.jpg" alt="_9_nqd3g6" data-caption="" data-public-id="_9_nqd3g6">
+          <div class="gallery-img-title">_9_nqd3g6</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348958/denoise_DSF1314_kswrra.jpg" alt="denoise_DSF1314_kswrra" data-caption="" data-public-id="denoise_DSF1314_kswrra">
+          <div class="gallery-img-title">denoise_DSF1314_kswrra</div>
+        </div>
+        <div class="gallery-img-wrapper">
+          <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766348954/lundefugl_20_1_otpfjb.jpg" alt="lundefugl_20_1_otpfjb" data-caption="" data-public-id="lundefugl_20_1_otpfjb">
+          <div class="gallery-img-title">lundefugl_20_1_otpfjb</div>
         </div>
       </div>
     </div>
