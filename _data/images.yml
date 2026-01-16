@@ -793,58 +793,58 @@
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00003_wko69l.jpg
-  public_id: _00003_wko69l
-  title: _00003_wko69l
-  caption: ''
+  public_id: The Pleiades
+  title: The Pleiades
+  caption: 'Pleiades is a star cluster also known as the Seven Sisters. Fun fact: it is mentioned in the Bible. in the books of Job (Job 9:9, Job 38:31) and Amos (Amos 5:8)'
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00004_ml4xi0.jpg
-  public_id: _00004_ml4xi0
-  title: _00004_ml4xi0
-  caption: ''
+  public_id: Bode and Cigar Galaxy
+  title: Bode and Cigar Galaxy widefield
+  caption: 'Bode and cigar galaxy are two galaxies located in the constellation Ursa Major. This is a widefield image showing both galaxies along with several stars in the foreground. They are unbelievably far away, with Bode galaxy being about 12 million light years away and Cigar galaxy about 11 million light years away.'
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00005_ktgggr.jpg
-  public_id: _00005_ktgggr
-  title: _00005_ktgggr
+  public_id: Bode_and_Cigar_Galaxy
+  title: Bode and Cigar Galaxy closeup
   caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00007_llt9si.jpg
-  public_id: _00007_llt9si
-  title: _00007_llt9si
-  caption: ''
+  public_id: Heart and soul Nebula
+  title: Heart and soul Nebula
+  caption: 'This is unstracked and very edited, so this is not very real as to how it looks'
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00008_h2wyy9.jpg
-  public_id: _00008_h2wyy9
-  title: _00008_h2wyy9
-  caption: ''
+  public_id: The Moon
+  title: The Moon!
+  caption: 'The Moon taken with a 200mm lens from Trondheim, Norway. HDR processed to bring out more details.'
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348920/_00009_py99kt.jpg
-  public_id: _00009_py99kt
-  title: _00009_py99kt
+  public_id: Trifid Nebula
+  title: Trifid
   caption: ''
   category: astro
   featured: false
 - url: >-
-    https://res.cloudinary.com/duugpqtue/image/upload/v1766348921/_00010_oftn72.jpg
-  public_id: _00010_oftn72
+    https://res.cloudinary.com/duugpqtue/image/upload/v1768598487/4_5Format_T__v4trcb.png
+  public_id: Triangulum Galaxy
   title: _00010_oftn72
   caption: ''
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348929/_00011_ipnotn.jpg
-  public_id: _00011_ipnotn
-  title: _00011_ipnotn
-  caption: ''
+  public_id: Eagle Nebula
+  title: Eagle Nebula
+  caption: 'The Eagle Nebula (catalogued as Messier 16 or M16, and as NGC 6611, and also known as the Star Queen Nebula) is a young open cluster of stars in the constellation Serpens, discovered by Jean-Philippe de Cheseaux in 1745–46. Both the "Eagle" and the "Star Queen" refer to visual impressions of the dark silhouette near the center of the nebula,[4][5] an area made famous as the "Pillars of Creation" imaged by the Hubble Space Telescope. The nebula contains several active star-forming gas and dust regions, including the aforementioned Pillars of Creation. The Eagle Nebula lies in the Sagittarius Arm of the Milky Way.'
   category: astro
   featured: false
 - url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348965/_10_a5lyzo.jpg
@@ -856,12 +856,6 @@
 - url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348967/_11_oexskf.jpg
   public_id: _11_oexskf
   title: _11_oexskf
-  caption: ''
-  category: wildlife
-  featured: false
-- url: https://res.cloudinary.com/duugpqtue/image/upload/v1766348962/_13_yq7qzt.jpg
-  public_id: _13_yq7qzt
-  title: _13_yq7qzt
   caption: ''
   category: wildlife
   featured: false

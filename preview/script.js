@@ -57,10 +57,10 @@ const images = Array.from(document.querySelectorAll('.gallery-grid img, .showcas
     if (urlLang === 'nb' || urlLang === 'en') {
       localStorage.setItem('site-lang', urlLang);
     }
-    const current = localStorage.getItem('site-lang') || 'en';
+    const current = localStorage.getItem('site-lang') || 'nb';
     document.documentElement.setAttribute('lang', current);
     document.addEventListener('DOMContentLoaded', () => {
-      const lang = localStorage.getItem('site-lang') || 'en';
+      const lang = localStorage.getItem('site-lang') || 'nb';
       document.querySelectorAll('.nav-links a[href]').forEach(a => {
         const href = a.getAttribute('href');
         if (!href) return;
@@ -79,7 +79,7 @@ const images = Array.from(document.querySelectorAll('.gallery-grid img, .showcas
 })();
 
 // --- Modern Lightbox functionality ---
-const savedLangForUI = localStorage.getItem('site-lang') || 'en';
+const savedLangForUI = localStorage.getItem('site-lang') || 'nb';
 const UI_STRINGS = savedLangForUI === 'nb' ? {
   close: 'Lukk',
   prev: 'Forrige bilde',
@@ -669,7 +669,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const langToggle = document.getElementById('langToggle');
   if (!langToggle) return;
-  const saved = localStorage.getItem('site-lang') || 'en';
+  const saved = localStorage.getItem('site-lang') || 'nb';
   document.documentElement.setAttribute('lang', saved);
   langToggle.dataset.lang = saved;
   langToggle.setAttribute('aria-pressed', saved === 'nb');
