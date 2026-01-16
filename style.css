@@ -502,6 +502,9 @@
   letter-spacing: 0.02em;
 }
 .cv-lede { color: #f2fff8; opacity: 0.9; }
+/* compact list for CV sections */
+.cv-list { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+.cv-list li { color: #e8fff6; }
 
 .cv-timeline { display: flex; flex-direction: column; gap: 0.6rem; }
 .cv-item { background: rgba(255,255,255,0.03); border-radius: 0.6rem; padding: 0.6rem 0.8rem; }
