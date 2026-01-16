@@ -438,16 +438,17 @@
 /* --- About CV Layout --- */
 .about-cv {
   padding: 4rem 3vw 2rem 3vw;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 .cv-header {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
   margin-bottom: 2rem;
 }
+.cv-portrait { max-width: 280px; margin: 0 auto; }
 .cv-portrait img.about-portrait {
   width: 100%;
   height: auto;
@@ -486,7 +487,7 @@
 
 .cv-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 .cv-section {
@@ -545,8 +546,7 @@
 .cv-edu-year { color: #9bfbd8; font-weight: 600; }
 
 @media (max-width: 900px) {
-  .cv-header { grid-template-columns: 1fr; }
-  .cv-grid { grid-template-columns: 1fr; }
+  /* Already single-column by default; keep spacing adjustments if needed */
 }
 
 /* --- About Article Typography --- */
