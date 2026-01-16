@@ -9,6 +9,12 @@
 .cv-item[open] p { opacity: 0.9; max-height: 240px; transform: none; }
 .cv-tags .tag { transition: transform 0.18s cubic-bezier(.77,.2,.32,1.01), box-shadow 0.18s; }
 .cv-tags .tag:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px #00FF7F44; }
+
+/* --- About CV Layout (deploy) --- */
+.about-cv { padding: 4rem 3vw 2rem 3vw; max-width: 900px; margin: 0 auto; }
+.cv-header { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; margin-bottom: 2rem; }
+.cv-portrait { max-width: 280px; margin: 0 auto; }
+.cv-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 /* Blog Archive Intro Section */
 .blog-archive-intro {
   text-align: center;
