@@ -395,6 +395,11 @@
   letter-spacing: 0.02em;
   margin-top: 0.4rem;
 }
+/* Hide titles for Landscape and Wildlife categories on portfolio */
+.gallery-category[data-category="landscapes"] .gallery-img-title,
+.gallery-category[data-category="wildlife"] .gallery-img-title {
+  display: none;
+}
 /* --- Portfolio Gallery Cinematic Grid --- */
 #portfolioGallery.gallery-grid, .gallery-grid#portfolioGallery {
   display: grid !important;

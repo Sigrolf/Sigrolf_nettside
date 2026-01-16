@@ -770,16 +770,25 @@
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348916/_00001_h6oaxe.jpg
-  public_id: _00001_h6oaxe
-  title: _00001_h6oaxe
-  caption: ''
+  public_id: Andromeda_galaxy
+  title: Andromeda galaxy
+  caption: |-
+    Andromeda galaxy taken from Namdalseid, Norway. Its the closest
+    spiral galaxy to our Milky Way. With over a trillion stars.
+  category: astro
+  featured: false
+- url: >-
+    https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00006_ifzb77.jpg
+  public_id: Orions_belt
+  title: Orions_belt
+  caption: 'this is Orion''s Belt. Taken from Namdalseid, Norway'
   category: astro
   featured: false
 - url: >-
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348917/_00002_fv08zm.jpg
-  public_id: _00002_fv08zm
-  title: _00002_fv08zm
-  caption: ''
+  public_id: Milky_way
+  title: Milky way
+  caption: 'Our own Milky way taken from jonsvatnet outside Trondheim, Norway.'
   category: astro
   featured: false
 - url: >-
@@ -800,13 +809,6 @@
     https://res.cloudinary.com/duugpqtue/image/upload/v1766348918/_00005_ktgggr.jpg
   public_id: _00005_ktgggr
   title: _00005_ktgggr
-  caption: ''
-  category: astro
-  featured: false
-- url: >-
-    https://res.cloudinary.com/duugpqtue/image/upload/v1766348919/_00006_ifzb77.jpg
-  public_id: _00006_ifzb77
-  title: _00006_ifzb77
   caption: ''
   category: astro
   featured: false
