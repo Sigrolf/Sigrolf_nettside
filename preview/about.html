@@ -24,35 +24,74 @@
       <li class="nav-lang-item"><button id="langToggle" class="lang-toggle" aria-pressed="false" data-lang="en">EN</button></li>
     </ul>
   </nav>
-  <section class="about-hero">
-    <div class="about-hero-inner">
-      <div class="about-hero-img">
-        <img src="https://res.cloudinary.com/duugpqtue/image/upload/v1766351236/DSCF9222_pvt2oh.jpg" alt="DSCF9222" data-public-id="DSCF9222_pvt2oh" />
+  <section class="about-cv">
+    <div class="cv-header">
+      <div class="cv-portrait">
+        <!-- Kept class for build script portrait injection -->
+        <img class="about-portrait" src="https://res.cloudinary.com/duugpqtue/image/upload/v1766351236/DSCF9222_pvt2oh.jpg" alt="Portrait of Sigurd Rolfsnes" />
       </div>
-      <div class="about-hero-card">
+      <div class="cv-title">
         <h1>Sigurd Rolfsnes</h1>
-        <p class="about-subheading" data-i18n-en="Gymnast and physics/mathematics student at NTNU" data-i18n-nb="Turner og fysikk/matematikkstudent ved NTNU">Gymnast and physics/mathematics student at NTNU</p>
-        <p>
-          <span data-i18n-en="I value discipline, body control, and long‑term effort. Years of gymnastics taught me patience and precision — the kind of quiet practice that builds lasting strength." data-i18n-nb="Jeg verdsetter disiplin, kroppskontroll og langsiktig innsats. År med turn har lært meg tålmodighet og presisjon — den stille øvingen som bygger varig styrke.">I value discipline, body control, and long‑term effort. Years of gymnastics taught me patience and precision — the kind of quiet practice that builds lasting strength.</span>
-        </p>
-        <p>
-          <span data-i18n-en="I study physics and mathematics at NTNU because I’m curious about how things work at a fundamental level. I enjoy combining physical challenges with analytical thinking and problem solving." data-i18n-nb="Jeg studerer fysikk og matematikk ved NTNU fordi jeg er nysgjerrig på hvordan ting fungerer på et grunnleggende nivå. Jeg liker å kombinere fysiske utfordringer med analytisk tenkning og problemløsing.">I study physics and mathematics at NTNU because I’m curious about how things work at a fundamental level. I enjoy combining physical challenges with analytical thinking and problem solving.</span>
-        </p>
-        <p>
-          <span data-i18n-en="I’m motivated by learning and improvement. Whether it’s refining a movement, understanding a concept, or creating something simple and clean, I try to keep my approach focused, calm, and honest." data-i18n-nb="Jeg er motivert av læring og forbedring. Enten det handler om å finpusse en bevegelse, forstå et konsept, eller skape noe enkelt og ryddig, prøver jeg å holde tilnærmingen min fokusert, rolig og ærlig.">I’m motivated by learning and improvement. Whether it’s refining a movement, understanding a concept, or creating something simple and clean, I try to keep my approach focused, calm, and honest.</span>
-        </p>
+        <p class="cv-subtitle" data-i18n-en="Gymnast and physics/mathematics student at NTNU" data-i18n-nb="Turner og fysikk/matematikkstudent ved NTNU">Turner og fysikk/matematikkstudent ved NTNU</p>
+        <div class="cv-actions">
+          <a class="btn-accent" href="portfolio.html" data-i18n-en="View Portfolio" data-i18n-nb="Se portefølje">Se portefølje</a>
+          <a class="btn-ghost" href="mailto:sigurd.rolfsnes@gmail.com" data-i18n-en="Contact" data-i18n-nb="Kontakt">Kontakt</a>
+        </div>
       </div>
     </div>
-    <div class="about-details">
-      <div class="timeline">
-        <h2 data-i18n-en="Milestones" data-i18n-nb="Milepæler">Milestones</h2>
-        <ul>
-          <li><span>2025</span> - <span data-i18n-en="Launched this portfolio website" data-i18n-nb="Lanserte denne porteføljesiden">Launched this portfolio website</span></li>
-          <li><span>2024</span> - <span data-i18n-en="Solo exhibition in Trondheim" data-i18n-nb="Solo-utstilling i Trondheim">Solo exhibition in Trondheim</span></li>
-          <li><span>2023</span> - <span data-i18n-en="Published in National Geographic Norway" data-i18n-nb="Publisert i National Geographic Norge">Published in National Geographic Norway</span></li>
-          <li><span>2022</span> - <span data-i18n-en="First aurora photo featured on NASA APOD" data-i18n-nb="Første nordlysfoto på NASA APOD">First aurora photo featured on NASA APOD</span></li>
+
+    <div class="cv-grid">
+      <section class="cv-section">
+        <h2 data-i18n-en="Profile" data-i18n-nb="Profil">Profil</h2>
+        <p class="cv-lede">
+          <span data-i18n-en="I value discipline, body control, and long‑term effort. Years of gymnastics taught me patience and precision — the kind of quiet practice that builds lasting strength." data-i18n-nb="Jeg verdsetter disiplin, kroppskontroll og langsiktig innsats. År med turn har lært meg tålmodighet og presisjon — den stille øvingen som bygger varig styrke.">Jeg verdsetter disiplin, kroppskontroll og langsiktig innsats. År med turn har lært meg tålmodighet og presisjon — den stille øvingen som bygger varig styrke.</span>
+        </p>
+        <p class="cv-lede">
+          <span data-i18n-en="I study physics and mathematics at NTNU because I’m curious about how things work at a fundamental level. I enjoy combining physical challenges with analytical thinking and problem solving." data-i18n-nb="Jeg studerer fysikk og matematikk ved NTNU fordi jeg er nysgjerrig på hvordan ting fungerer på et grunnleggende nivå. Jeg liker å kombinere fysiske utfordringer med analytisk tenkning og problemløsing.">Jeg studerer fysikk og matematikk ved NTNU fordi jeg er nysgjerrig på hvordan ting fungerer på et grunnleggende nivå. Jeg liker å kombinere fysiske utfordringer med analytisk tenkning og problemløsing.</span>
+        </p>
+      </section>
+
+      <section class="cv-section">
+        <h2 data-i18n-en="Experience" data-i18n-nb="Erfaring">Erfaring</h2>
+        <div class="cv-timeline">
+          <details class="cv-item" open>
+            <summary><span class="cv-year">2025</span> <span data-i18n-en="Launched portfolio website" data-i18n-nb="Lanserte porteføljenettside">Lanserte porteføljenettside</span></summary>
+            <p data-i18n-en="Built a data‑driven photography site integrating Cloudinary with dynamic galleries and multilingual UI." data-i18n-nb="Bygget en datadrevet fotoside med Cloudinary, dynamiske gallerier og flerspråklig grensesnitt.">Bygget en datadrevet fotoside med Cloudinary, dynamiske gallerier og flerspråklig grensesnitt.</p>
+          </details>
+          <details class="cv-item">
+            <summary><span class="cv-year">2024</span> <span data-i18n-en="Solo exhibition in Trondheim" data-i18n-nb="Solo‑utstilling i Trondheim">Solo‑utstilling i Trondheim</span></summary>
+            <p data-i18n-en="Curated a set of landscape and astro images with a focus on composition and light." data-i18n-nb="Kuraterte landskaps‑ og astro‑bilder med fokus på komposisjon og lys.">Kuraterte landskaps‑ og astro‑bilder med fokus på komposisjon og lys.</p>
+          </details>
+          <details class="cv-item">
+            <summary><span class="cv-year">2023</span> <span data-i18n-en="Published in National Geographic Norway" data-i18n-nb="Publisert i National Geographic Norge">Publisert i National Geographic Norge</span></summary>
+            <p data-i18n-en="Selected astro photography featured in print." data-i18n-nb="Utvalgt astro‑fotografi i trykk.">Utvalgt astro‑fotografi i trykk.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2 data-i18n-en="Skills" data-i18n-nb="Ferdigheter">Ferdigheter</h2>
+        <ul class="cv-tags">
+          <li class="tag">Astro</li>
+          <li class="tag" data-i18n-en="Landscapes" data-i18n-nb="Landskap">Landskap</li>
+          <li class="tag" data-i18n-en="Wildlife" data-i18n-nb="Dyreliv">Dyreliv</li>
+          <li class="tag" data-i18n-en="Composition" data-i18n-nb="Komposisjon">Komposisjon</li>
+          <li class="tag" data-i18n-en="Lighting" data-i18n-nb="Lyssetting">Lyssetting</li>
+          <li class="tag">Cloudinary</li>
+          <li class="tag">JavaScript</li>
         </ul>
-      </div>
+      </section>
+
+      <section class="cv-section">
+        <h2 data-i18n-en="Education" data-i18n-nb="Utdanning">Utdanning</h2>
+        <div class="cv-edu">
+          <div class="cv-edu-item">
+            <div class="cv-edu-title">NTNU</div>
+            <div class="cv-edu-meta" data-i18n-en="Physics & Mathematics" data-i18n-nb="Fysikk og matematikk">Fysikk og matematikk</div>
+            <div class="cv-edu-year">2023 —</div>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
   <footer>
