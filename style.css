@@ -538,6 +538,18 @@
   .cv-header { grid-template-columns: 1fr; }
   .cv-grid { grid-template-columns: 1fr; }
 }
+
+/* --- About Article Typography --- */
+.about-article { padding: 4rem 3vw 2rem 3vw; max-width: 900px; margin: 0 auto; }
+.article-header { display: grid; grid-template-columns: 200px 1fr; gap: 1.6rem; align-items: center; margin-bottom: 1.8rem; }
+.article-portrait img.about-portrait { width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 8px 38px rgba(0,0,0,0.7), 0 0 0 2px rgba(0,255,127,0.18); background: rgba(255,255,255,0.04); }
+.article-lede { color: #f5fff9; font-size: 1.15rem; line-height: 1.6; opacity: 0.9; }
+.prose { color: #e8fff6; line-height: 1.75; display: grid; gap: 1.4rem; }
+.prose h2 { color: var(--accent); font-size: 1.6rem; margin: 0 0 0.4rem 0; letter-spacing: 0.02em; }
+.prose p { margin: 0; }
+.prose ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+.prose li { color: #e8fff6; }
+@media (max-width: 800px) { .article-header { grid-template-columns: 1fr; } }
 /* Make category containers transparent to the grid so inner images become grid items */
 .gallery-grid .gallery-category {
   display: contents;
