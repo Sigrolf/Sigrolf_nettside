@@ -388,6 +388,29 @@
   filter: brightness(1.12) saturate(1.15) blur(2px);
   transform: scale(1.035);
 }
+
+/* Mobile-friendly hover/touch behavior: reduce blur and scale on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .gallery-img-wrapper:hover,
+  .gallery-img-wrapper:focus-within {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 12px 38px #00FF7F33, 0 0 0 2px rgba(0,255,127,0.25);
+  }
+  .gallery-img-wrapper:hover::after,
+  .gallery-img-wrapper:focus-within::after {
+    opacity: 0.6;
+  }
+  .gallery-img-wrapper:hover img,
+  .gallery-img-wrapper:focus-within img {
+    filter: brightness(1.06) saturate(1.08);
+    transform: scale(1.01);
+  }
+  /* Provide tactile feedback on tap */
+  .gallery-img-wrapper:active img {
+    transform: scale(0.99);
+    filter: brightness(1.02);
+  }
+}
 .gallery-img-title {
   text-align: center;
   color: #b0ffda;
