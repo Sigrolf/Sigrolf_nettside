@@ -24,73 +24,69 @@
       <li class="nav-lang-item"><button id="langToggle" class="lang-toggle" aria-pressed="false" data-lang="en">EN</button></li>
     </ul>
   </nav>
-  <section class="about-doc">
-    <div class="doc-shell">
-      <aside class="doc-sidebar">
-        <div class="doc-card">
-          <img class="about-portrait" src="https://res.cloudinary.com/duugpqtue/image/upload/v1766351236/DSCF9222_pvt2oh.jpg" alt="Portrait of Sigurd Rolfsnes" />
-          <h1 class="doc-name">Sigurd Rolfsnes</h1>
-          <p class="doc-role" data-i18n-en="Photographer · Physics/Mathematics (NTNU)" data-i18n-nb="Fotograf · Fysikk/Matematikk (NTNU)">Fotograf · Fysikk/Matematikk (NTNU)</p>
-          <ul class="doc-links">
-            <li><a href="portfolio.html" data-i18n-en="Portfolio" data-i18n-nb="Portefølje">Portefølje</a></li>
-            <li><a href="mailto:sigurd.rolfsnes@gmail.com" data-i18n-en="Contact" data-i18n-nb="Kontakt">Kontakt</a></li>
-          </ul>
+  <section class="about-cv">
+    <div class="cv-header">
+      <div class="cv-portrait">
+        <img class="about-portrait" src="https://res.cloudinary.com/duugpqtue/image/upload/v1766351236/DSCF9222_pvt2oh.jpg" alt="Portrait of Sigurd Rolfsnes" />
+      </div>
+      <div class="cv-title">
+        <h1>Sigurd Rolfsnes</h1>
+        <p class="cv-subtitle" data-i18n-en="Photographer · Physics/Mathematics (NTNU)" data-i18n-nb="Fotograf · Fysikk/Matematikk (NTNU)">Fotograf · Fysikk/Matematikk (NTNU)</p>
+        <div class="cv-actions">
+          <a class="btn-accent" href="portfolio.html" data-i18n-en="View Portfolio" data-i18n-nb="Se portefølje">Se portefølje</a>
+          <a class="btn-ghost" href="mailto:sigurd.rolfsnes@gmail.com" data-i18n-en="Contact" data-i18n-nb="Kontakt">Kontakt</a>
+          <button class="btn-ghost" id="toggleCv" data-i18n-en="Expand all" data-i18n-nb="Utvid alle">Utvid alle</button>
         </div>
-        <nav class="doc-toc" aria-label="Document navigation">
-          <ul>
-            <li><a href="#intro" class="active" data-i18n-en="Introduction" data-i18n-nb="Introduksjon">Introduksjon</a></li>
-            <li><a href="#interests" data-i18n-en="Interests" data-i18n-nb="Interesser">Interesser</a></li>
-            <li><a href="#experience" data-i18n-en="Experience & Skills" data-i18n-nb="Erfaring og ferdigheter">Erfaring og ferdigheter</a></li>
-            <li><a href="#direction" data-i18n-en="Direction" data-i18n-nb="Retning">Retning</a></li>
-            <li><a href="#closing" data-i18n-en="Closing" data-i18n-nb="Avslutning">Avslutning</a></li>
-          </ul>
-        </nav>
-      </aside>
+      </div>
+    </div>
 
-      <main class="doc-main">
-        <section id="intro" class="doc-section">
-          <h2 data-i18n-en="Introduction" data-i18n-nb="Introduksjon">Introduksjon</h2>
-          <p class="doc-lede" data-i18n-en="I’m a photographer working with landscapes, astro, and wildlife. I study physics and mathematics at NTNU, and I build my own site to keep things simple and precise." data-i18n-nb="Jeg er fotograf som jobber med landskap, astro og dyreliv. Jeg studerer fysikk og matematikk ved NTNU, og bygger min egen nettside for å holde ting enkelt og presist.">Jeg er fotograf som jobber med landskap, astro og dyreliv. Jeg studerer fysikk og matematikk ved NTNU, og bygger min egen nettside for å holde ting enkelt og presist.</p>
-        </section>
+    <div class="cv-grid">
+      <section class="cv-section">
+        <h2 data-i18n-en="Profile" data-i18n-nb="Profil">Profil</h2>
+        <p class="cv-lede" data-i18n-en="I’m a photographer focused on landscapes, astro, and wildlife. I study physics and mathematics at NTNU, and I build my own site to keep things simple and precise." data-i18n-nb="Jeg er fotograf med fokus på landskap, astro og dyreliv. Jeg studerer fysikk og matematikk ved NTNU, og bygger min egen nettside for å holde ting enkelt og presist.">Jeg er fotograf med fokus på landskap, astro og dyreliv. Jeg studerer fysikk og matematikk ved NTNU, og bygger min egen nettside for å holde ting enkelt og presist.</p>
+      </section>
 
-        <section id="interests" class="doc-section">
-          <h2 data-i18n-en="Interests" data-i18n-nb="Interesser">Interesser</h2>
-          <p data-i18n-en="I’m interested in natural light, clear compositions, and the quiet feeling in images. Most of my work is outdoors with minimal editing." data-i18n-nb="Jeg er interessert i naturlig lys, tydelige komposisjoner og den rolige følelsen i bilder. Det meste av arbeidet mitt er ute, med minimal etterbehandling.">Jeg er interessert i naturlig lys, tydelige komposisjoner og den rolige følelsen i bilder. Det meste av arbeidet mitt er ute, med minimal etterbehandling.</p>
-          <ul>
-            <li data-i18n-en="Landscapes and natural light" data-i18n-nb="Landskap og naturlig lys">Landskap og naturlig lys</li>
-            <li data-i18n-en="Astro and night sky" data-i18n-nb="Astro og nattehimmel">Astro og nattehimmel</li>
-            <li data-i18n-en="Wildlife with calm compositions" data-i18n-nb="Dyreliv med rolig komposisjon">Dyreliv med rolig komposisjon</li>
-          </ul>
-        </section>
-
-        <section id="experience" class="doc-section">
-          <h2 data-i18n-en="Experience & Skills" data-i18n-nb="Erfaring og ferdigheter">Erfaring og ferdigheter</h2>
-          <p data-i18n-en="I keep my process simple: plan, observe light, and shoot clean frames. I use Cloudinary with static HTML/JS to manage images and build this site." data-i18n-nb="Jeg holder prosessen enkel: planlegger, ser etter lys, og fotograferer rene utsnitt. Jeg bruker Cloudinary med statisk HTML/JS for å håndtere bilder og bygge denne siden.">Jeg holder prosessen enkel: planlegger, ser etter lys, og fotograferer rene utsnitt. Jeg bruker Cloudinary med statisk HTML/JS for å håndtere bilder og bygge denne siden.</p>
-          <details class="doc-details" open>
-            <summary data-i18n-en="Highlights" data-i18n-nb="Høydepunkter">Høydepunkter</summary>
-            <ul>
-              <li data-i18n-en="Solo exhibition (Trondheim)" data-i18n-nb="Solo‑utstilling (Trondheim)">Solo‑utstilling (Trondheim)</li>
-              <li data-i18n-en="Selected publication (astro)" data-i18n-nb="Publisering (astro)">Publisering (astro)</li>
-              <li data-i18n-en="Tools: JavaScript, YAML, Git" data-i18n-nb="Verktøy: JavaScript, YAML, Git">Verktøy: JavaScript, YAML, Git</li>
-            </ul>
+      <section class="cv-section">
+        <h2 data-i18n-en="Experience" data-i18n-nb="Erfaring">Erfaring</h2>
+        <div class="cv-timeline">
+          <details class="cv-item" open>
+            <summary><span class="cv-year">2025</span> <span data-i18n-en="Launched portfolio website" data-i18n-nb="Lanserte porteføljenettside">Lanserte porteføljenettside</span></summary>
+            <p data-i18n-en="Data‑driven photography site with Cloudinary, dynamic galleries, and bilingual UI." data-i18n-nb="Datadrevet fotoside med Cloudinary, dynamiske gallerier og tospråklig grensesnitt.">Datadrevet fotoside med Cloudinary, dynamiske gallerier og tospråklig grensesnitt.</p>
           </details>
-        </section>
+          <details class="cv-item">
+            <summary><span class="cv-year">2024</span> <span data-i18n-en="Solo exhibition (Trondheim)" data-i18n-nb="Solo‑utstilling (Trondheim)">Solo‑utstilling (Trondheim)</span></summary>
+            <p data-i18n-en="Curated landscapes and astro images with focus on composition and light." data-i18n-nb="Kuraterte landskap og astro med fokus på komposisjon og lys.">Kuraterte landskap og astro med fokus på komposisjon og lys.</p>
+          </details>
+          <details class="cv-item">
+            <summary><span class="cv-year">2023</span> <span data-i18n-en="Publication (astro)" data-i18n-nb="Publisering (astro)">Publisering (astro)</span></summary>
+            <p data-i18n-en="Selected astro photography in print." data-i18n-nb="Utvalgt astro‑fotografi i trykk.">Utvalgt astro‑fotografi i trykk.</p>
+          </details>
+        </div>
+      </section>
 
-        <section id="direction" class="doc-section">
-          <h2 data-i18n-en="Direction" data-i18n-nb="Retning">Retning</h2>
-          <p data-i18n-en="I’m working towards a quiet, consistent style and more night‑sky work in varied locations. I want the site to stay simple and honest." data-i18n-nb="Jeg jobber mot en rolig, konsekvent stil og mer nattehimmel‑arbeid på ulike steder. Nettsiden skal forbli enkel og ærlig.">Jeg jobber mot en rolig, konsekvent stil og mer nattehimmel‑arbeid på ulike steder. Nettsiden skal forbli enkel og ærlig.</p>
-          <ul>
-            <li data-i18n-en="Refine composition and light" data-i18n-nb="Forfine komposisjon og lys">Forfine komposisjon og lys</li>
-            <li data-i18n-en="Keep the workflow minimal" data-i18n-nb="Holde arbeidsflyten minimal">Holde arbeidsflyten minimal</li>
-            <li data-i18n-en="Write short notes in a simple blog" data-i18n-nb="Skrive korte notater i en enkel blogg">Skrive korte notater i en enkel blogg</li>
-          </ul>
-        </section>
+      <section class="cv-section">
+        <h2 data-i18n-en="Skills" data-i18n-nb="Ferdigheter">Ferdigheter</h2>
+        <ul class="cv-tags" id="cvTags">
+          <li class="tag">Astro</li>
+          <li class="tag" data-i18n-en="Landscapes" data-i18n-nb="Landskap">Landskap</li>
+          <li class="tag" data-i18n-en="Wildlife" data-i18n-nb="Dyreliv">Dyreliv</li>
+          <li class="tag" data-i18n-en="Composition" data-i18n-nb="Komposisjon">Komposisjon</li>
+          <li class="tag" data-i18n-en="Lighting" data-i18n-nb="Lyssetting">Lyssetting</li>
+          <li class="tag">Cloudinary</li>
+          <li class="tag">JavaScript</li>
+        </ul>
+      </section>
 
-        <section id="closing" class="doc-section">
-          <h2 data-i18n-en="Closing" data-i18n-nb="Avslutning">Avslutning</h2>
-          <p data-i18n-en="I like steady progress and clear structure. The goal is simple images that feel calm and precise." data-i18n-nb="Jeg liker jevn framgang og tydelig struktur. Målet er enkle bilder som oppleves rolige og presise.">Jeg liker jevn framgang og tydelig struktur. Målet er enkle bilder som oppleves rolige og presise.</p>
-        </section>
-      </main>
+      <section class="cv-section">
+        <h2 data-i18n-en="Education" data-i18n-nb="Utdanning">Utdanning</h2>
+        <div class="cv-edu">
+          <div class="cv-edu-item">
+            <div class="cv-edu-title">NTNU</div>
+            <div class="cv-edu-meta" data-i18n-en="Physics & Mathematics" data-i18n-nb="Fysikk og matematikk">Fysikk og matematikk</div>
+            <div class="cv-edu-year">2023 —</div>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
   <footer>
@@ -126,20 +122,23 @@
     }
   </script>
   <script>
-    // Simple scrollspy for the document TOC
+    // CV interactivity: Expand/collapse all details and tag pulse
     (function(){
-      const links = Array.from(document.querySelectorAll('.doc-toc a'));
-      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-      if (!links.length || !sections.length) return;
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = '#' + entry.target.id;
-            links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-          }
+      const toggleBtn = document.getElementById('toggleCv');
+      const details = Array.from(document.querySelectorAll('.cv-item'));
+      if (toggleBtn && details.length) {
+        let expanded = false;
+        toggleBtn.addEventListener('click', () => {
+          expanded = !expanded;
+          details.forEach(d => d.open = expanded);
+          toggleBtn.textContent = expanded ? (toggleBtn.dataset.i18nNb ? 'Lukk alle' : 'Collapse all') : (toggleBtn.dataset.i18nNb ? 'Utvid alle' : 'Expand all');
         });
-      }, { rootMargin: '0px 0px -60% 0px', threshold: 0.2 });
-      sections.forEach(s => observer.observe(s));
+      }
+      const tags = Array.from(document.querySelectorAll('#cvTags .tag'));
+      tags.forEach(t => {
+        t.addEventListener('mouseenter', () => t.style.boxShadow = '0 8px 24px #00FF7F55');
+        t.addEventListener('mouseleave', () => t.style.boxShadow = '');
+      });
     })();
   </script>
 </body>
